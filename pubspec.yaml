@@ -76,6 +76,7 @@ flutter:
     - assets/cat_eyes/
     - assets/nails/
     - assets/nails/large/
+    - assets/rubber_base_gel/
     - assets/
 
   # An image asset can refer to one or more resolution-specific "variants", see

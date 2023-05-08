@@ -1,14 +1,15 @@
-import 'package:essential_beauty/screens/how_to_apply.dart';
-import 'package:essential_beauty/widgets/nails/custom_app_bar.dart';
-import 'package:essential_beauty/widgets/nails/nail_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
-import 'Nail.dart';
+import '../widgets/nails/Nail.dart';
+import '../widgets/nails/custom_app_bar.dart';
+import '../widgets/nails/nail_card.dart';
+import '../widgets/nails/nail_details.dart';
 
-class NailDetails extends StatelessWidget {
-  const NailDetails({super.key, required this.nail});
+class RubberBaseGelDetails extends StatelessWidget {
+  const RubberBaseGelDetails({super.key, required this.nail});
 
   final Nail nail;
 
@@ -23,7 +24,7 @@ class NailDetails extends StatelessWidget {
           Get.back();
         },
         child: Image.asset(
-          "assets/categories/RubberBaseGel.png",
+          "assets/categories/RubberBaseGelLarge.png",
         ),
       ),
       appBar: const CustomAppBar(),
@@ -38,7 +39,7 @@ class NailDetails extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                "NAILS POLISH",
+                "RUBBER BASE GEL",
                 style: TextStyle(
                   fontSize: 32.sp,
                   fontFamily: "Gotham",
@@ -52,7 +53,7 @@ class NailDetails extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    NailCard(nail: nail),
+                    _RubberBaseGelCard(nail: nail),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -76,7 +77,16 @@ class NailDetails extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  "Soak oof gell polish",
+                                  "Base Color GEL",
+                                  style: TextStyle(
+                                    fontFamily: "Gotham",
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 32.sp,
+                                    color: const Color.fromRGBO(97, 95, 95, 1),
+                                  ),
+                                ),
+                                Text(
+                                  "SOAK OFF GEL POLISH",
                                   style: TextStyle(
                                     fontFamily: "Gotham",
                                     fontWeight: FontWeight.w400,
@@ -84,6 +94,22 @@ class NailDetails extends StatelessWidget {
                                     color: const Color.fromRGBO(97, 95, 95, 1),
                                   ),
                                 ),
+                                SizedBox(height: 10.h),
+                                Text(
+                                  "Gel de base plus doux flexible et à forte adhérnce du gels de construction",
+                                  style: TextStyle(
+                                    fontFamily: "Gotham",
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 24.sp,
+                                    color: const Color.fromRGBO(
+                                      126,
+                                      126,
+                                      126,
+                                      1,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: 10.h),
                                 Text(
                                   "Time of polymerization in light of the UV lamp-2-3minutes LED-lamp-1 minute",
                                   style: TextStyle(
@@ -101,7 +127,9 @@ class NailDetails extends StatelessWidget {
                       ],
                     ),
                     SizedBox(width: MediaQuery.of(context).size.width * 0.2),
-                    Image.asset("assets/nails/ManicureBottle.png", width: 275.w)
+                    Image.asset(
+                        "assets/rubber_base_gel/RubberBaseGelBottle.png",
+                        width: 275.w)
                   ],
                 ),
               ),
@@ -114,42 +142,33 @@ class NailDetails extends StatelessWidget {
   }
 }
 
-class PlayButtonLarge extends StatelessWidget {
-  const PlayButtonLarge({
-    super.key,
-    required this.bottomMargin,
-  });
+class _RubberBaseGelCard extends StatelessWidget {
+  final Nail nail;
 
-  final double bottomMargin;
+  const _RubberBaseGelCard({required this.nail});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(top: 80, bottom: bottomMargin),
-      width: 158.w,
-      height: 147.h,
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(0),
-          topRight: Radius.circular(75),
-          bottomLeft: Radius.circular(0),
-          bottomRight: Radius.circular(75),
+    return Stack(
+      children: [
+        Image.asset(
+          "assets/nails/Card.png",
+          width: 379.13.w,
+          height: 630.79.h,
+          fit: BoxFit.contain,
         ),
-        image: DecorationImage(
-          image: AssetImage("assets/AppBarBackground.png"),
-          fit: BoxFit.cover,
-        ),
-      ),
-      child: GestureDetector(
-        onTap: () {
-          Get.to(const HowToApplyScreen());
-        },
-        child: Image.asset(
-          "assets/PlayButtonLarge.png",
-          width: 65.w,
-          height: 65.h,
-        ),
-      ),
+        Positioned.fill(
+          child: Align(
+            child: Image.asset(
+              "assets/rubber_base_gel/${nail.id}.png",
+              fit: BoxFit.contain,
+              height: 478.h,
+              width: 216.w,
+              // height: 200,
+            ),
+          ),
+        )
+      ],
     );
   }
 }
