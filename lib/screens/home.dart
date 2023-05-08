@@ -87,7 +87,7 @@ class HomeScreen extends StatelessWidget {
                       imgPath: "assets/categories/CuticuleOilLarge.png",
                       categoryName: 'Cuticule Oil',
                       onChangeScreen: () {
-                        Get.to(const CuticuleOilScreen());
+                        Get.to( CuticuleOilScreen());
                       },
                     ),
                   ],

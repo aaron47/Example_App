@@ -38,7 +38,14 @@ class BuilderGelDetails extends StatelessWidget {
               child: Stack(
                 children: [
                   Container(
-                    margin: EdgeInsets.only(left: 700.w,top: 100.w),
+                    margin: EdgeInsets.only(left: 350.w, top: 100.w),
+                    child: Image.asset(
+                      gel.shape,
+                      // width: 533.w,
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(left: 700.w, top: 100.w),
                     child: Hero(
                       tag: 'Gel${gel.id}',
                       child: Image.asset(
@@ -52,8 +59,8 @@ class BuilderGelDetails extends StatelessWidget {
                     child: Hero(
                       tag: 'Cover${gel.id}',
                       child: Image.asset(
-                        "assets/gel_builder/Coverr5.png",
-                  
+                        "assets/gel_builder/Coverr5.pnag",
+
                         // width: 533.w,
                       ),
                     ),
