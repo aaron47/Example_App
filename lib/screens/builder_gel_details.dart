@@ -14,7 +14,7 @@ class BuilderGelDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: FloatingActionButton.large(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -22,7 +22,7 @@ class BuilderGelDetails extends StatelessWidget {
           Get.back();
         },
         child: Image.asset(
-          "assets/categories/BuilderGel.png",
+          "assets/categories/BuilderGelLarge.png",
         ),
       ),
       appBar: const CustomAppBar(),
@@ -59,7 +59,7 @@ class BuilderGelDetails extends StatelessWidget {
                     child: Hero(
                       tag: 'Cover${gel.id}',
                       child: Image.asset(
-                        "assets/gel_builder/Coverr5.pnag",
+                        "assets/gel_builder/Coverr5.png",
 
                         // width: 533.w,
                       ),

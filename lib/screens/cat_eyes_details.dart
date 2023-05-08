@@ -1,33 +1,20 @@
-import 'package:essential_beauty/widgets/flasch_nail_widgets/FlaschNail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../widgets/flasch_nail_widgets/flasch_nail_card.dart';
-import '../widgets/nails/Nail.dart';
+import '../models/cat_eye_nail.dart';
 import '../widgets/nails/custom_app_bar.dart';
-import '../widgets/nails/nail_card.dart';
 import '../widgets/nails/nail_details.dart';
 
-class FlaschNailDetails extends StatelessWidget {
-  const FlaschNailDetails({super.key, required this.flaschNail});
+class CatEyesDetails extends StatelessWidget {
+  const CatEyesDetails({super.key, required this.nail});
 
-  final FlaschNail flaschNail;
+  final CatEyeNail nail;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      floatingActionButton: FloatingActionButton.large(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        onPressed: () {
-          Get.back();
-        },
-        child: Image.asset(
-          "assets/categories/FlaschNailLarge.png",
-        ),
-      ),
       bottomNavigationBar: BottomAppBar(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -46,7 +33,7 @@ class FlaschNailDetails extends StatelessWidget {
             Align(
               alignment: Alignment.topRight,
               child: Text(
-                "FLASCH NAIL",
+                "CAT EYES",
                 style: TextStyle(
                   fontFamily: "Gotham",
                   fontSize: 32.sp,
@@ -56,6 +43,16 @@ class FlaschNailDetails extends StatelessWidget {
               ),
             ),
           ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton.large(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        onPressed: () {
+          Get.back();
+        },
+        child: Image.asset(
+          "assets/categories/CatEyesLarge.png",
         ),
       ),
       appBar: const CustomAppBar(),
@@ -75,14 +72,14 @@ class FlaschNailDetails extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    FlaschNailCard(
-                      flaschNail: flaschNail,
+                    _CatEyeNailCard(
+                      catEyeNail: nail,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "FLASCH NAIL",
+                          "CAT EYES",
                           style: TextStyle(
                             fontSize: 32.sp,
                             fontFamily: "Gotham",
@@ -101,7 +98,7 @@ class FlaschNailDetails extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "Ref:${flaschNail.id}",
+                                  "Ref:${nail.ref}",
                                   style: TextStyle(
                                     fontSize: 32.sp,
                                     fontFamily: "Gotham",
@@ -134,8 +131,6 @@ class FlaschNailDetails extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(width: MediaQuery.of(context).size.width * 0.2),
-                    Image.asset("assets/flasch_nail/DISCO.png", width: 275.w)
                   ],
                 ),
               ),
@@ -144,6 +139,43 @@ class FlaschNailDetails extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class _CatEyeNailCard extends StatelessWidget {
+  final CatEyeNail catEyeNail;
+
+  const _CatEyeNailCard({required this.catEyeNail});
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Image.asset(
+          "assets/flasch_nail/FlaschNailCard1.png",
+          width: 379.13.w,
+          height: 630.79.h,
+          fit: BoxFit.contain,
+        ),
+        Positioned.fill(
+          child: Align(
+            child: Transform.rotate(
+              angle: 170,
+              child: Stack(
+                children: [
+                  Image.asset(
+                    catEyeNail.imgPath,
+                    fit: BoxFit.contain,
+                    width: 203.94.w,
+                    height: 760.13.h,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

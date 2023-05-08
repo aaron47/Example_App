@@ -52,7 +52,7 @@ class CuticuleOilScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: FloatingActionButton.large(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -60,7 +60,7 @@ class CuticuleOilScreen extends StatelessWidget {
           Get.back();
         },
         child: Image.asset(
-          "assets/categories/CuticuleOil.png",
+          "assets/categories/CuticuleOilLarge.png",
           width: 202.w,
         ),
       ),
@@ -78,7 +78,7 @@ class CuticuleOilScreen extends StatelessWidget {
                   fontSize: 32.sp,
                   fontFamily: "Gotham",
                   fontWeight: FontWeight.w700,
-                  color: Color.fromRGBO(11, 43, 45, 1),
+                  color: const Color.fromRGBO(11, 43, 45, 1),
                 ),
               ),
             ),
@@ -99,7 +99,9 @@ class CuticuleOilScreen extends StatelessWidget {
                               },
                               child: GestureDetector(
                                 onTap: () {
-                                  Get.to(CuticulOIlDetails(oil: e), duration: Duration(milliseconds: 800));
+                                  Get.to(CuticulOIlDetails(oil: e),
+                                      duration:
+                                          const Duration(milliseconds: 800));
                                 },
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -123,7 +125,8 @@ class CuticuleOilScreen extends StatelessWidget {
                                           fontSize: 30.sp,
                                           fontFamily: "Gotham",
                                           fontWeight: FontWeight.w700,
-                                          color: Color.fromRGBO(20, 76, 80, 1),
+                                          color: const Color.fromRGBO(
+                                              20, 76, 80, 1),
                                         ),
                                       ),
                                     ),
@@ -136,16 +139,17 @@ class CuticuleOilScreen extends StatelessWidget {
                   Stack(
                     children: [
                       Container(
-                        height: 350.h,
+                        height: 425.27.h,
+                        width: 533.56.w,
                         alignment: Alignment.bottomCenter,
                         child: Image.asset(
                           "assets/cuticul_oil/oil_background.png",
                           width: 533.w,
                         ),
                       ),
-                      Container(
-                        width: 533.w,
-                        height: 350.h,
+                      SizedBox(
+                        width: 533.56.w,
+                        height: 425.27.h,
                         //  color: Colors.amber,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -155,17 +159,24 @@ class CuticuleOilScreen extends StatelessWidget {
                               children: [
                                 Image.asset(
                                   "assets/cuticul_oil/Apple.png",
-                                  width: 146.w,
+                                  width: 153.w,
+                                  height: 393.h,
                                 ),
                                 Container(
-                                  margin: EdgeInsets.only(top: 15.h, bottom: 15.h),
+                                  margin:
+                                      EdgeInsets.only(top: 15.h, bottom: 15.h),
                                   child: Text(
                                     "Apple",
                                     style: TextStyle(
-                                      fontSize: 30.sp,
+                                      fontSize: 20.sp,
                                       fontFamily: "Gotham",
                                       fontWeight: FontWeight.w700,
-                                      color: Color.fromRGBO(20, 76, 80, 1),
+                                      color: const Color.fromRGBO(
+                                        150,
+                                        150,
+                                        150,
+                                        1,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -178,14 +189,20 @@ class CuticuleOilScreen extends StatelessWidget {
                                   width: 146.w,
                                 ),
                                 Container(
-                                  margin: EdgeInsets.only(top: 15.h, bottom: 15.h),
+                                  margin:
+                                      EdgeInsets.only(top: 15.h, bottom: 15.h),
                                   child: Text(
                                     "Orange",
                                     style: TextStyle(
-                                      fontSize: 30.sp,
+                                      fontSize: 20.sp,
                                       fontFamily: "Gotham",
                                       fontWeight: FontWeight.w700,
-                                      color: Color.fromRGBO(20, 76, 80, 1),
+                                      color: const Color.fromRGBO(
+                                        150,
+                                        150,
+                                        150,
+                                        1,
+                                      ),
                                     ),
                                   ),
                                 ),

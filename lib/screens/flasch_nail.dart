@@ -1,6 +1,7 @@
 import 'package:essential_beauty/screens/flasch_nail_details.dart';
 import 'package:essential_beauty/widgets/nails/custom_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../widgets/flasch_nail_widgets/FlaschNail.dart';
@@ -21,11 +22,35 @@ class FlaschNailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: const BottomAppBar(
-        child: Align(
-          alignment: Alignment.topRight,
-          child: Text("FLASCH NAIL"),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                "MADE WITH LOVE BY SLOTH-LAB",
+                style: TextStyle(
+                  fontFamily: "Roboto",
+                  fontSize: 20.sp,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+            Align(
+              alignment: Alignment.topRight,
+              child: Text(
+                "FLASCH NAIL",
+                style: TextStyle(
+                  fontFamily: "Gotham",
+                  fontSize: 32.sp,
+                  fontWeight: FontWeight.w700,
+                  color: const Color.fromRGBO(150, 150, 150, 1),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
       floatingActionButton: FloatingActionButton.large(
@@ -35,7 +60,7 @@ class FlaschNailScreen extends StatelessWidget {
           Get.back();
         },
         child: Image.asset(
-          "assets/categories/FlaschNail.png",
+          "assets/categories/FlaschNailLarge.png",
         ),
       ),
       appBar: const CustomAppBar(),

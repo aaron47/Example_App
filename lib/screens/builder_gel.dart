@@ -9,21 +9,49 @@ class BuilderGelScreen extends StatelessWidget {
   BuilderGelScreen({super.key});
 
   final List<BuilderGel> builderGelListRow1 = [
-    BuilderGel(imgPath: "assets/gel_builder/01.png", icon: "assets/gel_builder/small/01.png", id: "01", shape: "assets/gel_builder/shape/01.png"),
-    BuilderGel(imgPath: "assets/gel_builder/03.png", icon: "assets/gel_builder/small/03.png", id: "03", shape: "assets/gel_builder/shape/03.png"),
-    BuilderGel(imgPath: "assets/gel_builder/04.png", icon: "assets/gel_builder/small/04.png", id: "04", shape: "assets/gel_builder/shape/04.png"),
-    BuilderGel(imgPath: "assets/gel_builder/06.png", icon: "assets/gel_builder/small/06.png", id: "06", shape: "assets/gel_builder/shape/06.png"),
+    BuilderGel(
+        imgPath: "assets/gel_builder/01.png",
+        icon: "assets/gel_builder/small/01.png",
+        id: "01",
+        shape: "assets/gel_builder/shape/01.png"),
+    BuilderGel(
+        imgPath: "assets/gel_builder/03.png",
+        icon: "assets/gel_builder/small/03.png",
+        id: "03",
+        shape: "assets/gel_builder/shape/03.png"),
+    BuilderGel(
+        imgPath: "assets/gel_builder/04.png",
+        icon: "assets/gel_builder/small/04.png",
+        id: "04",
+        shape: "assets/gel_builder/shape/04.png"),
+    BuilderGel(
+        imgPath: "assets/gel_builder/06.png",
+        icon: "assets/gel_builder/small/06.png",
+        id: "06",
+        shape: "assets/gel_builder/shape/06.png"),
   ];
   final List<BuilderGel> builderGelListRow2 = [
-    BuilderGel(imgPath: "assets/gel_builder/07.png", icon: "assets/gel_builder/small/07.png", id: "07", shape: "assets/gel_builder/shape/07.png"),
-    BuilderGel(imgPath: "assets/gel_builder/12.png", icon: "assets/gel_builder/small/12.png", id: "12", shape: "assets/gel_builder/shape/12.png"),
-    BuilderGel(imgPath: "assets/gel_builder/17.png", icon: "assets/gel_builder/small/17.png", id: "17", shape: "assets/gel_builder/shape/17.png"),
+    BuilderGel(
+        imgPath: "assets/gel_builder/07.png",
+        icon: "assets/gel_builder/small/07.png",
+        id: "07",
+        shape: "assets/gel_builder/shape/07.png"),
+    BuilderGel(
+        imgPath: "assets/gel_builder/12.png",
+        icon: "assets/gel_builder/small/12.png",
+        id: "12",
+        shape: "assets/gel_builder/shape/12.png"),
+    BuilderGel(
+        imgPath: "assets/gel_builder/17.png",
+        icon: "assets/gel_builder/small/17.png",
+        id: "17",
+        shape: "assets/gel_builder/shape/17.png"),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: FloatingActionButton.large(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -31,7 +59,7 @@ class BuilderGelScreen extends StatelessWidget {
           Get.back();
         },
         child: Image.asset(
-          "assets/categories/BuilderGel.png",
+          "assets/categories/BuilderGelLarge.png",
           width: 202.w,
         ),
       ),
@@ -91,7 +119,8 @@ class ListGel extends StatelessWidget {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Get.to(BuilderGelDetails(gel: e), duration: Duration(milliseconds: 800));
+                      Get.to(BuilderGelDetails(gel: e),
+                          duration: const Duration(milliseconds: 800));
                     },
                     child: Stack(
                       children: [

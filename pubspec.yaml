@@ -71,6 +71,9 @@ flutter:
     - assets/flasch_nail/
     - assets/gel_builder/
     - assets/gel_builder/small/
+    - assets/gel_builder/shape/
+    - assets/cuticul_oil/
+    - assets/cat_eyes/
     - assets/nails/
     - assets/nails/large/
     - assets/
