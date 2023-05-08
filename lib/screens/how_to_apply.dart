@@ -19,17 +19,15 @@ class _HowToApplyScreenState extends State<HowToApplyScreen> {
   @override
   void initState() {
     super.initState();
+
     initializePlayer();
   }
 
   Future<void> initializePlayer() async {
     _videoPlayerController =
-        VideoPlayerController.asset("assets/nails/nail_video_demo.mp4");
-    await Future.wait([
-      _videoPlayerController.initialize(),
-    ]);
+        VideoPlayerController.asset("assets/nail_video.mp4")
+          ..initialize().then((_) => setState(() {}));
     _createChewieController();
-    setState(() {});
   }
 
   void _createChewieController() {

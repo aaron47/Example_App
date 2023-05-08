@@ -139,7 +139,7 @@ class CuticuleOilScreen extends StatelessWidget {
                   Stack(
                     children: [
                       Container(
-                        height: 425.27.h,
+                        height: 470.h,
                         width: 533.56.w,
                         alignment: Alignment.bottomCenter,
                         child: Image.asset(
@@ -149,7 +149,7 @@ class CuticuleOilScreen extends StatelessWidget {
                       ),
                       SizedBox(
                         width: 533.56.w,
-                        height: 425.27.h,
+                        height: 500.h,
                         //  color: Colors.amber,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -164,7 +164,7 @@ class CuticuleOilScreen extends StatelessWidget {
                                 ),
                                 Container(
                                   margin:
-                                      EdgeInsets.only(top: 15.h, bottom: 15.h),
+                                      EdgeInsets.only(top: 20.h, bottom: 15.h),
                                   child: Text(
                                     "Apple",
                                     style: TextStyle(
@@ -190,7 +190,7 @@ class CuticuleOilScreen extends StatelessWidget {
                                 ),
                                 Container(
                                   margin:
-                                      EdgeInsets.only(top: 15.h, bottom: 15.h),
+                                      EdgeInsets.only(top: 20.h, bottom: 15.h),
                                   child: Text(
                                     "Orange",
                                     style: TextStyle(

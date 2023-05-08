@@ -45,7 +45,7 @@ class BuilderGelDetails extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(left: 700.w, top: 100.w),
+                    margin: EdgeInsets.only(left: 550.w, top: 100.w),
                     child: Hero(
                       tag: 'Gel${gel.id}',
                       child: Image.asset(
@@ -55,7 +55,7 @@ class BuilderGelDetails extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(right: 700.w),
+                    margin: EdgeInsets.only(right: 650.w),
                     child: Hero(
                       tag: 'Cover${gel.id}',
                       child: Image.asset(
@@ -87,7 +87,7 @@ class BuilderGelDetails extends StatelessWidget {
                 fontSize: 24.sp,
                 fontFamily: "Gotham",
                 fontWeight: FontWeight.w700,
-                color: Color.fromRGBO(20, 76, 80, 1),
+                color: const Color.fromRGBO(20, 76, 80, 1),
               ),
             ),
             SizedBox(
