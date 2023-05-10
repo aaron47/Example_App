@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -9,30 +10,66 @@ import '../widgets/nails/nail_card.dart';
 import '../widgets/nails/nail_details.dart';
 
 class RubberBaseGelDetails extends StatelessWidget {
-  const RubberBaseGelDetails({super.key, required this.nail});
+  const RubberBaseGelDetails({super.key, required this.nail, required this.nails});
+
+  final Nail nail;
+  final List<Nail> nails;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+        floatingActionButton: FloatingActionButton.large(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          onPressed: () {
+            Get.back();
+          },
+          child: Image.asset(
+            "assets/categories/RubberBaseGelLarge.png",
+          ),
+        ),
+        appBar: const CustomAppBar(),
+        body: CarouselSlider(
+          options: CarouselOptions(
+            initialPage: int.parse(nail.id) - 1,
+            // enableInfiniteScroll: true,
+            //    enlargeCenterPage: true,
+            //     enlargeFactor: 0.8,
+          ),
+          items: nails.map((n) {
+            return Builder(
+              builder: (BuildContext context) {
+                return Container(
+                    width: MediaQuery.of(context).size.width,
+                    margin: EdgeInsets.symmetric(horizontal: 5.0),
+                    decoration: BoxDecoration(color: Colors.white),
+                    child: BaseGelNail(nail: n));
+              },
+            );
+          }).toList(),
+        )
+
+        //BaseGelNail(nail: nail),
+        );
+  }
+}
+
+class BaseGelNail extends StatelessWidget {
+  const BaseGelNail({
+    super.key,
+    required this.nail,
+  });
 
   final Nail nail;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      floatingActionButton: FloatingActionButton.large(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        onPressed: () {
-          Get.back();
-        },
-        child: Image.asset(
-          "assets/categories/RubberBaseGelLarge.png",
-        ),
-      ),
-      appBar: const CustomAppBar(),
-      body: Center(
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      child: Center(
         child: Container(
           width: 1511.w,
-          decoration:
-              const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
+          decoration: const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
           padding: const EdgeInsets.all(50),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -116,8 +153,7 @@ class RubberBaseGelDetails extends StatelessWidget {
                                     fontFamily: "Gotham",
                                     fontWeight: FontWeight.w400,
                                     fontSize: 24.sp,
-                                    color:
-                                        const Color.fromRGBO(126, 126, 126, 1),
+                                    color: const Color.fromRGBO(126, 126, 126, 1),
                                   ),
                                 ),
                               ],
@@ -126,10 +162,8 @@ class RubberBaseGelDetails extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(width: MediaQuery.of(context).size.width * 0.2),
-                    Image.asset(
-                        "assets/rubber_base_gel/RubberBaseGelBottle.png",
-                        width: 275.w)
+                    SizedBox(width: MediaQuery.of(context).size.width * 0.15),
+                    Image.asset("assets/rubber_base_gel/RubberBaseGelBottle.png", width: 275.w)
                   ],
                 ),
               ),

@@ -61,8 +61,7 @@ class RubberBaseGelScreen extends StatelessWidget {
           SingleChildScrollView(
             child: Container(
               width: 1400.w,
-              decoration:
-                  const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
+              decoration: const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
               padding: const EdgeInsets.all(50),
               child: Column(
                 children: [
@@ -109,8 +108,7 @@ class _RubberBaseGelRowState extends State<_RubberBaseGelRow> {
       Nail nail = Nail(
         imgPath: imgPath,
         id: id,
-        description:
-            'Time of polymerization in light of the UV lamp-2-3minutes LED-lamp-1 minute',
+        description: 'Time of polymerization in light of the UV lamp-2-3minutes LED-lamp-1 minute',
       );
       nails.add(nail);
     }
@@ -126,8 +124,7 @@ class _RubberBaseGelRowState extends State<_RubberBaseGelRow> {
   Widget build(BuildContext context) {
     List<List<Nail>> rowsOfNails = List.generate(
       (nails.length / 5).ceil(),
-      (index) => nails.sublist(index * 5,
-          (index + 1) * 5 > nails.length ? nails.length : (index + 1) * 5),
+      (index) => nails.sublist(index * 5, (index + 1) * 5 > nails.length ? nails.length : (index + 1) * 5),
     );
 
     return Container(
@@ -142,7 +139,7 @@ class _RubberBaseGelRowState extends State<_RubberBaseGelRow> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  for (var nail in row) _RubberBaseGelNailWidget(nail: nail),
+                  for (var nail in row) _RubberBaseGelNailWidget(nail: nail, nails: nails,),
                 ],
               ),
             ),
@@ -154,8 +151,8 @@ class _RubberBaseGelRowState extends State<_RubberBaseGelRow> {
 
 class _RubberBaseGelNailWidget extends StatelessWidget {
   final Nail nail;
-
-  const _RubberBaseGelNailWidget({required this.nail});
+  final List<Nail> nails; 
+  const _RubberBaseGelNailWidget({required this.nail, required this.nails});
 
   @override
   Widget build(BuildContext context) {
@@ -163,7 +160,7 @@ class _RubberBaseGelNailWidget extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-            Get.to(RubberBaseGelDetails(nail: nail));
+            Get.to(RubberBaseGelDetails(nail: nail, nails: nails,));
           },
           child: Image.asset(
             nail.imgPath,

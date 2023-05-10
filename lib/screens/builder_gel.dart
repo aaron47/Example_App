@@ -117,19 +117,22 @@ class ListGel extends StatelessWidget {
                           duration: const Duration(milliseconds: 800));
                     },
                     child: Stack(
+                      alignment: Alignment.center,
                       children: [
-                        Hero(
-                          tag: 'Gel${e.id}',
-                          child: Image.asset(
-                            e.imgPath,
-                            width: 217.w,
+                        Center(
+                          child: Hero(
+                            tag: 'Gel${e.id}',
+                            child: Image.asset(
+                              e.imgPath,
+                              width: 220.w,
+                            ),
                           ),
                         ),
                         Hero(
                           tag: 'Cover${e.id}',
                           child: Image.asset(
                             "assets/gel_builder/Coverr7.png",
-                            width: 217.w,
+                            width: 250.w,
                           ),
                         ),
                       ],

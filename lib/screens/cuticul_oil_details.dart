@@ -54,23 +54,25 @@ class CuticulOIlDetails extends StatelessWidget {
                             // width: 533.w,
                           ),
                         ),
-                        Positioned.fill(
-                          child: Align(
-                            child: RotatedBox(
-                              quarterTurns: 1,
-                              child: Container(
-                                // margin: EdgeInsets.only(right: 700.w),
-                                child: Hero(
+                         
+                          Positioned.fill(
+                            child: Hero(
                                   tag: 'oil${oil.id}',
-                                  child: Image.asset(
-                                    oil.imgPath,
-                                    fit: BoxFit.contain,
-                                    height: 92.17.h,
-                                    width: 836.49.w,
+                              child: Align(
+                                child: RotatedBox(
+                                  quarterTurns: 1,
+                                  child: Container(
+                                    // margin: EdgeInsets.only(right: 700.w),
+                                    child: Image.asset(
+                                      oil.imgPath,
+                                      fit: BoxFit.contain,
+                                      height: 92.17.h,
+                                      width: 836.49.w,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
+                            
                           ),
                         ),
                       ],

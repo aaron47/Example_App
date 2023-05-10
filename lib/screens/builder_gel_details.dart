@@ -60,7 +60,6 @@ class BuilderGelDetails extends StatelessWidget {
                       tag: 'Cover${gel.id}',
                       child: Image.asset(
                         "assets/gel_builder/Coverr5.png",
-
                         // width: 533.w,
                       ),
                     ),
