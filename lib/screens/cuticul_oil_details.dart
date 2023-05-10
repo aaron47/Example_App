@@ -106,14 +106,17 @@ class CuticulOIlDetails extends StatelessWidget {
                                     color: const Color.fromRGBO(80, 79, 79, 1),
                                   ),
                                 ),
-                                Text(
-                                  "ce soin riche aux huiles naturelles régénere à la base de huil de ricin , restructure et hydrate lescuticules fissuré et séchesil assoucit la peau et permet de détacher en douceur les cutils des angles et accélére leur repousse soigne l’épiderme et améliore sa capacitéde tétention de l’humidité",
-                                  style: TextStyle(
-                                    fontFamily: "Gotham",
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 24.sp,
-                                    color:
-                                        const Color.fromRGBO(126, 126, 126, 1),
+                                SizedBox(
+                                  width: 600.w,
+                                  child: Text(
+                                    "ce soin riche aux huiles naturelles régénere à la base de huil de ricin , restructure et hydrate lescuticules fissuré et séchesil assoucit la peau et permet de détacher en douceur les cutils des angles et accélére leur repousse soigne l’épiderme et améliore sa capacitéde tétention de l’humidité",
+                                    style: TextStyle(
+                                      fontFamily: "Gotham",
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 24.sp,
+                                      color: const Color.fromRGBO(
+                                          126, 126, 126, 1),
+                                    ),
                                   ),
                                 ),
                               ],

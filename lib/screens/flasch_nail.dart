@@ -23,8 +23,11 @@ class FlaschNailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-            bottomNavigationBar: const CustomButtomBar(categoryName: 'FLASCH NAIL', heroTag: 'FlaschNail', imagePath: "assets/categories/FlaschNailLarge.png",),
-
+      bottomNavigationBar: const CustomBottomBar(
+        categoryName: 'FLASCH NAIL',
+        heroTag: 'FlaschNail',
+        imagePath: "assets/categories/FlaschNailLarge.png",
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       appBar: const CustomAppBar(),
       body: Center(

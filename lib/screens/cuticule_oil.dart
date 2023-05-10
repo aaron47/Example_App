@@ -2,6 +2,7 @@ import 'package:essential_beauty/models/cuticul_oil.dart';
 import 'package:essential_beauty/models/gel_builder.dart';
 import 'package:essential_beauty/screens/builder_gel_details.dart';
 import 'package:essential_beauty/screens/cuticul_oil_details.dart';
+import 'package:essential_beauty/widgets/custom_bottom_bar.dart';
 import 'package:essential_beauty/widgets/nails/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -52,17 +53,10 @@ class CuticuleOilScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      floatingActionButton: FloatingActionButton.large(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        onPressed: () {
-          Get.back();
-        },
-        child: Image.asset(
-          "assets/categories/CuticuleOilLarge.png",
-          width: 202.w,
-        ),
+      bottomNavigationBar: const CustomBottomBar(
+        imagePath: "assets/categories/CuticuleOilLarge.png",
+        heroTag: "CuticuleOil",
+        categoryName: "CUTICULE OIL",
       ),
       appBar: const CustomAppBar(),
       body: Column(

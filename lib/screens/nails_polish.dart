@@ -1,3 +1,5 @@
+import 'package:essential_beauty/screens/how_to_apply.dart';
+import 'package:essential_beauty/widgets/custom_bottom_bar.dart';
 import 'package:essential_beauty/widgets/nails/custom_app_bar.dart';
 import 'package:essential_beauty/widgets/nails/nails_row.dart';
 import 'package:flutter/material.dart';
@@ -10,16 +12,10 @@ class NailsPolishScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      floatingActionButton: FloatingActionButton.large(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        onPressed: () {
-          Get.back();
-        },
-        child: Image.asset(
-          "assets/categories/NailsPolishLarge.png",
-        ),
+      bottomNavigationBar: const CustomBottomBar(
+        imagePath: "assets/categories/NailsPolishLarge.png",
+        heroTag: "NailsPolish",
+        categoryName: "NAILS POLISH",
       ),
       appBar: const CustomAppBar(),
       body: Row(
@@ -46,7 +42,9 @@ class NailsPolishScreen extends StatelessWidget {
                   ),
                 ),
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Get.to(const HowToApplyScreen());
+                  },
                   child: Image.asset(
                     "assets/PlayButtonLarge.png",
                     width: 65.w,

@@ -1,25 +1,24 @@
-
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import 'custom_ripple_effect.dart';
 
-class CustomButtomBar extends StatelessWidget {
-  const CustomButtomBar({
-    super.key, required this.imagePath, required this.heroTag, required this.categoryName,
+class CustomBottomBar extends StatelessWidget {
+  const CustomBottomBar({
+    super.key,
+    required this.imagePath,
+    required this.heroTag,
+    required this.categoryName,
   });
   final String imagePath;
   final String heroTag;
   final String categoryName;
 
-
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 150.h,
+    return SizedBox(
+      height: 125.h,
       width: MediaQuery.of(context).size.width,
       child: Stack(
         children: [
@@ -33,7 +32,7 @@ class CustomButtomBar extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(left: 20),
+                    margin: const EdgeInsets.only(left: 20),
                     alignment: Alignment.centerLeft,
                     child: Text(
                       "MADE WITH LOVE BY SLOTH-LAB",

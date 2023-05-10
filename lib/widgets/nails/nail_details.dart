@@ -1,4 +1,5 @@
 import 'package:essential_beauty/screens/how_to_apply.dart';
+import 'package:essential_beauty/widgets/custom_bottom_bar.dart';
 import 'package:essential_beauty/widgets/nails/custom_app_bar.dart';
 import 'package:essential_beauty/widgets/nails/nail_card.dart';
 import 'package:flutter/material.dart';
@@ -15,16 +16,10 @@ class NailDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      floatingActionButton: FloatingActionButton.large(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        onPressed: () {
-          Get.back();
-        },
-        child: Image.asset(
-          "assets/categories/RubberBaseGel.png",
-        ),
+      bottomNavigationBar: const CustomBottomBar(
+        imagePath: "assets/categories/NailsPolishLarge.png",
+        heroTag: "NailsPolish",
+        categoryName: "NAILS POLISH",
       ),
       appBar: const CustomAppBar(),
       body: Center(
@@ -49,7 +44,7 @@ class NailDetails extends StatelessWidget {
               Center(
                 heightFactor: 1,
                 child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     NailCard(nail: nail),

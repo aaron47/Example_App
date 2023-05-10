@@ -16,8 +16,11 @@ class RubberBaseGelScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-                  bottomNavigationBar: const CustomButtomBar(categoryName: 'RUBBER BASE GEL', heroTag: 'RubberBaseGel', imagePath: "assets/categories/RubberBaseGelLarge.png",),
-
+      bottomNavigationBar: const CustomBottomBar(
+        categoryName: 'RUBBER BASE GEL',
+        heroTag: 'RubberBaseGel',
+        imagePath: "assets/categories/RubberBaseGelLarge.png",
+      ),
       appBar: const CustomAppBar(),
       body: Row(
         mainAxisAlignment: MainAxisAlignment.start,

@@ -22,12 +22,17 @@ class CatEyesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: const CustomButtomBar(categoryName: 'CAT EYES', heroTag: 'CatEyes', imagePath: "assets/categories/CatEyesLarge.png",),
+      bottomNavigationBar: const CustomBottomBar(
+        categoryName: 'CAT EYES',
+        heroTag: 'CatEyes',
+        imagePath: "assets/categories/CatEyesLarge.png",
+      ),
       appBar: const CustomAppBar(),
       body: Center(
         child: Container(
           width: 1511.w,
-          decoration: const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
+          decoration:
+              const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
           padding: const EdgeInsets.all(50),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -37,7 +42,7 @@ class CatEyesScreen extends StatelessWidget {
                 height: MediaQuery.of(context).size.height * 0.1,
                 child: const Center(
                   child: Text(
-                    "FLASCH NAIL",
+                    "CAT EYES",
                     style: TextStyle(
                       fontFamily: "Gotham",
                       fontWeight: FontWeight.w700,
@@ -50,7 +55,8 @@ class CatEyesScreen extends StatelessWidget {
               Container(
                 margin: const EdgeInsets.only(bottom: 10),
                 alignment: Alignment.bottomCenter,
-                width: MediaQuery.of(context).size.width - MediaQuery.of(context).size.width / 3.5,
+                width: MediaQuery.of(context).size.width -
+                    MediaQuery.of(context).size.width / 3.5,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [

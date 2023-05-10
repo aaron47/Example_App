@@ -52,9 +52,11 @@ class BuilderGelScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-            bottomNavigationBar: const CustomButtomBar(categoryName: 'BUILDER GEL', heroTag: 'BuilderGel', imagePath: "assets/categories/BuilderGelLarge.png",),
-
-      
+      bottomNavigationBar: const CustomBottomBar(
+        categoryName: 'BUILDER GEL',
+        heroTag: 'BuilderGel',
+        imagePath: "assets/categories/BuilderGelLarge.png",
+      ),
       appBar: const CustomAppBar(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
