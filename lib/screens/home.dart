@@ -50,7 +50,8 @@ class HomeScreen extends StatelessWidget {
                         imgPath: "assets/categories/RubberBaseGelLarge.png",
                         categoryName: 'Rubber Base Gel',
                         onChangeScreen: () {
-                          Get.to(const RubberBaseGelScreen());
+                          Get.to(const RubberBaseGelScreen(),duration:
+                                          const Duration(milliseconds: 800));
                         },
                       ),
                     ),
@@ -60,7 +61,8 @@ class HomeScreen extends StatelessWidget {
                         imgPath: "assets/categories/FlaschNailLarge.png",
                         categoryName: 'Flasch Nail',
                         onChangeScreen: () {
-                          Get.to(FlaschNailScreen());
+                          Get.to(FlaschNailScreen(),duration:
+                                          const Duration(milliseconds: 800));
                         },
                       ),
                     ),
@@ -70,7 +72,8 @@ class HomeScreen extends StatelessWidget {
                         imgPath: "assets/categories/NailsPolishLarge.png",
                         categoryName: 'Nails Polish',
                         onChangeScreen: () {
-                          Get.to(const NailsPolishScreen());
+                          Get.to(const NailsPolishScreen(),duration:
+                                          const Duration(milliseconds: 800));
                         },
                       ),
                     ),
@@ -85,7 +88,8 @@ class HomeScreen extends StatelessWidget {
                         imgPath: "assets/categories/CatEyesLarge.png",
                         categoryName: 'Cat Eyes',
                         onChangeScreen: () {
-                          Get.to(const CatEyesScreen());
+                          Get.to(const CatEyesScreen(),duration:
+                                          const Duration(milliseconds: 800));
                         },
                       ),
                     ),
@@ -95,7 +99,8 @@ class HomeScreen extends StatelessWidget {
                           imgPath: "assets/categories/BuilderGelLarge.png",
                           categoryName: 'Builder Gel',
                           onChangeScreen: () {
-                            Get.to(BuilderGelScreen());
+                            Get.to(BuilderGelScreen(),duration:
+                                          const Duration(milliseconds: 800));
                           }),
                     ),
                     Hero(
@@ -104,7 +109,8 @@ class HomeScreen extends StatelessWidget {
                         imgPath: "assets/categories/CuticuleOilLarge.png",
                         categoryName: 'Cuticule Oil',
                         onChangeScreen: () {
-                          Get.to(CuticuleOilScreen());
+                          Get.to(CuticuleOilScreen(),duration:
+                                          const Duration(milliseconds: 800));
                         },
                       ),
                     ),

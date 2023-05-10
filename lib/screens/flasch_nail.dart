@@ -1,4 +1,5 @@
 import 'package:essential_beauty/screens/flasch_nail_details.dart';
+import 'package:essential_beauty/widgets/custom_bottom_bar.dart';
 import 'package:essential_beauty/widgets/nails/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,47 +23,9 @@ class FlaschNailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+            bottomNavigationBar: const CustomButtomBar(categoryName: 'FLASCH NAIL', heroTag: 'FlaschNail', imagePath: "assets/categories/FlaschNailLarge.png",),
+
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      bottomNavigationBar: BottomAppBar(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                "MADE WITH LOVE BY SLOTH-LAB",
-                style: TextStyle(
-                  fontFamily: "Roboto",
-                  fontSize: 20.sp,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ),
-            Align(
-              alignment: Alignment.topRight,
-              child: Text(
-                "FLASCH NAIL",
-                style: TextStyle(
-                  fontFamily: "Gotham",
-                  fontSize: 32.sp,
-                  fontWeight: FontWeight.w700,
-                  color: const Color.fromRGBO(150, 150, 150, 1),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton.large(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        onPressed: () {
-          Get.back();
-        },
-        child: Image.asset(
-          "assets/categories/FlaschNailLarge.png",
-        ),
-      ),
       appBar: const CustomAppBar(),
       body: Center(
         child: Column(

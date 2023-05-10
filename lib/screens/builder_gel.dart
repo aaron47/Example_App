@@ -1,5 +1,6 @@
 import 'package:essential_beauty/models/gel_builder.dart';
 import 'package:essential_beauty/screens/builder_gel_details.dart';
+import 'package:essential_beauty/widgets/custom_bottom_bar.dart';
 import 'package:essential_beauty/widgets/nails/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -51,18 +52,9 @@ class BuilderGelScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      floatingActionButton: FloatingActionButton.large(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        onPressed: () {
-          Get.back();
-        },
-        child: Image.asset(
-          "assets/categories/BuilderGelLarge.png",
-          width: 202.w,
-        ),
-      ),
+            bottomNavigationBar: const CustomButtomBar(categoryName: 'BUILDER GEL', heroTag: 'BuilderGel', imagePath: "assets/categories/BuilderGelLarge.png",),
+
+      
       appBar: const CustomAppBar(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,

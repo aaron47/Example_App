@@ -1,5 +1,6 @@
 import 'package:essential_beauty/screens/how_to_apply.dart';
 import 'package:essential_beauty/screens/rubber_base_gel_details.dart';
+import 'package:essential_beauty/widgets/custom_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -15,47 +16,8 @@ class RubberBaseGelScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      floatingActionButton: FloatingActionButton.large(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        onPressed: () {
-          Get.back();
-        },
-        child: Image.asset(
-          "assets/categories/RubberBaseGelLarge.png",
-        ),
-      ),
-      bottomNavigationBar: BottomAppBar(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                "MADE WITH LOVE BY SLOTH-LAB",
-                style: TextStyle(
-                  fontFamily: "Roboto",
-                  fontSize: 20.sp,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ),
-            Align(
-              alignment: Alignment.topRight,
-              child: Text(
-                "RUBBER BASE GEL",
-                style: TextStyle(
-                  fontFamily: "Gotham",
-                  fontSize: 32.sp,
-                  fontWeight: FontWeight.w700,
-                  color: const Color.fromRGBO(150, 150, 150, 1),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
+                  bottomNavigationBar: const CustomButtomBar(categoryName: 'RUBBER BASE GEL', heroTag: 'RubberBaseGel', imagePath: "assets/categories/RubberBaseGelLarge.png",),
+
       appBar: const CustomAppBar(),
       body: Row(
         mainAxisAlignment: MainAxisAlignment.start,
