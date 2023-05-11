@@ -53,7 +53,7 @@ class _NailsRowState extends State<NailsRow> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  for (var nail in row) NailWidget(nail: nail),
+                  for (var nail in row) NailWidget(nail: nail, nails: nails),
                 ],
               ),
             ),

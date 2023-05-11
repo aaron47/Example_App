@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -7,9 +8,10 @@ import '../widgets/nails/custom_app_bar.dart';
 import '../widgets/nails/nail_details.dart';
 
 class CatEyesDetails extends StatelessWidget {
-  const CatEyesDetails({super.key, required this.nail});
+  const CatEyesDetails({super.key, required this.nail, required this.nails});
 
   final CatEyeNail nail;
+  final List<CatEyeNail> nails;
 
   @override
   Widget build(BuildContext context) {
@@ -56,87 +58,119 @@ class CatEyesDetails extends StatelessWidget {
         ),
       ),
       appBar: const CustomAppBar(),
-      body: Center(
-        child: Container(
-          width: 1511.w,
-          decoration:
-              const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
-          padding: const EdgeInsets.all(50),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Center(
-                heightFactor: 1,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    _CatEyeNailCard(
-                      catEyeNail: nail,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "CAT EYES",
-                          style: TextStyle(
-                            fontSize: 32.sp,
-                            fontFamily: "Gotham",
-                            fontWeight: FontWeight.w700,
-                            color: const Color.fromRGBO(35, 40, 55, 1),
-                          ),
-                        ),
-                        const PlayButtonLarge(
-                          bottomMargin: 0,
-                        ),
-                        SizedBox(
-                          width: 300,
-                          child: Padding(
-                            padding: const EdgeInsets.all(12.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Ref:${nail.ref}",
-                                  style: TextStyle(
-                                    fontSize: 32.sp,
-                                    fontFamily: "Gotham",
-                                    fontWeight: FontWeight.w700,
-                                    color: const Color.fromRGBO(80, 79, 79, 1),
-                                  ),
-                                ),
-                                Text(
-                                  "Flasching Disco Gel",
-                                  style: TextStyle(
-                                    fontFamily: "Gotham",
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 32.sp,
-                                    color: const Color.fromRGBO(97, 95, 95, 1),
-                                  ),
-                                ),
-                                Text(
-                                  "Time of polymerization in light of the UV lamp-2-3minutes LED-lamp-1 minute",
-                                  style: TextStyle(
-                                    fontFamily: "Gotham",
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 24.sp,
-                                    color:
-                                        const Color.fromRGBO(126, 126, 126, 1),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 10),
-            ],
+      // body: BaseCatEyeNail(nail: nail),
+
+      body: SizedBox(
+        width: MediaQuery.of(context).size.width,
+        child: CarouselSlider(
+          options: CarouselOptions(
+            initialPage: int.parse(nail.id) - 1,
           ),
+          items: nails.map((n) {
+            return Builder(
+              builder: (BuildContext context) {
+                return Container(
+                  decoration: const BoxDecoration(color: Colors.white),
+                  child: BaseCatEyeNail(nail: n),
+                );
+              },
+            );
+          }).toList(),
+        ),
+      ),
+    );
+  }
+}
+
+class BaseCatEyeNail extends StatelessWidget {
+  const BaseCatEyeNail({
+    super.key,
+    required this.nail,
+  });
+
+  final CatEyeNail nail;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        decoration:
+            const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
+        padding: const EdgeInsets.all(50),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Center(
+              heightFactor: 1,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  _CatEyeNailCard(
+                    catEyeNail: nail,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "CAT EYES",
+                        style: TextStyle(
+                          fontSize: 32.sp,
+                          fontFamily: "Gotham",
+                          fontWeight: FontWeight.w700,
+                          color: const Color.fromRGBO(35, 40, 55, 1),
+                        ),
+                      ),
+                      const PlayButtonLarge(
+                        bottomMargin: 0,
+                      ),
+                      SizedBox(
+                        width: 350,
+                        child: Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Ref:${nail.ref}",
+                                style: TextStyle(
+                                  fontSize: 32.sp,
+                                  fontFamily: "Gotham",
+                                  fontWeight: FontWeight.w700,
+                                  color: const Color.fromRGBO(80, 79, 79, 1),
+                                ),
+                              ),
+                              Text(
+                                "Flasching Disco Gel",
+                                style: TextStyle(
+                                  fontFamily: "Gotham",
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 32.sp,
+                                  color: const Color.fromRGBO(97, 95, 95, 1),
+                                ),
+                              ),
+                              Text(
+                                "Time of polymerization in light of the UV lamp-2-3minutes LED-lamp-1 minute",
+                                style: TextStyle(
+                                  fontFamily: "Gotham",
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 24.sp,
+                                  color: const Color.fromRGBO(126, 126, 126, 1),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 10),
+          ],
         ),
       ),
     );

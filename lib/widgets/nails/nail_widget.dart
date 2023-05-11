@@ -6,9 +6,10 @@ import 'Nail.dart';
 import 'nail_details.dart';
 
 class NailWidget extends StatelessWidget {
-  const NailWidget({super.key, required this.nail});
+  const NailWidget({super.key, required this.nail, required this.nails});
 
   final Nail nail;
+  final List<Nail> nails;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class NailWidget extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-            Get.to(NailDetails(nail: nail));
+            Get.to(NailDetails(nail: nail, nails: nails));
           },
           child: Image.asset(
             nail.imgPath,

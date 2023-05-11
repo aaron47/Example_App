@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:essential_beauty/screens/how_to_apply.dart';
 import 'package:essential_beauty/widgets/custom_bottom_bar.dart';
 import 'package:essential_beauty/widgets/nails/custom_app_bar.dart';
@@ -9,9 +10,10 @@ import 'package:get/get.dart';
 import 'Nail.dart';
 
 class NailDetails extends StatelessWidget {
-  const NailDetails({super.key, required this.nail});
+  const NailDetails({super.key, required this.nail, required this.nails});
 
   final Nail nail;
+  final List<Nail> nails;
 
   @override
   Widget build(BuildContext context) {
@@ -22,88 +24,116 @@ class NailDetails extends StatelessWidget {
         categoryName: "NAILS POLISH",
       ),
       appBar: const CustomAppBar(),
-      body: Center(
-        child: Container(
-          width: 1511.w,
-          decoration:
-              const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
-          padding: const EdgeInsets.all(50),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                "NAILS POLISH",
-                style: TextStyle(
-                  fontSize: 32.sp,
-                  fontFamily: "Gotham",
-                  fontWeight: FontWeight.w700,
-                  color: const Color.fromRGBO(35, 40, 55, 1),
-                ),
-              ),
-              Center(
-                heightFactor: 1,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    NailCard(nail: nail),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+      body: SizedBox(
+        width: MediaQuery.of(context).size.width,
+        child: CarouselSlider(
+          options: CarouselOptions(
+            initialPage: int.parse(nail.id) - 1,
+          ),
+          items: nails.map((n) {
+            return Builder(
+              builder: (BuildContext context) {
+                return Container(
+                  decoration: const BoxDecoration(color: Colors.white),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    decoration: const BoxDecoration(
+                        color: Color.fromRGBO(240, 240, 240, 1)),
+                    padding: const EdgeInsets.all(50),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        const PlayButtonLarge(
-                          bottomMargin: 40,
-                        ),
-                        SizedBox(
-                          width: 300,
-                          child: Padding(
-                            padding: const EdgeInsets.all(12.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Ref:${nail.id}",
-                                  style: TextStyle(
-                                    fontSize: 32.sp,
-                                    fontFamily: "Gotham",
-                                    fontWeight: FontWeight.w700,
-                                    color: const Color.fromRGBO(80, 79, 79, 1),
-                                  ),
-                                ),
-                                Text(
-                                  "Soak oof gell polish",
-                                  style: TextStyle(
-                                    fontFamily: "Gotham",
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 32.sp,
-                                    color: const Color.fromRGBO(97, 95, 95, 1),
-                                  ),
-                                ),
-                                Text(
-                                  "Time of polymerization in light of the UV lamp-2-3minutes LED-lamp-1 minute",
-                                  style: TextStyle(
-                                    fontFamily: "Gotham",
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 24.sp,
-                                    color:
-                                        const Color.fromRGBO(126, 126, 126, 1),
-                                  ),
-                                ),
-                              ],
-                            ),
+                        Text(
+                          "NAILS POLISH",
+                          style: TextStyle(
+                            fontSize: 32.sp,
+                            fontFamily: "Gotham",
+                            fontWeight: FontWeight.w700,
+                            color: const Color.fromRGBO(35, 40, 55, 1),
                           ),
                         ),
+                        BaseNail(nail: n),
+                        const SizedBox(height: 10),
                       ],
                     ),
-                    SizedBox(width: MediaQuery.of(context).size.width * 0.2),
-                    Image.asset("assets/nails/ManicureBottle.png", width: 275.w)
-                  ],
+                  ),
+                );
+              },
+            );
+          }).toList(),
+        ),
+      ),
+    );
+  }
+}
+
+class BaseNail extends StatelessWidget {
+  const BaseNail({
+    super.key,
+    required this.nail,
+  });
+
+  final Nail nail;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      heightFactor: 1,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          NailCard(nail: nail),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const PlayButtonLarge(
+                bottomMargin: 40,
+              ),
+              SizedBox(
+                width: 200,
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Ref:${nail.id}",
+                        style: TextStyle(
+                          fontSize: 32.sp,
+                          fontFamily: "Gotham",
+                          fontWeight: FontWeight.w700,
+                          color: const Color.fromRGBO(80, 79, 79, 1),
+                        ),
+                      ),
+                      Text(
+                        "Soak off gell polish",
+                        style: TextStyle(
+                          fontFamily: "Gotham",
+                          fontWeight: FontWeight.w400,
+                          fontSize: 32.sp,
+                          color: const Color.fromRGBO(97, 95, 95, 1),
+                        ),
+                      ),
+                      Text(
+                        "Time of polymerization in light of the UV lamp-2-3minutes LED-lamp-1 minute",
+                        style: TextStyle(
+                          fontFamily: "Gotham",
+                          fontWeight: FontWeight.w400,
+                          fontSize: 24.sp,
+                          color: const Color.fromRGBO(126, 126, 126, 1),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-              const SizedBox(height: 10),
             ],
           ),
-        ),
+          SizedBox(width: MediaQuery.of(context).size.width * 0.1),
+          Image.asset("assets/nails/ManicureBottle.png", width: 275.w)
+        ],
       ),
     );
   }

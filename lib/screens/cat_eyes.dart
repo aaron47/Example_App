@@ -12,11 +12,12 @@ class CatEyesScreen extends StatelessWidget {
   const CatEyesScreen({super.key});
 
   final List<CatEyeNail> catEyeNails = const [
-    CatEyeNail(imgPath: "assets/cat_eyes/SILVER.png", ref: "SILVER"),
-    CatEyeNail(imgPath: "assets/cat_eyes/RED.png", ref: "RED"),
-    CatEyeNail(imgPath: "assets/cat_eyes/CHAMPAGNE.png", ref: "CHAMPAGNE"),
-    CatEyeNail(imgPath: "assets/cat_eyes/PINK.png", ref: "PINK"),
-    CatEyeNail(imgPath: "assets/cat_eyes/ORANGE.png", ref: "ORANGE"),
+    CatEyeNail(imgPath: "assets/cat_eyes/SILVER.png", ref: "SILVER", id: "1"),
+    CatEyeNail(imgPath: "assets/cat_eyes/RED.png", ref: "RED", id: "2"),
+    CatEyeNail(
+        imgPath: "assets/cat_eyes/CHAMPAGNE.png", ref: "CHAMPAGNE", id: "3"),
+    CatEyeNail(imgPath: "assets/cat_eyes/PINK.png", ref: "PINK", id: "4"),
+    CatEyeNail(imgPath: "assets/cat_eyes/ORANGE.png", ref: "ORANGE", id: "5"),
   ];
 
   @override
@@ -63,7 +64,10 @@ class CatEyesScreen extends StatelessWidget {
                     for (var nail in catEyeNails)
                       GestureDetector(
                         onTap: () {
-                          Get.to(CatEyesDetails(nail: nail));
+                          Get.to(CatEyesDetails(
+                            nail: nail,
+                            nails: catEyeNails,
+                          ));
                         },
                         child: Column(
                           children: [

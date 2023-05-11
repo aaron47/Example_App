@@ -113,7 +113,11 @@ class ListGel extends StatelessWidget {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Get.to(BuilderGelDetails(gel: e),
+                      Get.to(
+                          BuilderGelDetails(
+                            gel: e,
+                            gels: builderGelListRow1,
+                          ),
                           duration: const Duration(milliseconds: 800));
                     },
                     child: Stack(

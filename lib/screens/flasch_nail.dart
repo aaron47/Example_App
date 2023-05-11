@@ -60,7 +60,8 @@ class FlaschNailScreen extends StatelessWidget {
                     for (var nail in flaschNailImages)
                       GestureDetector(
                         onTap: () {
-                          Get.to(FlaschNailDetails(flaschNail: nail));
+                          Get.to(FlaschNailDetails(
+                              flaschNail: nail, nails: flaschNailImages));
                         },
                         child: Image.asset(
                           nail.path,

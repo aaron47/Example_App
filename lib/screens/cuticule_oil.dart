@@ -11,7 +11,7 @@ import 'package:get/get.dart';
 class CuticuleOilScreen extends StatelessWidget {
   CuticuleOilScreen({super.key});
 
-  final List<CuticulOil> builderOIlList = [
+  final List<CuticulOil> builderOilList = [
     CuticulOil(
       imgPath: "assets/cuticul_oil/01.png",
       description:
@@ -86,14 +86,16 @@ class CuticuleOilScreen extends StatelessWidget {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children: builderOIlList
+                    children: builderOilList
                         .map((e) => GestureDetector(
                               onTap: () {
                                 //  Get.to(BuilderGelDetails(gel: e), duration: Duration(milliseconds: 800));
                               },
                               child: GestureDetector(
                                 onTap: () {
-                                  Get.to(CuticulOIlDetails(oil: e),
+                                  Get.to(
+                                      CuticulOilDetails(
+                                          oil: e, oils: builderOilList),
                                       duration:
                                           const Duration(milliseconds: 800));
                                 },
