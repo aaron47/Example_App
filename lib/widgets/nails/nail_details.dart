@@ -7,10 +7,30 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import '../../shared/tablet_detector.dart';
 import 'Nail.dart';
 
 class NailDetails extends StatelessWidget {
   const NailDetails({super.key, required this.nail, required this.nails});
+
+  final Nail nail;
+  final List<Nail> nails;
+
+  @override
+  Widget build(BuildContext context) {
+    return TabletDetector.isTablet(
+            MediaQueryData.fromWindow(WidgetsBinding.instance.window))
+        ? NailsDetailsTablet(nail: nail, nails: nails)
+        : NailsDetailsPhone(nail: nail, nails: nails);
+  }
+}
+
+class NailsDetailsTablet extends StatelessWidget {
+  const NailsDetailsTablet({
+    super.key,
+    required this.nail,
+    required this.nails,
+  });
 
   final Nail nail;
   final List<Nail> nails;
@@ -68,6 +88,58 @@ class NailDetails extends StatelessWidget {
   }
 }
 
+class NailsDetailsPhone extends StatelessWidget {
+  const NailsDetailsPhone({
+    super.key,
+    required this.nail,
+    required this.nails,
+  });
+
+  final Nail nail;
+  final List<Nail> nails;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      // bottomNavigationBar: const CustomBottomBar(
+      //   imagePath: "assets/categories/NailsPolish.png",
+      //   heroTag: "NailsPolish",
+      //   categoryName: "NAILS POLISH",
+      // ),
+      appBar: const CustomAppBar(),
+      body: SizedBox(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        child: CarouselSlider(
+          options: CarouselOptions(
+            initialPage: int.parse(nail.id) - 1,
+          ),
+          items: nails.map((n) {
+            return Builder(
+              builder: (BuildContext context) {
+                return Column(
+                  children: [
+                    Text(
+                      "NAILS POLISH",
+                      style: TextStyle(
+                        fontSize: 32.sp,
+                        fontFamily: "Gotham",
+                        fontWeight: FontWeight.w700,
+                        color: const Color.fromRGBO(35, 40, 55, 1),
+                      ),
+                    ),
+                    BaseNailPhone(nail: n),
+                  ],
+                );
+              },
+            );
+          }).toList(),
+        ),
+      ),
+    );
+  }
+}
+
 class BaseNail extends StatelessWidget {
   const BaseNail({
     super.key,
@@ -86,7 +158,6 @@ class BaseNail extends StatelessWidget {
         children: [
           NailCard(nail: nail),
           Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const PlayButtonLarge(
                 bottomMargin: 40,
@@ -131,8 +202,62 @@ class BaseNail extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(width: MediaQuery.of(context).size.width * 0.1),
-          Image.asset("assets/nails/ManicureBottle.png", width: 275.w)
+        ],
+      ),
+    );
+  }
+}
+
+class BaseNailPhone extends StatelessWidget {
+  const BaseNailPhone({super.key, required this.nail});
+
+  final Nail nail;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        children: [
+          NailCard(nail: nail),
+          Column(
+            children: [
+              SizedBox(
+                width: 200,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Ref:${nail.id}",
+                      style: TextStyle(
+                        fontSize: 25.sp,
+                        fontFamily: "Gotham",
+                        fontWeight: FontWeight.w700,
+                        color: const Color.fromRGBO(80, 79, 79, 1),
+                      ),
+                    ),
+                    Text(
+                      "Soak off gell polish",
+                      style: TextStyle(
+                        fontFamily: "Gotham",
+                        fontWeight: FontWeight.w400,
+                        fontSize: 25.sp,
+                        color: const Color.fromRGBO(97, 95, 95, 1),
+                      ),
+                    ),
+                    Text(
+                      "Time of polymerization in light of the UV lamp-2-3minutes LED-lamp-1 minute",
+                      style: TextStyle(
+                        fontFamily: "Gotham",
+                        fontWeight: FontWeight.w400,
+                        fontSize: 20.sp,
+                        color: const Color.fromRGBO(126, 126, 126, 1),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );

@@ -2,8 +2,14 @@ import 'package:essential_beauty/widgets/custom_ripple_effect.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../shared/tablet_detector.dart';
+
 class Category extends StatelessWidget {
-  const Category({super.key, required this.imgPath, required this.categoryName, required this.onChangeScreen});
+  const Category(
+      {super.key,
+      required this.imgPath,
+      required this.categoryName,
+      required this.onChangeScreen});
 
   final String imgPath;
   final String categoryName;
@@ -12,7 +18,10 @@ class Category extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 300.w,
+      width: TabletDetector.isTablet(
+              MediaQueryData.fromWindow(WidgetsBinding.instance.window))
+          ? 300.w
+          : 500.w,
       margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 30),
       child: Column(
         children: [
@@ -27,7 +36,10 @@ class Category extends StatelessWidget {
           Text(
             categoryName,
             style: TextStyle(
-              fontSize: 32.sp,
+              fontSize: TabletDetector.isTablet(
+                      MediaQueryData.fromWindow(WidgetsBinding.instance.window))
+                  ? 32.sp
+                  : 50.sp,
               fontFamily: "IBMPlexMono",
               fontWeight: FontWeight.bold,
             ),

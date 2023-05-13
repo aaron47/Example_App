@@ -6,8 +6,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import '../shared/tablet_detector.dart';
+
 class NailsPolishScreen extends StatelessWidget {
   const NailsPolishScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return TabletDetector.isTablet(
+            MediaQueryData.fromWindow(WidgetsBinding.instance.window))
+        ? const NailsPolishTablet()
+        : const NailsPolishMobile();
+  }
+}
+
+class NailsPolishTablet extends StatelessWidget {
+  const NailsPolishTablet({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -84,6 +100,40 @@ class NailsPolishScreen extends StatelessWidget {
             width: MediaQuery.of(context).size.width * 0.1,
           ),
         ],
+      ),
+    );
+  }
+}
+
+class NailsPolishMobile extends StatelessWidget {
+  const NailsPolishMobile({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: const CustomAppBar(),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Center(
+              child: Container(
+                margin: const EdgeInsets.only(bottom: 20, top: 50),
+                child: const Text(
+                  "Nails Polish",
+                  style: TextStyle(
+                    fontSize: 32,
+                    fontFamily: "Gotham",
+                    fontWeight: FontWeight.w700,
+                    color: Color.fromRGBO(35, 40, 55, 1),
+                  ),
+                ),
+              ),
+            ),
+            const NailsRow()
+          ],
+        ),
       ),
     );
   }

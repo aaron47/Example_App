@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import '../../shared/tablet_detector.dart';
 import 'Nail.dart';
 import 'nail_details.dart';
 
@@ -19,11 +20,16 @@ class NailWidget extends StatelessWidget {
           onTap: () {
             Get.to(NailDetails(nail: nail, nails: nails));
           },
-          child: Image.asset(
-            nail.imgPath,
-            width: 92.12.w,
-            height: 203.79.h,
-          ),
+          child: TabletDetector.isTablet(
+                  MediaQueryData.fromWindow(WidgetsBinding.instance.window))
+              ? Image.asset(
+                  nail.imgPath,
+                  width: 92.12.w,
+                  height: 203.79.h,
+                )
+              : Image.asset(
+                  nail.imgPath,
+                ),
         ),
         const SizedBox(height: 10),
         Text(
