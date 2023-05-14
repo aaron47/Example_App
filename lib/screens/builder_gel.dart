@@ -1,5 +1,6 @@
 import 'package:essential_beauty/models/gel_builder.dart';
 import 'package:essential_beauty/screens/builder_gel_details.dart';
+import 'package:essential_beauty/shared/tablet_detector.dart';
 import 'package:essential_beauty/widgets/custom_bottom_bar.dart';
 import 'package:essential_beauty/widgets/nails/custom_app_bar.dart';
 import 'package:flutter/material.dart';
@@ -9,45 +10,16 @@ import 'package:get/get.dart';
 class BuilderGelScreen extends StatelessWidget {
   BuilderGelScreen({super.key});
 
-  final List<BuilderGel> builderGelListRow1 = [
-    BuilderGel(
-        imgPath: "assets/gel_builder/01.png",
-        icon: "assets/gel_builder/small/01.png",
-        id: "01",
-        shape: "assets/gel_builder/shape/01.png"),
-    BuilderGel(
-        imgPath: "assets/gel_builder/03.png",
-        icon: "assets/gel_builder/small/03.png",
-        id: "03",
-        shape: "assets/gel_builder/shape/03.png"),
-    BuilderGel(
-        imgPath: "assets/gel_builder/04.png",
-        icon: "assets/gel_builder/small/04.png",
-        id: "04",
-        shape: "assets/gel_builder/shape/04.png"),
-    BuilderGel(
-        imgPath: "assets/gel_builder/06.png",
-        icon: "assets/gel_builder/small/06.png",
-        id: "06",
-        shape: "assets/gel_builder/shape/06.png"),
+  final List<BuilderGel> builderGelListRow = [
+    BuilderGel(imgPath: "assets/gel_builder/01.png", icon: "assets/gel_builder/small/01.png", id: "01", shape: "assets/gel_builder/shape/01.png"),
+    BuilderGel(imgPath: "assets/gel_builder/03.png", icon: "assets/gel_builder/small/03.png", id: "03", shape: "assets/gel_builder/shape/03.png"),
+    BuilderGel(imgPath: "assets/gel_builder/04.png", icon: "assets/gel_builder/small/04.png", id: "04", shape: "assets/gel_builder/shape/04.png"),
+    BuilderGel(imgPath: "assets/gel_builder/06.png", icon: "assets/gel_builder/small/06.png", id: "06", shape: "assets/gel_builder/shape/06.png"),
+    BuilderGel(imgPath: "assets/gel_builder/07.png", icon: "assets/gel_builder/small/07.png", id: "07", shape: "assets/gel_builder/shape/07.png"),
+    BuilderGel(imgPath: "assets/gel_builder/12.png", icon: "assets/gel_builder/small/12.png", id: "12", shape: "assets/gel_builder/shape/12.png"),
+    BuilderGel(imgPath: "assets/gel_builder/17.png", icon: "assets/gel_builder/small/17.png", id: "17", shape: "assets/gel_builder/shape/17.png"),
   ];
-  final List<BuilderGel> builderGelListRow2 = [
-    BuilderGel(
-        imgPath: "assets/gel_builder/07.png",
-        icon: "assets/gel_builder/small/07.png",
-        id: "07",
-        shape: "assets/gel_builder/shape/07.png"),
-    BuilderGel(
-        imgPath: "assets/gel_builder/12.png",
-        icon: "assets/gel_builder/small/12.png",
-        id: "12",
-        shape: "assets/gel_builder/shape/12.png"),
-    BuilderGel(
-        imgPath: "assets/gel_builder/17.png",
-        icon: "assets/gel_builder/small/17.png",
-        id: "17",
-        shape: "assets/gel_builder/shape/17.png"),
-  ];
+  final isTablet = TabletDetector.isTablet(MediaQueryData.fromWindow(WidgetsBinding.instance.window));
 
   @override
   Widget build(BuildContext context) {
@@ -64,11 +36,11 @@ class BuilderGelScreen extends StatelessWidget {
         children: [
           Center(
             child: Padding(
-              padding: const EdgeInsets.all(20),
+              padding: isTablet ? const EdgeInsets.all(20) : const EdgeInsets.all(40),
               child: Text(
                 "Builder gel",
                 style: TextStyle(
-                  fontSize: 32.sp,
+                  fontSize: isTablet ? 32 : 22,
                   fontFamily: "Gotham",
                   fontWeight: FontWeight.w700,
                   color: Color.fromRGBO(11, 43, 45, 1),
@@ -82,8 +54,11 @@ class BuilderGelScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  ListGel(builderGelListRow1: builderGelListRow1),
-                  ListGel(builderGelListRow1: builderGelListRow2),
+                  isTablet
+                      ? ListGel(builderGelListRow: builderGelListRow.take(4).toList())
+                      : ListGel(builderGelListRow: builderGelListRow.take(3).toList()),
+                  isTablet ? ListGel(builderGelListRow: builderGelListRow.sublist(4)) : ListGel(builderGelListRow: builderGelListRow.sublist(3, 6)),
+                  isTablet ? Container() : ListGel(builderGelListRow: builderGelListRow.sublist(6)),
                 ],
               ),
             ),
@@ -95,18 +70,19 @@ class BuilderGelScreen extends StatelessWidget {
 }
 
 class ListGel extends StatelessWidget {
-  const ListGel({
+  ListGel({
     super.key,
-    required this.builderGelListRow1,
+    required this.builderGelListRow,
   });
 
-  final List<BuilderGel> builderGelListRow1;
+  final List<BuilderGel> builderGelListRow;
+  final isTablet = TabletDetector.isTablet(MediaQueryData.fromWindow(WidgetsBinding.instance.window));
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: builderGelListRow1
+      children: builderGelListRow
           .map((e) => Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -116,7 +92,7 @@ class ListGel extends StatelessWidget {
                       Get.to(
                           BuilderGelDetails(
                             gel: e,
-                            gels: builderGelListRow1,
+                            gels: builderGelListRow,
                           ),
                           duration: const Duration(milliseconds: 800));
                     },
@@ -128,7 +104,7 @@ class ListGel extends StatelessWidget {
                             tag: 'Gel${e.id}',
                             child: Image.asset(
                               e.imgPath,
-                              width: 220.w,
+                              width: isTablet ? 220.w : 440.w,
                             ),
                           ),
                         ),
@@ -136,7 +112,7 @@ class ListGel extends StatelessWidget {
                           tag: 'Cover${e.id}',
                           child: Image.asset(
                             "assets/gel_builder/Coverr7.png",
-                            width: 250.w,
+                            width: isTablet ? 250.w : 500.w,
                           ),
                         ),
                       ],
@@ -149,7 +125,7 @@ class ListGel extends StatelessWidget {
                     tag: 'Icon${e.id}',
                     child: Image.asset(
                       e.icon,
-                      width: 57.w,
+                      width:  isTablet ? 57.w : 115.w,
                     ),
                   ),
                   SizedBox(
@@ -158,7 +134,7 @@ class ListGel extends StatelessWidget {
                   Text(
                     e.id,
                     style: TextStyle(
-                      fontSize: 20.sp,
+                      fontSize: isTablet ? 20.sp : 60.sp ,
                       fontFamily: "Gotham",
                       fontWeight: FontWeight.w700,
                       color: Color.fromRGBO(20, 76, 80, 1),

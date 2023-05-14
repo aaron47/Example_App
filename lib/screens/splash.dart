@@ -1,3 +1,4 @@
+import 'package:essential_beauty/shared/tablet_detector.dart';
 import 'package:flutter/material.dart';
 
 class Splash extends StatelessWidget {
@@ -5,6 +6,9 @@ class Splash extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+      final isTablet = TabletDetector.isTablet(
+      MediaQueryData.fromWindow(WidgetsBinding.instance.window));
+      final screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -13,12 +17,14 @@ class Splash extends StatelessWidget {
         centerTitle: true,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              margin: const EdgeInsets.only(left: 40),
+              // margin: const EdgeInsets.only(left: 40),
               child: Image.asset(
                 "assets/SplashScreenTitleLarge.png",
                 fit: BoxFit.cover,
+                width: !isTablet ? screenWidth * 0.7 : null,
               ),
             ),
           ],
@@ -33,7 +39,7 @@ class Splash extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        child: const Expanded(
+        child:  Expanded(
           child: Align(
             alignment: FractionalOffset.bottomCenter,
             child: Padding(
@@ -41,7 +47,7 @@ class Splash extends StatelessWidget {
               child: Text(
                 "MADE WITH LOVE BY SLOTH-LAB",
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: isTablet ? 20:10,
                   fontFamily: "Roboto",
                   fontWeight: FontWeight.w500,
                   color: Color.fromRGBO(249, 249, 249, 1),

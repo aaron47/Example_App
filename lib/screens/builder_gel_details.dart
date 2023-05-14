@@ -1,6 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:essential_beauty/models/gel_builder.dart';
 import 'package:essential_beauty/screens/how_to_apply.dart';
+import 'package:essential_beauty/shared/tablet_detector.dart';
+import 'package:essential_beauty/widgets/custom_bottom_bar.dart';
 import 'package:essential_beauty/widgets/nails/custom_app_bar.dart';
 import 'package:essential_beauty/widgets/nails/nail_card.dart';
 import 'package:flutter/material.dart';
@@ -8,60 +10,34 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class BuilderGelDetails extends StatelessWidget {
-  const BuilderGelDetails({super.key, required this.gel, required this.gels});
+  BuilderGelDetails({super.key, required this.gel, required this.gels});
 
   final BuilderGel gel;
   final List<BuilderGel> gels;
+  final isTablet = TabletDetector.isTablet(MediaQueryData.fromWindow(WidgetsBinding.instance.window));
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      floatingActionButton: FloatingActionButton.large(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        onPressed: () {
-          Get.back();
-        },
-        child: Image.asset(
-          "assets/categories/BuilderGelLarge.png",
-        ),
+      bottomNavigationBar: const CustomBottomBar(
+        categoryName: 'BUILDER GEL',
+        heroTag: 'BuilderGel',
+        imagePath: "assets/categories/BuilderGelLarge.png",
       ),
-      appBar: const CustomAppBar(),
-      // body: BaseBuilderGelDetailWidget(gel: gel),
-
-      body: SizedBox(
-        width: MediaQuery.of(context).size.width,
-        child: CarouselSlider(
-          options: CarouselOptions(
-            initialPage: int.parse(gel.id) - 1,
-            // enableInfiniteScroll: true,
-            //    enlargeCenterPage: true,
-            //     enlargeFactor: 0.8,
-          ),
-          items: gels.map((n) {
-            return Builder(
-              builder: (BuildContext context) {
-                return Container(
-                  decoration: const BoxDecoration(color: Colors.white),
-                  child: BaseBuilderGelDetailWidget(gel: n),
-                );
-              },
-            );
-          }).toList(),
-        ),
-      ),
+      appBar: AppBar(),
+      body: BaseBuilderGelDetailWidget(gel: gel),
     );
   }
 }
 
 class BaseBuilderGelDetailWidget extends StatelessWidget {
-  const BaseBuilderGelDetailWidget({
+  BaseBuilderGelDetailWidget({
     super.key,
     required this.gel,
   });
 
   final BuilderGel gel;
+  final isTablet = TabletDetector.isTablet(MediaQueryData.fromWindow(WidgetsBinding.instance.window));
 
   @override
   Widget build(BuildContext context) {
@@ -77,29 +53,29 @@ class BaseBuilderGelDetailWidget extends StatelessWidget {
             child: Stack(
               children: [
                 Container(
-                  margin: EdgeInsets.only(left: 350.w, top: 100.w),
+                  margin:isTablet ? EdgeInsets.only(bottom : 20.h,left: 420.w) :  EdgeInsets.only(left: 220.w, top: 150.w),
                   child: Image.asset(
                     gel.shape,
-                    // width: 533.w,
+                    width: isTablet ?840.w : MediaQuery.of(context).size.width,
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: 550.w, top: 100.w),
+                  margin: isTablet ? EdgeInsets.only(left: 650.w, top: 00.w) : EdgeInsets.only(left: MediaQuery.of(context).size.width/4, top: MediaQuery.of(context).size.height/9),
                   child: Hero(
                     tag: 'Gel${gel.id}',
                     child: Image.asset(
                       gel.imgPath,
-                      // width: 533.w,
+                       width:isTablet ?640.w:  1280.w,
                     ),
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(right: 650.w),
+                  margin: isTablet ? EdgeInsets.only(right: 350.w) : EdgeInsets.only(right: MediaQuery.of(context).size.width/7, top: MediaQuery.of(context).size.height/4),
                   child: Hero(
                     tag: 'Cover${gel.id}',
                     child: Image.asset(
                       "assets/gel_builder/Coverr5.png",
-                      // width: 533.w,
+                       width:isTablet ?860.w:  1920.w,
                     ),
                   ),
                 ),
@@ -113,7 +89,7 @@ class BaseBuilderGelDetailWidget extends StatelessWidget {
             tag: 'Icon${gel.id}',
             child: Image.asset(
               gel.icon,
-              width: 77.w,
+              width: isTablet ? 77.w : 154.w,
             ),
           ),
           SizedBox(
@@ -122,7 +98,7 @@ class BaseBuilderGelDetailWidget extends StatelessWidget {
           Text(
             gel.id,
             style: TextStyle(
-              fontSize: 24.sp,
+              fontSize: isTablet ? 24.sp : 70.sp,
               fontFamily: "Gotham",
               fontWeight: FontWeight.w700,
               color: const Color.fromRGBO(20, 76, 80, 1),
