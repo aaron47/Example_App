@@ -103,14 +103,21 @@ class FlaschNailScreen extends StatelessWidget {
                                     fontWeight: FontWeight.w700,
                                   ),
                                 ),
-                                Stack(
-                                  children: [
-                                    Image.asset(
-                                      nail.path,
-                                    ),
-                                    Image.asset(
-                                        "assets/flasch_nail/Calque.png"),
-                                  ],
+                                GestureDetector(
+                                  onTap: () {
+                                    Get.to(FlaschNailDetails(
+                                        flaschNail: nail,
+                                        nails: flaschNailImages));
+                                  },
+                                  child: Stack(
+                                    children: [
+                                      Image.asset(
+                                        nail.path,
+                                      ),
+                                      Image.asset(
+                                          "assets/flasch_nail/Calque.png"),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),

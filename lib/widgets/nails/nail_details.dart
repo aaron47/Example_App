@@ -57,6 +57,7 @@ class NailsDetailsTablet extends StatelessWidget {
                   decoration: const BoxDecoration(color: Colors.white),
                   child: Container(
                     width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height,
                     decoration: const BoxDecoration(
                         color: Color.fromRGBO(240, 240, 240, 1)),
                     padding: const EdgeInsets.all(50),
@@ -107,34 +108,19 @@ class NailsDetailsPhone extends StatelessWidget {
       //   categoryName: "NAILS POLISH",
       // ),
       appBar: const CustomAppBar(),
-      body: SizedBox(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        child: CarouselSlider(
-          options: CarouselOptions(
-            initialPage: int.parse(nail.id) - 1,
-          ),
-          items: nails.map((n) {
-            return Builder(
-              builder: (BuildContext context) {
-                return Column(
-                  children: [
-                    Text(
-                      "NAILS POLISH",
-                      style: TextStyle(
-                        fontSize: 32.sp,
-                        fontFamily: "Gotham",
-                        fontWeight: FontWeight.w700,
-                        color: const Color.fromRGBO(35, 40, 55, 1),
-                      ),
-                    ),
-                    BaseNailPhone(nail: n),
-                  ],
-                );
-              },
-            );
-          }).toList(),
+      body: CarouselSlider(
+        options: CarouselOptions(
+          initialPage: int.parse(nail.id) - 1,
+          height: MediaQuery.of(context).size.height,
+          viewportFraction: 1,
         ),
+        items: nails.map((n) {
+          return Builder(
+            builder: (BuildContext context) {
+              return BaseNailPhone(nail: n);
+            },
+          );
+        }).toList(),
       ),
     );
   }
@@ -151,58 +137,112 @@ class BaseNail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      heightFactor: 1,
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          NailCard(nail: nail),
-          Column(
-            children: [
-              const PlayButtonLarge(
-                bottomMargin: 40,
-              ),
-              SizedBox(
-                width: 200,
-                child: Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Column(
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width,
+        child: Center(
+          child: Container(
+            width: MediaQuery.of(context).size.width,
+            decoration:
+                const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
+            padding: const EdgeInsets.all(50),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Center(
+                  heightFactor: 1,
+                  child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        "Ref:${nail.id}",
-                        style: TextStyle(
-                          fontSize: 32.sp,
-                          fontFamily: "Gotham",
-                          fontWeight: FontWeight.w700,
-                          color: const Color.fromRGBO(80, 79, 79, 1),
-                        ),
+                      NailCard(nail: nail),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const PlayButtonLarge(
+                            bottomMargin: 40,
+                          ),
+                          SizedBox(
+                            width: 300.w,
+                            child: Padding(
+                              padding: const EdgeInsets.all(12.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Ref:${nail.id}",
+                                    style: TextStyle(
+                                      fontSize: 32.sp,
+                                      fontFamily: "Gotham",
+                                      fontWeight: FontWeight.w700,
+                                      color:
+                                          const Color.fromRGBO(80, 79, 79, 1),
+                                    ),
+                                  ),
+                                  Text(
+                                    "Base Color GEL",
+                                    style: TextStyle(
+                                      fontFamily: "Gotham",
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 32.sp,
+                                      color:
+                                          const Color.fromRGBO(97, 95, 95, 1),
+                                    ),
+                                  ),
+                                  Text(
+                                    "SOAK OFF GEL POLISH",
+                                    style: TextStyle(
+                                      fontFamily: "Gotham",
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 32.sp,
+                                      color:
+                                          const Color.fromRGBO(97, 95, 95, 1),
+                                    ),
+                                  ),
+                                  SizedBox(height: 10.h),
+                                  Text(
+                                    "Gel de base plus doux flexible et à forte adhérnce du gels de construction",
+                                    style: TextStyle(
+                                      fontFamily: "Gotham",
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 24.sp,
+                                      color: const Color.fromRGBO(
+                                        126,
+                                        126,
+                                        126,
+                                        1,
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(height: 10.h),
+                                  Text(
+                                    "Time of polymerization in light of the UV lamp-2-3minutes LED-lamp-1 minute",
+                                    style: TextStyle(
+                                      fontFamily: "Gotham",
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 24.sp,
+                                      color: const Color.fromRGBO(
+                                          126, 126, 126, 1),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                      Text(
-                        "Soak off gell polish",
-                        style: TextStyle(
-                          fontFamily: "Gotham",
-                          fontWeight: FontWeight.w400,
-                          fontSize: 32.sp,
-                          color: const Color.fromRGBO(97, 95, 95, 1),
-                        ),
-                      ),
-                      Text(
-                        "Time of polymerization in light of the UV lamp-2-3minutes LED-lamp-1 minute",
-                        style: TextStyle(
-                          fontFamily: "Gotham",
-                          fontWeight: FontWeight.w400,
-                          fontSize: 24.sp,
-                          color: const Color.fromRGBO(126, 126, 126, 1),
-                        ),
-                      ),
+                      SizedBox(width: MediaQuery.of(context).size.width * 0.1),
+                      Image.asset(
+                          "assets/rubber_base_gel/RubberBaseGelBottle.png",
+                          width: 275.w)
                     ],
                   ),
                 ),
-              ),
-            ],
+                const SizedBox(height: 10),
+              ],
+            ),
           ),
-        ],
+        ),
       ),
     );
   }
@@ -215,51 +255,85 @@ class BaseNailPhone extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        children: [
-          NailCard(nail: nail),
-          Column(
-            children: [
-              SizedBox(
-                width: 200,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Ref:${nail.id}",
-                      style: TextStyle(
-                        fontSize: 25.sp,
-                        fontFamily: "Gotham",
-                        fontWeight: FontWeight.w700,
-                        color: const Color.fromRGBO(80, 79, 79, 1),
-                      ),
-                    ),
-                    Text(
-                      "Soak off gell polish",
-                      style: TextStyle(
-                        fontFamily: "Gotham",
-                        fontWeight: FontWeight.w400,
-                        fontSize: 25.sp,
-                        color: const Color.fromRGBO(97, 95, 95, 1),
-                      ),
-                    ),
-                    Text(
-                      "Time of polymerization in light of the UV lamp-2-3minutes LED-lamp-1 minute",
-                      style: TextStyle(
-                        fontFamily: "Gotham",
-                        fontWeight: FontWeight.w400,
-                        fontSize: 20.sp,
-                        color: const Color.fromRGBO(126, 126, 126, 1),
-                      ),
-                    ),
-                  ],
-                ),
+    return Column(
+      children: [
+        Align(
+          alignment: Alignment.topLeft,
+          child: Container(
+            margin: const EdgeInsets.only(top: 20),
+            width: 75,
+            height: 69,
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(0),
+                topRight: Radius.circular(75),
+                bottomLeft: Radius.circular(0),
+                bottomRight: Radius.circular(75),
               ),
-            ],
+              image: DecorationImage(
+                image: AssetImage("assets/AppBarBackground.png"),
+                fit: BoxFit.cover,
+              ),
+            ),
+            child: GestureDetector(
+                onTap: () {
+                  Get.to(() => const HowToApplyScreen());
+                },
+                child: Image.asset("assets/PlayButton.png")),
           ),
-        ],
-      ),
+        ),
+        Center(
+          heightFactor: 1,
+          child: NailCard(nail: nail),
+        ),
+        const SizedBox(height: 10),
+        Container(
+          width: 300,
+          decoration: const BoxDecoration(
+            border: Border(
+              left: BorderSide(
+                color: Color.fromRGBO(126, 126, 126, 0.5),
+                width: 2,
+              ),
+            ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Ref:${nail.id}",
+                  style: const TextStyle(
+                    fontSize: 25,
+                    fontFamily: "Gotham",
+                    fontWeight: FontWeight.w700,
+                    color: Color.fromRGBO(80, 79, 79, 1),
+                  ),
+                ),
+                const Text(
+                  "Soak oof gell polish",
+                  style: TextStyle(
+                    fontFamily: "Gotham",
+                    fontWeight: FontWeight.w400,
+                    fontSize: 20,
+                    color: Color.fromRGBO(97, 95, 95, 1),
+                  ),
+                ),
+                const Text(
+                  "Time of polymerization in light of the UV lamp-2-3minutes LED-lamp-1 minute",
+                  style: TextStyle(
+                    fontFamily: "Gotham",
+                    fontWeight: FontWeight.w400,
+                    fontSize: 15,
+                    color: Color.fromRGBO(126, 126, 126, 1),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        )
+      ],
     );
   }
 }

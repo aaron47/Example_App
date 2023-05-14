@@ -25,7 +25,14 @@ class BuilderGelDetails extends StatelessWidget {
         imagePath: "assets/categories/BuilderGelLarge.png",
       ),
       appBar: AppBar(),
-      body: BaseBuilderGelDetailWidget(gel: gel),
+      // body: BaseBuilderGelDetailWidget(gel: gel),
+      body: SizedBox(
+        width: MediaQuery.of(context).size.width,
+        child: Container(
+          decoration: const BoxDecoration(color: Colors.white),
+          child: BaseBuilderGelDetailWidget(gel: gel),
+        ),
+      ),
     );
   }
 }
@@ -53,29 +60,33 @@ class BaseBuilderGelDetailWidget extends StatelessWidget {
             child: Stack(
               children: [
                 Container(
-                  margin:isTablet ? EdgeInsets.only(bottom : 20.h,left: 420.w) :  EdgeInsets.only(left: 220.w, top: 150.w),
+                  margin: isTablet ? EdgeInsets.only(bottom: 20.h, left: 420.w) : EdgeInsets.only(left: 220.w, top: 150.w),
                   child: Image.asset(
                     gel.shape,
-                    width: isTablet ?840.w : MediaQuery.of(context).size.width,
+                    width: isTablet ? 840.w : MediaQuery.of(context).size.width,
                   ),
                 ),
                 Container(
-                  margin: isTablet ? EdgeInsets.only(left: 650.w, top: 00.w) : EdgeInsets.only(left: MediaQuery.of(context).size.width/4, top: MediaQuery.of(context).size.height/9),
+                  margin: isTablet
+                      ? EdgeInsets.only(left: 650.w, top: 00.w)
+                      : EdgeInsets.only(left: MediaQuery.of(context).size.width / 4, top: MediaQuery.of(context).size.height / 9),
                   child: Hero(
                     tag: 'Gel${gel.id}',
                     child: Image.asset(
                       gel.imgPath,
-                       width:isTablet ?640.w:  1280.w,
+                      width: isTablet ? 640.w : 1280.w,
                     ),
                   ),
                 ),
                 Container(
-                  margin: isTablet ? EdgeInsets.only(right: 350.w) : EdgeInsets.only(right: MediaQuery.of(context).size.width/7, top: MediaQuery.of(context).size.height/4),
+                  margin: isTablet
+                      ? EdgeInsets.only(right: 350.w)
+                      : EdgeInsets.only(right: MediaQuery.of(context).size.width / 7, top: MediaQuery.of(context).size.height / 4),
                   child: Hero(
                     tag: 'Cover${gel.id}',
                     child: Image.asset(
                       "assets/gel_builder/Coverr5.png",
-                       width:isTablet ?860.w:  1920.w,
+                      width: isTablet ? 860.w : 1920.w,
                     ),
                   ),
                 ),

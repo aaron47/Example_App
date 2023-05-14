@@ -1,7 +1,9 @@
 import 'package:essential_beauty/models/cuticul_oil.dart';
 import 'package:essential_beauty/models/gel_builder.dart';
+import 'package:essential_beauty/screens/apple_details.dart';
 import 'package:essential_beauty/screens/builder_gel_details.dart';
 import 'package:essential_beauty/screens/cuticul_oil_details.dart';
+import 'package:essential_beauty/screens/orange_details.dart';
 import 'package:essential_beauty/widgets/custom_bottom_bar.dart';
 import 'package:essential_beauty/widgets/nails/custom_app_bar.dart';
 import 'package:flutter/material.dart';
@@ -153,10 +155,15 @@ class CuticuleOilScreen extends StatelessWidget {
                           children: [
                             Column(
                               children: [
-                                Image.asset(
-                                  "assets/cuticul_oil/Apple.png",
-                                  width: 153.w,
-                                  height: 393.h,
+                                GestureDetector(
+                                  onTap: () {
+                                    Get.to(() => const AppleDetailsScreen());
+                                  },
+                                  child: Image.asset(
+                                    "assets/cuticul_oil/Apple.png",
+                                    width: 153.w,
+                                    height: 393.h,
+                                  ),
                                 ),
                                 Container(
                                   margin:
@@ -180,9 +187,14 @@ class CuticuleOilScreen extends StatelessWidget {
                             ),
                             Column(
                               children: [
-                                Image.asset(
-                                  "assets/cuticul_oil/Orange.png",
-                                  width: 146.w,
+                                GestureDetector(
+                                  onTap: () {
+                                    Get.to(() => const OrangeDetailsScreen());
+                                  },
+                                  child: Image.asset(
+                                    "assets/cuticul_oil/Orange.png",
+                                    width: 146.w,
+                                  ),
                                 ),
                                 Container(
                                   margin:
