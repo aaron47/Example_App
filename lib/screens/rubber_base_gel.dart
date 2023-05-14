@@ -199,7 +199,7 @@ class _RubberBaseGelRowState extends State<_RubberBaseGelRow> {
               margin: const EdgeInsets.symmetric(vertical: 30),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
-                // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   for (var nail in row)
                     _RubberBaseGelNailWidget(
