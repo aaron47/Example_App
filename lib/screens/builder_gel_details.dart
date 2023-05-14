@@ -29,26 +29,11 @@ class BuilderGelDetails extends StatelessWidget {
       ),
       appBar: const CustomAppBar(),
       // body: BaseBuilderGelDetailWidget(gel: gel),
-
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
-        child: CarouselSlider(
-          options: CarouselOptions(
-            initialPage: int.parse(gel.id) - 1,
-            // enableInfiniteScroll: true,
-            //    enlargeCenterPage: true,
-            //     enlargeFactor: 0.8,
-          ),
-          items: gels.map((n) {
-            return Builder(
-              builder: (BuildContext context) {
-                return Container(
-                  decoration: const BoxDecoration(color: Colors.white),
-                  child: BaseBuilderGelDetailWidget(gel: n),
-                );
-              },
-            );
-          }).toList(),
+        child: Container(
+          decoration: const BoxDecoration(color: Colors.white),
+          child: BaseBuilderGelDetailWidget(gel: gel),
         ),
       ),
     );
