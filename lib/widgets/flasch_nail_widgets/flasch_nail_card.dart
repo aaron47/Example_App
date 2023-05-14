@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class CalqueController extends GetxController {
-  var isCalqueActivated = false.obs;
+  var isCalqueActivated = true.obs;
 
   void toggleCalque() {
     isCalqueActivated.value = !isCalqueActivated.value;

@@ -4,17 +4,40 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
+import '../shared/tablet_detector.dart';
 import '../widgets/nails/Nail.dart';
 import '../widgets/nails/custom_app_bar.dart';
 import '../widgets/nails/nail_card.dart';
 import '../widgets/nails/nail_details.dart';
+import 'how_to_apply.dart';
 
 class RubberBaseGelDetails extends StatelessWidget {
-  const RubberBaseGelDetails(
-      {super.key, required this.nail, required this.nails});
+  RubberBaseGelDetails({super.key, required this.nail, required this.nails});
 
   final Nail nail;
   final List<Nail> nails;
+
+  final isTablet = TabletDetector.isTablet(
+      MediaQueryData.fromWindow(WidgetsBinding.instance.window));
+
+  @override
+  Widget build(BuildContext context) {
+    return isTablet
+        ? RubberBaseGelDetailsTablet(nail: nail, nails: nails)
+        : RubberBaseGelDetailsPhone(nail: nail, nails: nails);
+  }
+}
+
+class RubberBaseGelDetailsTablet extends StatelessWidget {
+  const RubberBaseGelDetailsTablet({
+    super.key,
+    required this.nail,
+    required this.nails,
+  });
+
+  final Nail nail;
+  final List<Nail> nails;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,6 +68,47 @@ class RubberBaseGelDetails extends StatelessWidget {
                 return Container(
                   decoration: const BoxDecoration(color: Colors.white),
                   child: BaseGelNail(nail: n),
+                );
+              },
+            );
+          }).toList(),
+        ),
+      ),
+    );
+  }
+}
+
+class RubberBaseGelDetailsPhone extends StatelessWidget {
+  const RubberBaseGelDetailsPhone({
+    super.key,
+    required this.nail,
+    required this.nails,
+  });
+
+  final Nail nail;
+  final List<Nail> nails;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: const CustomAppBar(),
+      body: SizedBox(
+        width: MediaQuery.of(context).size.width,
+        child: CarouselSlider(
+          options: CarouselOptions(
+            initialPage: int.parse(nail.id) - 1,
+            height: MediaQuery.of(context).size.height,
+            viewportFraction: 1,
+            // enableInfiniteScroll: true,
+            //    enlargeCenterPage: true,
+            //     enlargeFactor: 0.8,
+          ),
+          items: nails.map((n) {
+            return Builder(
+              builder: (BuildContext context) {
+                return Container(
+                  decoration: const BoxDecoration(color: Colors.white),
+                  child: BaseGelNailPhone(nail: n),
                 );
               },
             );
@@ -186,30 +250,137 @@ class BaseGelNail extends StatelessWidget {
   }
 }
 
+class BaseGelNailPhone extends StatelessWidget {
+  const BaseGelNailPhone({super.key, required this.nail});
+
+  final Nail nail;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Align(
+          alignment: Alignment.topLeft,
+          child: Container(
+            margin: const EdgeInsets.only(top: 20),
+            width: 75,
+            height: 69,
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(0),
+                topRight: Radius.circular(75),
+                bottomLeft: Radius.circular(0),
+                bottomRight: Radius.circular(75),
+              ),
+              image: DecorationImage(
+                image: AssetImage("assets/AppBarBackground.png"),
+                fit: BoxFit.cover,
+              ),
+            ),
+            child: GestureDetector(
+                onTap: () {
+                  Get.to(() => const HowToApplyScreen());
+                },
+                child: Image.asset("assets/PlayButton.png")),
+          ),
+        ),
+        Center(
+          heightFactor: 1,
+          child: _RubberBaseGelCard(nail: nail),
+        ),
+        const SizedBox(height: 10),
+        Container(
+          width: 300,
+          decoration: const BoxDecoration(
+            border: Border(
+              left: BorderSide(
+                color: Color.fromRGBO(126, 126, 126, 0.5),
+                width: 2,
+              ),
+            ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Ref:${nail.id}",
+                  style: const TextStyle(
+                    fontSize: 25,
+                    fontFamily: "Gotham",
+                    fontWeight: FontWeight.w700,
+                    color: Color.fromRGBO(80, 79, 79, 1),
+                  ),
+                ),
+                const Text(
+                  "Soak oof gell polish",
+                  style: TextStyle(
+                    fontFamily: "Gotham",
+                    fontWeight: FontWeight.w400,
+                    fontSize: 20,
+                    color: Color.fromRGBO(97, 95, 95, 1),
+                  ),
+                ),
+                const Text(
+                  "Time of polymerization in light of the UV lamp-2-3minutes LED-lamp-1 minute",
+                  style: TextStyle(
+                    fontFamily: "Gotham",
+                    fontWeight: FontWeight.w400,
+                    fontSize: 15,
+                    color: Color.fromRGBO(126, 126, 126, 1),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        )
+      ],
+    );
+  }
+}
+
 class _RubberBaseGelCard extends StatelessWidget {
   final Nail nail;
 
-  const _RubberBaseGelCard({required this.nail});
+  final isTablet = TabletDetector.isTablet(
+      MediaQueryData.fromWindow(WidgetsBinding.instance.window));
+  _RubberBaseGelCard({required this.nail});
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Image.asset(
-          "assets/nails/Card.png",
-          width: 379.13.w,
-          height: 630.79.h,
-          fit: BoxFit.contain,
-        ),
+        isTablet
+            ? Image.asset(
+                "assets/nails/Card.png",
+                width: 379.13.w,
+                height: 630.79.h,
+                fit: BoxFit.contain,
+              )
+            : Image.asset(
+                "assets/nails/Card.png",
+                // width: 183.13.w,
+                // height: 304.79.h,
+                fit: BoxFit.contain,
+              ),
         Positioned.fill(
           child: Align(
-            child: Image.asset(
-              "assets/rubber_base_gel/${nail.id}.png",
-              fit: BoxFit.contain,
-              height: 478.h,
-              width: 216.w,
-              // height: 200,
-            ),
+            child: isTablet
+                ? Image.asset(
+                    "assets/rubber_base_gel/${nail.id}.png",
+                    fit: BoxFit.contain,
+                    height: 478.h,
+                    width: 216.w,
+                    // height: 200,
+                  )
+                : Image.asset(
+                    "assets/rubber_base_gel/${nail.id}.png",
+                    fit: BoxFit.contain,
+                    height: 231.h,
+                    width: 104.w,
+                    // height: 200,
+                  ),
           ),
         )
       ],
