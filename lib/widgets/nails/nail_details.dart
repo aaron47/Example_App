@@ -107,8 +107,6 @@ class NailsDetailsPhone extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-
       body: CarouselSlider(
         options: CarouselOptions(
           initialPage: int.parse(nail.id) - 1,
@@ -228,7 +226,16 @@ class BaseNail extends StatelessWidget {
                         ],
                       ),
                       SizedBox(width: MediaQuery.of(context).size.width * 0.1),
-                      Image.asset("assets/rubber_base_gel/RubberBaseGelBottle.png", width: 275.w)
+                      Stack(
+                        children: [
+                          Positioned(
+      bottom: 0,
+      right: 50,
+      child: Image.asset( nail.imgPath,width: 150.w ,)),
+                          Image.asset("assets/bottleNailPolich.png", width: 300.w),
+                              
+                        ],
+                      )
                     ],
                   ),
                 ),
