@@ -16,8 +16,7 @@ class RubberBaseGelScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TabletDetector.isTablet(
-            MediaQueryData.fromWindow(WidgetsBinding.instance.window))
+    return TabletDetector.isTablet(MediaQueryData.fromWindow(WidgetsBinding.instance.window))
         ? const RubberBaseGelTablet()
         : const RubberBaseGelPhone();
   }
@@ -31,77 +30,77 @@ class RubberBaseGelTablet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: const CustomBottomBar(
-        categoryName: 'RUBBER BASE GEL',
-        heroTag: 'RubberBaseGel',
-        imagePath: "assets/categories/RubberBaseGelLarge.png",
-      ),
-      appBar: const CustomAppBar(),
-      body: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
+appBar: const CustomAppBar(),
+      body: Stack(
         children: [
-          SizedBox(
-            width: MediaQuery.of(context).size.width * 0.12,
-            child: Align(
-              alignment: Alignment.topLeft,
-              child: Container(
-                margin: const EdgeInsets.only(top: 80),
-                width: 158.w,
-                height: 147.h,
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(0),
-                    topRight: Radius.circular(75),
-                    bottomLeft: Radius.circular(0),
-                    bottomRight: Radius.circular(75),
-                  ),
-                  image: DecorationImage(
-                    image: AssetImage("assets/AppBarBackground.png"),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                child: GestureDetector(
-                  onTap: () {
-                    Get.to(const HowToApplyScreen());
-                  },
-                  child: Image.asset(
-                    "assets/PlayButtonLarge.png",
-                    width: 65.w,
-                    height: 65.h,
-                  ),
-                ),
-              ),
-            ),
-          ),
-          SingleChildScrollView(
-            child: Container(
-              width: 1400.w,
-              decoration:
-                  const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
-              padding: const EdgeInsets.all(50),
-              child: Column(
-                children: [
-                  Center(
-                    child: Container(
-                      margin: const EdgeInsets.only(bottom: 100, top: 50),
-                      child: const Text(
-                        "RUBBER BASE GEL",
-                        style: TextStyle(
-                          fontSize: 32,
-                          fontFamily: "Gotham",
-                          fontWeight: FontWeight.w700,
-                          color: Color.fromRGBO(35, 40, 55, 1),
-                        ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.12,
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: Container(
+                    margin: const EdgeInsets.only(top: 80),
+                    width: 158.w,
+                    height: 147.h,
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(0),
+                        topRight: Radius.circular(75),
+                        bottomLeft: Radius.circular(0),
+                        bottomRight: Radius.circular(75),
+                      ),
+                      image: DecorationImage(
+                        image: AssetImage("assets/AppBarBackground.png"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    child: GestureDetector(
+                      onTap: () {
+                        Get.to(const HowToApplyScreen());
+                      },
+                      child: Image.asset(
+                        "assets/PlayButtonLarge.png",
+                        width: 65.w,
+                        height: 65.h,
                       ),
                     ),
                   ),
-                  _RubberBaseGelRow()
-                ],
+                ),
               ),
-            ),
+              SingleChildScrollView(
+                child: Container(
+                  width: 1400.w,
+                  decoration: const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
+                  padding: const EdgeInsets.all(50),
+                  child: Column(
+                    children: [
+                      Center(
+                        child: Container(
+                          margin: const EdgeInsets.only(bottom: 100, top: 50),
+                          child: const Text(
+                            "RUBBER BASE GEL",
+                            style: TextStyle(
+                              fontSize: 32,
+                              fontFamily: "Gotham",
+                              fontWeight: FontWeight.w700,
+                              color: Color.fromRGBO(35, 40, 55, 1),
+                            ),
+                          ),
+                        ),
+                      ),
+                      _RubberBaseGelRow()
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
-          SizedBox(
-            width: MediaQuery.of(context).size.width * 0.1,
+          const CustomBottomBar(
+            categoryName: 'RUBBER BASE GEL',
+            heroTag: 'RubberBaseGel',
+            imagePath: "assets/categories/RubberBaseGelLarge.png",
           ),
         ],
       ),
@@ -117,7 +116,6 @@ class RubberBaseGelPhone extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(),
       body: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -157,20 +155,16 @@ class _RubberBaseGelRow extends StatefulWidget {
 
 class _RubberBaseGelRowState extends State<_RubberBaseGelRow> {
   List<Nail> nails = [];
-  final isTablet = TabletDetector.isTablet(
-      MediaQueryData.fromWindow(WidgetsBinding.instance.window));
+  final isTablet = TabletDetector.isTablet(MediaQueryData.fromWindow(WidgetsBinding.instance.window));
 
   void generateNails() {
     for (int i = 1; i < 21; i++) {
       String id = i.toString().padLeft(2, '0');
-      String imgPath = isTablet
-          ? "assets/rubber_base_gel/$id.png"
-          : "assets/rubber_base_gel/small/$id.png";
+      String imgPath = isTablet ? "assets/rubber_base_gel/$id.png" : "assets/rubber_base_gel/small/$id.png";
       Nail nail = Nail(
         imgPath: imgPath,
         id: id,
-        description:
-            'Time of polymerization in light of the UV lamp-2-3minutes LED-lamp-1 minute',
+        description: 'Time of polymerization in light of the UV lamp-2-3minutes LED-lamp-1 minute',
       );
       nails.add(nail);
     }
@@ -186,8 +180,7 @@ class _RubberBaseGelRowState extends State<_RubberBaseGelRow> {
   Widget build(BuildContext context) {
     List<List<Nail>> rowsOfNails = List.generate(
       (nails.length / 5).ceil(),
-      (index) => nails.sublist(index * 5,
-          (index + 1) * 5 > nails.length ? nails.length : (index + 1) * 5),
+      (index) => nails.sublist(index * 5, (index + 1) * 5 > nails.length ? nails.length : (index + 1) * 5),
     );
 
     return Container(
@@ -206,9 +199,6 @@ class _RubberBaseGelRowState extends State<_RubberBaseGelRow> {
                       nail: nail,
                       nails: nails,
                     ),
-                  SizedBox(
-                    width: 10.w,
-                  )
                 ],
               ),
             ),
@@ -221,8 +211,7 @@ class _RubberBaseGelRowState extends State<_RubberBaseGelRow> {
 class _RubberBaseGelNailWidget extends StatelessWidget {
   final Nail nail;
   final List<Nail> nails;
-  final isTablet = TabletDetector.isTablet(
-      MediaQueryData.fromWindow(WidgetsBinding.instance.window));
+  final isTablet = TabletDetector.isTablet(MediaQueryData.fromWindow(WidgetsBinding.instance.window));
 
   _RubberBaseGelNailWidget({required this.nail, required this.nails});
 
@@ -237,9 +226,7 @@ class _RubberBaseGelNailWidget extends StatelessWidget {
               nails: nails,
             ));
           },
-          child: isTablet
-              ? Image.asset(nail.imgPath, width: 92.12.w, height: 203.79.h)
-              : Image.asset(nail.imgPath),
+          child: isTablet ? Image.asset(nail.imgPath, width: 92.12.w, height: 203.79.h) : Image.asset(nail.imgPath),
         ),
         const SizedBox(height: 10),
         Text(

@@ -24,45 +24,50 @@ class BuilderGelScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: const CustomBottomBar(
+            appBar: CustomAppBar(),
+
+      body: Stack(
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Center(
+                child: Padding(
+                  padding: isTablet ? const EdgeInsets.all(20) : const EdgeInsets.all(40),
+                  child: Text(
+                    "Builder gel",
+                    style: TextStyle(
+                      fontSize: isTablet ? 32 : 22,
+                      fontFamily: "Gotham",
+                      fontWeight: FontWeight.w700,
+                      color: Color.fromRGBO(11, 43, 45, 1),
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      isTablet
+                          ? ListGel(builderGelListRow: builderGelListRow.take(4).toList())
+                          : ListGel(builderGelListRow: builderGelListRow.take(3).toList()),
+                      isTablet ? ListGel(builderGelListRow: builderGelListRow.sublist(4)) : ListGel(builderGelListRow: builderGelListRow.sublist(3, 6)),
+                      isTablet ? Container() : ListGel(builderGelListRow: builderGelListRow.sublist(6)),
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
+          const CustomBottomBar(
         categoryName: 'BUILDER GEL',
         heroTag: 'BuilderGel',
         imagePath: "assets/categories/BuilderGelLarge.png",
       ),
-      appBar: const CustomAppBar(),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Center(
-            child: Padding(
-              padding: isTablet ? const EdgeInsets.all(20) : const EdgeInsets.all(40),
-              child: Text(
-                "Builder gel",
-                style: TextStyle(
-                  fontSize: isTablet ? 32 : 22,
-                  fontFamily: "Gotham",
-                  fontWeight: FontWeight.w700,
-                  color: Color.fromRGBO(11, 43, 45, 1),
-                ),
-              ),
-            ),
-          ),
-          Expanded(
-            child: Container(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  isTablet
-                      ? ListGel(builderGelListRow: builderGelListRow.take(4).toList())
-                      : ListGel(builderGelListRow: builderGelListRow.take(3).toList()),
-                  isTablet ? ListGel(builderGelListRow: builderGelListRow.sublist(4)) : ListGel(builderGelListRow: builderGelListRow.sublist(3, 6)),
-                  isTablet ? Container() : ListGel(builderGelListRow: builderGelListRow.sublist(6)),
-                ],
-              ),
-            ),
-          )
         ],
       ),
     );
@@ -125,7 +130,7 @@ class ListGel extends StatelessWidget {
                     tag: 'Icon${e.id}',
                     child: Image.asset(
                       e.icon,
-                      width:  isTablet ? 57.w : 115.w,
+                      width: isTablet ? 57.w : 115.w,
                     ),
                   ),
                   SizedBox(
@@ -134,7 +139,7 @@ class ListGel extends StatelessWidget {
                   Text(
                     e.id,
                     style: TextStyle(
-                      fontSize: isTablet ? 20.sp : 60.sp ,
+                      fontSize: isTablet ? 20.sp : 60.sp,
                       fontFamily: "Gotham",
                       fontWeight: FontWeight.w700,
                       color: Color.fromRGBO(20, 76, 80, 1),

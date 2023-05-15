@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:essential_beauty/widgets/custom_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -16,67 +17,37 @@ class CatEyesDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      bottomNavigationBar: BottomAppBar(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                "MADE WITH LOVE BY SLOTH-LAB",
-                style: TextStyle(
-                  fontFamily: "Roboto",
-                  fontSize: 20.sp,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ),
-            Align(
-              alignment: Alignment.topRight,
-              child: Text(
-                "CAT EYES",
-                style: TextStyle(
-                  fontFamily: "Gotham",
-                  fontSize: 32.sp,
-                  fontWeight: FontWeight.w700,
-                  color: const Color.fromRGBO(150, 150, 150, 1),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton.large(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        onPressed: () {
-          Get.back();
-        },
-        child: Image.asset(
-          "assets/categories/CatEyesLarge.png",
-        ),
-      ),
-      appBar: const CustomAppBar(),
-      // body: BaseCatEyeNail(nail: nail),
+            appBar: CustomAppBar(),
+  
 
-      body: SizedBox(
-        width: MediaQuery.of(context).size.width,
-        child: CarouselSlider(
-          options: CarouselOptions(
-            initialPage: int.parse(nail.id) - 1,
-          ),
-          items: nails.map((n) {
-            return Builder(
-              builder: (BuildContext context) {
-                return Container(
-                  decoration: const BoxDecoration(color: Colors.white),
-                  child: BaseCatEyeNail(nail: n),
+      body: Stack(
+        children: [
+          SizedBox(
+            width: MediaQuery.of(context).size.width,
+            child: CarouselSlider(
+              options: CarouselOptions(
+                             viewportFraction: 1.0,
+
+                initialPage: int.parse(nail.id) - 1,
+              ),
+              items: nails.map((n) {
+                return Builder(
+                  builder: (BuildContext context) {
+                    return Container(
+                      decoration: const BoxDecoration(color: Colors.white),
+                      child: BaseCatEyeNail(nail: n),
+                    );
+                  },
                 );
-              },
-            );
-          }).toList(),
-        ),
+              }).toList(),
+            ),
+          ),
+             const CustomBottomBar(
+        imagePath: "assets/categories/CatEyesLarge.png",
+        heroTag: "CatEyes",
+        categoryName: "CAT EYES",
+      ),
+        ],
       ),
     );
   }
@@ -95,8 +66,7 @@ class BaseCatEyeNail extends StatelessWidget {
     return Center(
       child: Container(
         width: MediaQuery.of(context).size.width,
-        decoration:
-            const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
+        decoration: const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
         padding: const EdgeInsets.all(50),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

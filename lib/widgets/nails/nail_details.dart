@@ -18,8 +18,7 @@ class NailDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TabletDetector.isTablet(
-            MediaQueryData.fromWindow(WidgetsBinding.instance.window))
+    return TabletDetector.isTablet(MediaQueryData.fromWindow(WidgetsBinding.instance.window))
         ? NailsDetailsTablet(nail: nail, nails: nails)
         : NailsDetailsPhone(nail: nail, nails: nails);
   }
@@ -38,52 +37,56 @@ class NailsDetailsTablet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: const CustomBottomBar(
+      body: Stack(
+        children: [
+          SizedBox(
+            width: MediaQuery.of(context).size.width,
+            child: CarouselSlider(
+              options: CarouselOptions(
+                initialPage: int.parse(nail.id) - 1,
+                             viewportFraction: 1.0,
+
+              ),
+              items: nails.map((n) {
+                return Builder(
+                  builder: (BuildContext context) {
+                    return Container(
+                      decoration: const BoxDecoration(color: Colors.white),
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height,
+                        decoration: const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
+                        padding: const EdgeInsets.all(50),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              "NAILS POLISH",
+                              style: TextStyle(
+                                fontSize: 32.sp,
+                                fontFamily: "Gotham",
+                                fontWeight: FontWeight.w700,
+                                color: const Color.fromRGBO(35, 40, 55, 1),
+                              ),
+                            ),
+                            BaseNail(nail: n),
+                            const SizedBox(height: 10),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                );
+              }).toList(),
+            ),
+          ),
+          const CustomBottomBar(
         imagePath: "assets/categories/NailsPolishLarge.png",
         heroTag: "NailsPolish",
         categoryName: "NAILS POLISH",
       ),
-      appBar: const CustomAppBar(),
-      body: SizedBox(
-        width: MediaQuery.of(context).size.width,
-        child: CarouselSlider(
-          options: CarouselOptions(
-            initialPage: int.parse(nail.id) - 1,
-          ),
-          items: nails.map((n) {
-            return Builder(
-              builder: (BuildContext context) {
-                return Container(
-                  decoration: const BoxDecoration(color: Colors.white),
-                  child: Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height,
-                    decoration: const BoxDecoration(
-                        color: Color.fromRGBO(240, 240, 240, 1)),
-                    padding: const EdgeInsets.all(50),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          "NAILS POLISH",
-                          style: TextStyle(
-                            fontSize: 32.sp,
-                            fontFamily: "Gotham",
-                            fontWeight: FontWeight.w700,
-                            color: const Color.fromRGBO(35, 40, 55, 1),
-                          ),
-                        ),
-                        BaseNail(nail: n),
-                        const SizedBox(height: 10),
-                      ],
-                    ),
-                  ),
-                );
-              },
-            );
-          }).toList(),
-        ),
+        ],
       ),
     );
   }
@@ -102,12 +105,8 @@ class NailsDetailsPhone extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // bottomNavigationBar: const CustomBottomBar(
-      //   imagePath: "assets/categories/NailsPolish.png",
-      //   heroTag: "NailsPolish",
-      //   categoryName: "NAILS POLISH",
-      // ),
-      appBar: const CustomAppBar(),
+
+
       body: CarouselSlider(
         options: CarouselOptions(
           initialPage: int.parse(nail.id) - 1,
@@ -142,8 +141,7 @@ class BaseNail extends StatelessWidget {
         child: Center(
           child: Container(
             width: MediaQuery.of(context).size.width,
-            decoration:
-                const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
+            decoration: const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
             padding: const EdgeInsets.all(50),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -175,8 +173,7 @@ class BaseNail extends StatelessWidget {
                                       fontSize: 32.sp,
                                       fontFamily: "Gotham",
                                       fontWeight: FontWeight.w700,
-                                      color:
-                                          const Color.fromRGBO(80, 79, 79, 1),
+                                      color: const Color.fromRGBO(80, 79, 79, 1),
                                     ),
                                   ),
                                   Text(
@@ -185,8 +182,7 @@ class BaseNail extends StatelessWidget {
                                       fontFamily: "Gotham",
                                       fontWeight: FontWeight.w700,
                                       fontSize: 32.sp,
-                                      color:
-                                          const Color.fromRGBO(97, 95, 95, 1),
+                                      color: const Color.fromRGBO(97, 95, 95, 1),
                                     ),
                                   ),
                                   Text(
@@ -195,8 +191,7 @@ class BaseNail extends StatelessWidget {
                                       fontFamily: "Gotham",
                                       fontWeight: FontWeight.w400,
                                       fontSize: 32.sp,
-                                      color:
-                                          const Color.fromRGBO(97, 95, 95, 1),
+                                      color: const Color.fromRGBO(97, 95, 95, 1),
                                     ),
                                   ),
                                   SizedBox(height: 10.h),
@@ -221,8 +216,7 @@ class BaseNail extends StatelessWidget {
                                       fontFamily: "Gotham",
                                       fontWeight: FontWeight.w400,
                                       fontSize: 24.sp,
-                                      color: const Color.fromRGBO(
-                                          126, 126, 126, 1),
+                                      color: const Color.fromRGBO(126, 126, 126, 1),
                                     ),
                                   ),
                                 ],
@@ -232,9 +226,7 @@ class BaseNail extends StatelessWidget {
                         ],
                       ),
                       SizedBox(width: MediaQuery.of(context).size.width * 0.1),
-                      Image.asset(
-                          "assets/rubber_base_gel/RubberBaseGelBottle.png",
-                          width: 275.w)
+                      Image.asset("assets/rubber_base_gel/RubberBaseGelBottle.png", width: 275.w)
                     ],
                   ),
                 ),

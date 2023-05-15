@@ -53,43 +53,46 @@ class _LightFlaschNailCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Image.asset(
-          "assets/flasch_nail/FlaschNailCard1.png",
-          width: 379.13.w,
-          height: 630.79.h,
-          fit: BoxFit.contain,
-        ),
-        Positioned.fill(
-          child: Align(
-            child: Transform.rotate(
-              angle: 166.8,
-              child: Stack(
-                children: [
-                  Image.asset(
-                    "assets/flasch_nail/${widget.flaschNail.imgId}.png",
-                    fit: BoxFit.contain,
-                    width: 189.w,
-                    height: 704.h,
-                  ),
-                ],
+    return GestureDetector(
+            onTap: () => calqueController.toggleCalque(),
+      child: Stack(
+        children: [
+          Image.asset(
+            "assets/flasch_nail/FlaschNailCard1.png",
+            width: 379.13.w,
+            height: 630.79.h,
+            fit: BoxFit.contain,
+          ),
+          Positioned.fill(
+            child: Align(
+              child: Transform.rotate(
+                angle: 166.8,
+                child: Stack(
+                  children: [
+                    Image.asset(
+                      "assets/flasch_nail/${widget.flaschNail.imgId}.png",
+                      fit: BoxFit.contain,
+                      width: 189.w,
+                      height: 704.h,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
-        ),
-        Positioned(
-          right: 40,
-          bottom: 5,
-          child: GestureDetector(
-            onTap: () => calqueController.toggleCalque(),
-            child: Image.asset(
-              "assets/flasch_nail/DarkVectorLarge.png",
-              fit: BoxFit.cover,
+          Positioned(
+            right: 40,
+            bottom: 5,
+            child: GestureDetector(
+              onTap: () => calqueController.toggleCalque(),
+              child: Image.asset(
+                "assets/flasch_nail/DarkVectorLarge.png",
+                fit: BoxFit.cover,
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
@@ -103,49 +106,52 @@ class _DarkFlachNailCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Image.asset(
-          "assets/flasch_nail/FlaschNailCard2.png",
-          width: 379.13.w,
-          height: 630.79.h,
-          fit: BoxFit.contain,
-        ),
-        Positioned.fill(
-          child: Align(
-            child: Transform.rotate(
-              angle: 166.8,
-              child: Stack(
-                children: [
-                  Image.asset(
-                    "assets/flasch_nail/${flaschNail.imgId}.png",
-                    fit: BoxFit.contain,
-                    width: 189.w,
-                    height: 704.h,
-                  ),
-                  Image.asset(
-                    "assets/flasch_nail/Calque.png",
-                    fit: BoxFit.contain,
-                    width: 189.w,
-                    height: 704.h,
-                  ),
-                ],
+    return GestureDetector(
+            onTap: () => calqueController.toggleCalque(),
+      child: Stack(
+        children: [
+          Image.asset(
+            "assets/flasch_nail/FlaschNailCard2.png",
+            width: 379.13.w,
+            height: 630.79.h,
+            fit: BoxFit.contain,
+          ),
+          Positioned.fill(
+            child: Align(
+              child: Transform.rotate(
+                angle: 166.8,
+                child: Stack(
+                  children: [
+                    Image.asset(
+                      "assets/flasch_nail/${flaschNail.imgId}.png",
+                      fit: BoxFit.contain,
+                      width: 189.w,
+                      height: 704.h,
+                    ),
+                    Image.asset(
+                      "assets/flasch_nail/Calque.png",
+                      fit: BoxFit.contain,
+                      width: 189.w,
+                      height: 704.h,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
-        ),
-        Positioned(
-          right: 40,
-          bottom: 5,
-          child: GestureDetector(
-            onTap: () => calqueController.toggleCalque(),
-            child: Image.asset(
-              "assets/flasch_nail/LightVectorLarge.png",
-              fit: BoxFit.cover,
+          Positioned(
+            right: 40,
+            bottom: 5,
+            child: GestureDetector(
+              onTap: () => calqueController.toggleCalque(),
+              child: Image.asset(
+                "assets/flasch_nail/LightVectorLarge.png",
+                fit: BoxFit.cover,
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

@@ -16,10 +16,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TabletDetector.isTablet(
-            MediaQueryData.fromWindow(WidgetsBinding.instance.window))
-        ? const HomeScreenTablet()
-        : const HomeScreenPhone();
+    return TabletDetector.isTablet(MediaQueryData.fromWindow(WidgetsBinding.instance.window)) ? const HomeScreenTablet() : const HomeScreenPhone();
   }
 }
 
@@ -59,75 +56,51 @@ class HomeScreenTablet extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Hero(
-                      tag: 'RubberBaseGel',
-                      child: Category(
-                        imgPath: "assets/categories/RubberBaseGelLarge.png",
-                        categoryName: 'Rubber Base Gel',
-                        onChangeScreen: () {
-                          Get.to(const RubberBaseGelScreen(),
-                              duration: const Duration(milliseconds: 800));
-                        },
-                      ),
+                    Category(
+                      imgPath: "assets/categories/RubberBaseGelLarge.png",
+                      categoryName: 'Rubber Base Gel',
+                      onChangeScreen: () {
+                        Get.to(const RubberBaseGelScreen(), duration: const Duration(milliseconds: 800));
+                      }, tag: 'RubberBaseGel',
                     ),
-                    Hero(
-                      tag: 'FlaschNail',
-                      child: Category(
-                        imgPath: "assets/categories/FlaschNailLarge.png",
-                        categoryName: 'Flasch Nail',
-                        onChangeScreen: () {
-                          Get.to(FlaschNailScreen(),
-                              duration: const Duration(milliseconds: 800));
-                        },
-                      ),
+                    Category(
+                      imgPath: "assets/categories/FlaschNailLarge.png",
+                      categoryName: 'Flasch Nail',
+                      onChangeScreen: () {
+                        Get.to(FlaschNailScreen(), duration: const Duration(milliseconds: 800));
+                      }, tag: 'FlaschNail',
                     ),
-                    Hero(
-                      tag: 'NailsPolish',
-                      child: Category(
-                        imgPath: "assets/categories/NailsPolishLarge.png",
-                        categoryName: 'Nails Polish',
-                        onChangeScreen: () {
-                          Get.to(const NailsPolishScreen(),
-                              duration: const Duration(milliseconds: 800));
-                        },
-                      ),
+                    Category(
+                      imgPath: "assets/categories/NailsPolishLarge.png",
+                      categoryName: 'Nails Polish',
+                      onChangeScreen: () {
+                        Get.to(const NailsPolishScreen(), duration: const Duration(milliseconds: 800));
+                      }, tag: 'NailsPolish',
                     ),
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Hero(
-                      tag: 'CatEyes',
-                      child: Category(
-                        imgPath: "assets/categories/CatEyesLarge.png",
-                        categoryName: 'Cat Eyes',
-                        onChangeScreen: () {
-                          Get.to(const CatEyesScreen(),
-                              duration: const Duration(milliseconds: 800));
-                        },
-                      ),
+                    Category(
+                      imgPath: "assets/categories/CatEyesLarge.png",
+                      categoryName: 'Cat Eyes',
+                      onChangeScreen: () {
+                        Get.to(const CatEyesScreen(), duration: const Duration(milliseconds: 800));
+                      }, tag: 'CatEyes',
                     ),
-                    Hero(
-                      tag: 'BuilderGel',
-                      child: Category(
-                          imgPath: "assets/categories/BuilderGelLarge.png",
-                          categoryName: 'Builder Gel',
-                          onChangeScreen: () {
-                            Get.to(BuilderGelScreen(),
-                                duration: const Duration(milliseconds: 800));
-                          }),
-                    ),
-                    Hero(
-                      tag: 'CuticuleOil',
-                      child: Category(
-                        imgPath: "assets/categories/CuticuleOilLarge.png",
-                        categoryName: 'Cuticule Oil',
+                    Category(
+                        imgPath: "assets/categories/BuilderGelLarge.png",
+                        categoryName: 'Builder Gel',
                         onChangeScreen: () {
-                          Get.to(CuticuleOilScreen(),
-                              duration: const Duration(milliseconds: 800));
-                        },
-                      ),
+                          Get.to(BuilderGelScreen(), duration: const Duration(milliseconds: 800));
+                        }, tag: 'BuilderGel',),
+                    Category(
+                      imgPath: "assets/categories/CuticuleOilLarge.png",
+                      categoryName: 'Cuticule Oil',
+                      onChangeScreen: () {
+                        Get.to(CuticuleOilScreen(), duration: const Duration(milliseconds: 800));
+                      }, tag: 'CuticuleOil',
                     ),
                   ],
                 ),
@@ -176,80 +149,56 @@ class HomeScreenPhone extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Hero(
-                      tag: 'RubberBaseGel',
-                      child: Category(
-                        imgPath: "assets/categories/RubberBaseGel.png",
-                        categoryName: 'Rubber Base Gel',
-                        onChangeScreen: () {
-                          Get.to(const RubberBaseGelScreen(),
-                              duration: const Duration(milliseconds: 800));
-                        },
-                      ),
+                    Category(
+                      imgPath: "assets/categories/RubberBaseGel.png",
+                      categoryName: 'Rubber Base Gel',
+                      onChangeScreen: () {
+                        Get.to(const RubberBaseGelScreen(), duration: const Duration(milliseconds: 800));
+                      }, tag: 'RubberBaseGel',
                     ),
-                    Hero(
-                      tag: 'FlaschNail',
-                      child: Category(
-                        imgPath: "assets/categories/FlaschNail.png",
-                        categoryName: 'Flasch Nail',
-                        onChangeScreen: () {
-                          Get.to(FlaschNailScreen(),
-                              duration: const Duration(milliseconds: 800));
-                        },
-                      ),
+                    Category(
+                      imgPath: "assets/categories/FlaschNail.png",
+                      categoryName: 'Flasch Nail',
+                      onChangeScreen: () {
+                        Get.to(FlaschNailScreen(), duration: const Duration(milliseconds: 800));
+                      }, tag: 'FlaschNail',
                     ),
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Hero(
-                      tag: 'NailsPolish',
-                      child: Category(
-                        imgPath: "assets/categories/NailsPolish.png",
-                        categoryName: 'Nails Polish',
-                        onChangeScreen: () {
-                          Get.to(const NailsPolishScreen(),
-                              duration: const Duration(milliseconds: 800));
-                        },
-                      ),
+                    Category(
+                      imgPath: "assets/categories/NailsPolish.png",
+                      categoryName: 'Nails Polish',
+                      onChangeScreen: () {
+                        Get.to(const NailsPolishScreen(), duration: const Duration(milliseconds: 800));
+                      }, tag: 'CatEyes',
                     ),
-                    Hero(
-                      tag: 'CatEyes',
-                      child: Category(
-                        imgPath: "assets/categories/CatEyes.png",
-                        categoryName: 'Cat Eyes',
-                        onChangeScreen: () {
-                          Get.to(const CatEyesScreen(),
-                              duration: const Duration(milliseconds: 800));
-                        },
-                      ),
+                    Category(
+                      imgPath: "assets/categories/CatEyes.png",
+                      categoryName: 'Cat Eyes',
+                      onChangeScreen: () {
+                        Get.to(const CatEyesScreen(), duration: const Duration(milliseconds: 800));
+                      }, tag: 'CatEyes',
                     ),
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Hero(
-                      tag: 'BuilderGel',
-                      child: Category(
-                          imgPath: "assets/categories/BuilderGel.png",
-                          categoryName: 'Builder Gel',
-                          onChangeScreen: () {
-                            Get.to(BuilderGelScreen(),
-                                duration: const Duration(milliseconds: 800));
-                          }),
-                    ),
-                    Hero(
-                      tag: 'CuticuleOil',
-                      child: Category(
-                        imgPath: "assets/categories/CuticuleOil.png",
-                        categoryName: 'Cuticule Oil',
+                    Category(
+                        imgPath: "assets/categories/BuilderGel.png",
+                        categoryName: 'Builder Gel',
                         onChangeScreen: () {
-                          Get.to(CuticuleOilScreen(),
-                              duration: const Duration(milliseconds: 800));
-                        },
-                      ),
+                          Get.to(BuilderGelScreen(), duration: const Duration(milliseconds: 800));
+                        }, tag: 'BuilderGel',),
+                    Category(
+                      imgPath: "assets/categories/CuticuleOil.png",
+                      categoryName: 'Cuticule Oil',
+                      onChangeScreen: () {
+                        Get.to(CuticuleOilScreen(), duration: const Duration(milliseconds: 800));
+                      }, tag: 'CuticuleOil',
                     ),
                   ],
                 ),

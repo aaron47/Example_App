@@ -19,19 +19,23 @@ class BuilderGelDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: const CustomBottomBar(
+      appBar: AppBar(),
+      // body: BaseBuilderGelDetailWidget(gel: gel),
+      body: Stack(
+        children: [
+          SizedBox(
+            width: MediaQuery.of(context).size.width,
+            child: Container(
+              decoration: const BoxDecoration(color: Colors.white),
+              child: BaseBuilderGelDetailWidget(gel: gel),
+            ),
+     
+          ),       const CustomBottomBar(
         categoryName: 'BUILDER GEL',
         heroTag: 'BuilderGel',
         imagePath: "assets/categories/BuilderGelLarge.png",
       ),
-      appBar: AppBar(),
-      // body: BaseBuilderGelDetailWidget(gel: gel),
-      body: SizedBox(
-        width: MediaQuery.of(context).size.width,
-        child: Container(
-          decoration: const BoxDecoration(color: Colors.white),
-          child: BaseBuilderGelDetailWidget(gel: gel),
-        ),
+        ],
       ),
     );
   }

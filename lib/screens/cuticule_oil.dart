@@ -55,176 +55,173 @@ class CuticuleOilScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: const CustomBottomBar(
-        imagePath: "assets/categories/CuticuleOilLarge.png",
-        heroTag: "CuticuleOil",
-        categoryName: "CUTICULE OIL",
-      ),
-      appBar: const CustomAppBar(),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.start,
+         appBar: CustomAppBar(),
+      body: Stack(
         children: [
-          Center(
-            child: Padding(
-              padding: const EdgeInsets.all(20),
-              child: Text(
-                "CUTICULE OIL",
-                style: TextStyle(
-                  fontSize: 32.sp,
-                  fontFamily: "Gotham",
-                  fontWeight: FontWeight.w700,
-                  color: const Color.fromRGBO(11, 43, 45, 1),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Text(
+                    "CUTICULE OIL",
+                    style: TextStyle(
+                      fontSize: 32.sp,
+                      fontFamily: "Gotham",
+                      fontWeight: FontWeight.w700,
+                      color: const Color.fromRGBO(11, 43, 45, 1),
+                    ),
+                  ),
                 ),
               ),
-            ),
-          ),
-          Expanded(
-            child: Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Column(
+              Expanded(
+                child: Container(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children: builderOilList
-                        .map((e) => GestureDetector(
-                              onTap: () {
-                                //  Get.to(BuilderGelDetails(gel: e), duration: Duration(milliseconds: 800));
-                              },
-                              child: GestureDetector(
-                                onTap: () {
-                                  Get.to(
-                                      CuticulOilDetails(
-                                          oil: e, oils: builderOilList),
-                                      duration:
-                                          const Duration(milliseconds: 800));
-                                },
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: builderOilList
+                            .map((e) => GestureDetector(
+                                  onTap: () {
+                                    //  Get.to(BuilderGelDetails(gel: e), duration: Duration(milliseconds: 800));
+                                  },
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      Get.to(CuticulOilDetails(oil: e, oils: builderOilList), duration: const Duration(milliseconds: 800));
+                                    },
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Hero(
+                                          tag: 'oil${e.id}',
+                                          child: Image.asset(
+                                            e.imgPath,
+                                            // width: 217.w,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 20.h,
+                                        ),
+                                        Hero(
+                                          tag: 'id${e.id}',
+                                          child: Text(
+                                            e.id,
+                                            style: TextStyle(
+                                              fontSize: 30.sp,
+                                              fontFamily: "Gotham",
+                                              fontWeight: FontWeight.w700,
+                                              color: const Color.fromRGBO(20, 76, 80, 1),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ))
+                            .toList(),
+                      ),
+                      Stack(
+                        children: [
+                          Container(
+                            height: 470.h,
+                            width: 533.56.w,
+                            alignment: Alignment.bottomCenter,
+                            child: Image.asset(
+                              "assets/cuticul_oil/oil_background.png",
+                              width: 533.w,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 533.56.w,
+                            height: 500.h,
+                            //  color: Colors.amber,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Column(
                                   children: [
-                                    Hero(
-                                      tag: 'oil${e.id}',
+                                    GestureDetector(
+                                      onTap: () {
+                                        Get.to(() => const AppleDetailsScreen());
+                                      },
                                       child: Image.asset(
-                                        e.imgPath,
-                                        // width: 217.w,
+                                        "assets/cuticul_oil/Apple.png",
+                                        width: 153.w,
+                                        height: 393.h,
                                       ),
                                     ),
-                                    SizedBox(
-                                      width: 20.h,
-                                    ),
-                                    Hero(
-                                      tag: 'id${e.id}',
+                                    Container(
+                                      margin: EdgeInsets.only(top: 20.h, bottom: 15.h),
                                       child: Text(
-                                        e.id,
+                                        "Apple",
                                         style: TextStyle(
-                                          fontSize: 30.sp,
+                                          fontSize: 20.sp,
                                           fontFamily: "Gotham",
                                           fontWeight: FontWeight.w700,
                                           color: const Color.fromRGBO(
-                                              20, 76, 80, 1),
+                                            150,
+                                            150,
+                                            150,
+                                            1,
+                                          ),
                                         ),
                                       ),
                                     ),
                                   ],
                                 ),
-                              ),
-                            ))
-                        .toList(),
-                  ),
-                  Stack(
-                    children: [
-                      Container(
-                        height: 470.h,
-                        width: 533.56.w,
-                        alignment: Alignment.bottomCenter,
-                        child: Image.asset(
-                          "assets/cuticul_oil/oil_background.png",
-                          width: 533.w,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 533.56.w,
-                        height: 500.h,
-                        //  color: Colors.amber,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Column(
-                              children: [
-                                GestureDetector(
-                                  onTap: () {
-                                    Get.to(() => const AppleDetailsScreen());
-                                  },
-                                  child: Image.asset(
-                                    "assets/cuticul_oil/Apple.png",
-                                    width: 153.w,
-                                    height: 393.h,
-                                  ),
-                                ),
-                                Container(
-                                  margin:
-                                      EdgeInsets.only(top: 20.h, bottom: 15.h),
-                                  child: Text(
-                                    "Apple",
-                                    style: TextStyle(
-                                      fontSize: 20.sp,
-                                      fontFamily: "Gotham",
-                                      fontWeight: FontWeight.w700,
-                                      color: const Color.fromRGBO(
-                                        150,
-                                        150,
-                                        150,
-                                        1,
+                                Column(
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () {
+                                        Get.to(() => const OrangeDetailsScreen());
+                                      },
+                                      child: Image.asset(
+                                        "assets/cuticul_oil/Orange.png",
+                                        width: 146.w,
                                       ),
                                     ),
-                                  ),
+                                    Container(
+                                      margin: EdgeInsets.only(top: 20.h, bottom: 15.h),
+                                      child: Text(
+                                        "Orange",
+                                        style: TextStyle(
+                                          fontSize: 20.sp,
+                                          fontFamily: "Gotham",
+                                          fontWeight: FontWeight.w700,
+                                          color: const Color.fromRGBO(
+                                            150,
+                                            150,
+                                            150,
+                                            1,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
-                            Column(
-                              children: [
-                                GestureDetector(
-                                  onTap: () {
-                                    Get.to(() => const OrangeDetailsScreen());
-                                  },
-                                  child: Image.asset(
-                                    "assets/cuticul_oil/Orange.png",
-                                    width: 146.w,
-                                  ),
-                                ),
-                                Container(
-                                  margin:
-                                      EdgeInsets.only(top: 20.h, bottom: 15.h),
-                                  child: Text(
-                                    "Orange",
-                                    style: TextStyle(
-                                      fontSize: 20.sp,
-                                      fontFamily: "Gotham",
-                                      fontWeight: FontWeight.w700,
-                                      color: const Color.fromRGBO(
-                                        150,
-                                        150,
-                                        150,
-                                        1,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                ],
-              ),
-            ),
-          )
+                ),
+              )
+            ],
+          ),
+          const CustomBottomBar(
+        imagePath: "assets/categories/CuticuleOilLarge.png",
+        heroTag: "CuticuleOil",
+        categoryName: "CUTICULE OIL",
+      ),
         ],
       ),
     );

@@ -10,12 +10,11 @@ class AppleDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(),
+      appBar: CustomAppBar(),
       body: Center(
         child: Container(
           width: MediaQuery.of(context).size.width,
-          decoration:
-              const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
+          decoration: const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
           padding: const EdgeInsets.all(50),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -89,8 +88,7 @@ class AppleDetailsScreen extends StatelessWidget {
                                       fontFamily: "Gotham",
                                       fontWeight: FontWeight.w400,
                                       fontSize: 24.sp,
-                                      color: const Color.fromRGBO(
-                                          126, 126, 126, 1),
+                                      color: const Color.fromRGBO(126, 126, 126, 1),
                                     ),
                                   ),
                                 ),

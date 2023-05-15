@@ -24,15 +24,12 @@ class _HowToApplyScreenState extends State<HowToApplyScreen> {
   }
 
   Future<void> initializePlayer() async {
-    _videoPlayerController =
-        VideoPlayerController.asset("assets/nail_video.mp4")
-          ..initialize().then((_) => setState(() {}));
+    _videoPlayerController = VideoPlayerController.asset("assets/nail_video.mp4")..initialize().then((_) => setState(() {}));
     _createChewieController();
   }
 
   void _createChewieController() {
-    _chewieController =
-        ChewieController(videoPlayerController: _videoPlayerController);
+    _chewieController = ChewieController(videoPlayerController: _videoPlayerController);
   }
 
   @override
@@ -45,21 +42,7 @@ class _HowToApplyScreenState extends State<HowToApplyScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(),
-      body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/BlurryVideoBg.png'),
-            fit: BoxFit.cover,
-          ),
-        ),
-        child: Row(
-          children: [
-            const LeftSide(),
-            RightSide(chewieController: _chewieController),
-          ],
-        ),
-      ),
+      body:  RightSide(chewieController: _chewieController),
     );
   }
 }
@@ -74,49 +57,17 @@ class RightSide extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Center(
-          child: Container(
-            margin: EdgeInsets.symmetric(vertical: 80.h),
-            child: Text(
-              "Nails Polish".toUpperCase(),
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 32,
-                fontFamily: "Gotham",
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-          ),
+    return Center(
+      child: AspectRatio(
+        aspectRatio: 16 / 9,
+        child: Center(
+          child: _chewieController != null && _chewieController!.videoPlayerController.value.isInitialized
+              ? Chewie(
+                  controller: _chewieController!,
+                )
+              :           CircularProgressIndicator(),
         ),
-        const SizedBox(height: 25),
-        SizedBox(
-          width: 927.93.w,
-          height: 600.h,
-          child: AspectRatio(
-            aspectRatio: 16 / 9,
-            child: Expanded(
-              child: Center(
-                child: _chewieController != null &&
-                        _chewieController!
-                            .videoPlayerController.value.isInitialized
-                    ? Chewie(
-                        controller: _chewieController!,
-                      )
-                    : Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          CircularProgressIndicator(),
-                          SizedBox(height: 20),
-                          Text('Loading'),
-                        ],
-                      ),
-              ),
-            ),
-          ),
-        )
-      ],
+      ),
     );
   }
 }

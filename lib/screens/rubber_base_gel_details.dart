@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:essential_beauty/widgets/custom_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -17,14 +18,11 @@ class RubberBaseGelDetails extends StatelessWidget {
   final Nail nail;
   final List<Nail> nails;
 
-  final isTablet = TabletDetector.isTablet(
-      MediaQueryData.fromWindow(WidgetsBinding.instance.window));
+  final isTablet = TabletDetector.isTablet(MediaQueryData.fromWindow(WidgetsBinding.instance.window));
 
   @override
   Widget build(BuildContext context) {
-    return isTablet
-        ? RubberBaseGelDetailsTablet(nail: nail, nails: nails)
-        : RubberBaseGelDetailsPhone(nail: nail, nails: nails);
+    return isTablet ? RubberBaseGelDetailsTablet(nail: nail, nails: nails) : RubberBaseGelDetailsPhone(nail: nail, nails: nails);
   }
 }
 
@@ -41,38 +39,38 @@ class RubberBaseGelDetailsTablet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      floatingActionButton: FloatingActionButton.large(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        onPressed: () {
-          Get.back();
-        },
-        child: Image.asset(
-          "assets/categories/RubberBaseGelLarge.png",
-        ),
-      ),
-      appBar: const CustomAppBar(),
-      body: SizedBox(
-        width: MediaQuery.of(context).size.width,
-        child: CarouselSlider(
-          options: CarouselOptions(
-            initialPage: int.parse(nail.id) - 1,
-            // enableInfiniteScroll: true,
-            //    enlargeCenterPage: true,
-            //     enlargeFactor: 0.8,
-          ),
-          items: nails.map((n) {
-            return Builder(
-              builder: (BuildContext context) {
-                return Container(
-                  decoration: const BoxDecoration(color: Colors.white),
-                  child: BaseGelNail(nail: n),
+appBar: const CustomAppBar(),
+      body: Stack(
+        children: [
+          SizedBox(
+            width: MediaQuery.of(context).size.width,
+            child: CarouselSlider(
+              options: CarouselOptions(
+                initialPage: int.parse(nail.id) - 1,
+                             viewportFraction: 1.0,
+  height: MediaQuery.of(context).size.height,
+                // enableInfiniteScroll: true,
+                //    enlargeCenterPage: true,
+                //     enlargeFactor: 0.8,
+              ),
+              items: nails.map((n) {
+                return Builder(
+                  builder: (BuildContext context) {
+                    return Container(
+                      decoration: const BoxDecoration(color: Colors.white),
+                      child: BaseGelNail(nail: n),
+                    );
+                  },
                 );
-              },
-            );
-          }).toList(),
-        ),
+              }).toList(),
+            ),
+          ),
+                    const CustomBottomBar(
+            categoryName: 'RUBBER BASE GEL',
+            heroTag: 'RubberBaseGel',
+            imagePath: "assets/categories/RubberBaseGelLarge.png",
+          ),
+        ],
       ),
     );
   }
@@ -135,8 +133,7 @@ class BaseGelNail extends StatelessWidget {
         child: Center(
           child: Container(
             width: MediaQuery.of(context).size.width,
-            decoration:
-                const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
+            decoration: const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
             padding: const EdgeInsets.all(50),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -177,8 +174,7 @@ class BaseGelNail extends StatelessWidget {
                                       fontSize: 32.sp,
                                       fontFamily: "Gotham",
                                       fontWeight: FontWeight.w700,
-                                      color:
-                                          const Color.fromRGBO(80, 79, 79, 1),
+                                      color: const Color.fromRGBO(80, 79, 79, 1),
                                     ),
                                   ),
                                   Text(
@@ -187,8 +183,7 @@ class BaseGelNail extends StatelessWidget {
                                       fontFamily: "Gotham",
                                       fontWeight: FontWeight.w700,
                                       fontSize: 32.sp,
-                                      color:
-                                          const Color.fromRGBO(97, 95, 95, 1),
+                                      color: const Color.fromRGBO(97, 95, 95, 1),
                                     ),
                                   ),
                                   Text(
@@ -197,8 +192,7 @@ class BaseGelNail extends StatelessWidget {
                                       fontFamily: "Gotham",
                                       fontWeight: FontWeight.w400,
                                       fontSize: 32.sp,
-                                      color:
-                                          const Color.fromRGBO(97, 95, 95, 1),
+                                      color: const Color.fromRGBO(97, 95, 95, 1),
                                     ),
                                   ),
                                   SizedBox(height: 10.h),
@@ -223,8 +217,7 @@ class BaseGelNail extends StatelessWidget {
                                       fontFamily: "Gotham",
                                       fontWeight: FontWeight.w400,
                                       fontSize: 24.sp,
-                                      color: const Color.fromRGBO(
-                                          126, 126, 126, 1),
+                                      color: const Color.fromRGBO(126, 126, 126, 1),
                                     ),
                                   ),
                                 ],
@@ -234,9 +227,7 @@ class BaseGelNail extends StatelessWidget {
                         ],
                       ),
                       SizedBox(width: MediaQuery.of(context).size.width * 0.1),
-                      Image.asset(
-                          "assets/rubber_base_gel/RubberBaseGelBottle.png",
-                          width: 275.w)
+                      Image.asset("assets/rubber_base_gel/RubberBaseGelBottle.png", width: 275.w)
                     ],
                   ),
                 ),
@@ -343,8 +334,7 @@ class BaseGelNailPhone extends StatelessWidget {
 class _RubberBaseGelCard extends StatelessWidget {
   final Nail nail;
 
-  final isTablet = TabletDetector.isTablet(
-      MediaQueryData.fromWindow(WidgetsBinding.instance.window));
+  final isTablet = TabletDetector.isTablet(MediaQueryData.fromWindow(WidgetsBinding.instance.window));
   _RubberBaseGelCard({required this.nail});
 
   @override

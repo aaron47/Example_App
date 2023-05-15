@@ -18,7 +18,7 @@ class CustomImageRippleEffect extends StatelessWidget {
             type: MaterialType.circle ,
             color: Colors.transparent,
             child: InkWell(
-              splashColor: Colors.blue.withOpacity(0.5),
+              splashColor: Colors.transparent,
               focusColor: Colors.transparent,
               hoverColor: Colors.transparent,
               highlightColor: Colors.transparent,
