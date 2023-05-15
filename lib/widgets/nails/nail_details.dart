@@ -37,6 +37,7 @@ class NailsDetailsTablet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const CustomAppBar() , 
       body: Stack(
         children: [
           SizedBox(
@@ -45,6 +46,7 @@ class NailsDetailsTablet extends StatelessWidget {
               options: CarouselOptions(
                 initialPage: int.parse(nail.id) - 1,
                              viewportFraction: 1.0,
+                             height: MediaQuery.of(context).size.height,
 
               ),
               items: nails.map((n) {

@@ -25,6 +25,7 @@ class NailsPolishTablet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const CustomAppBar(),
       body: Stack(
         children: [
           Row(
@@ -66,7 +67,7 @@ class NailsPolishTablet extends StatelessWidget {
               SingleChildScrollView(
                 child: Container(
                   decoration: const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
-                  padding: const EdgeInsets.all(50),
+                  // padding: const EdgeInsets.all(50),
                   child: Column(
                     children: [
                       Center(
@@ -112,6 +113,7 @@ class NailsPolishMobile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const CustomAppBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [
