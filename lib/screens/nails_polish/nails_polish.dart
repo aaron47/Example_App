@@ -6,14 +6,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../shared/tablet_detector.dart';
+import '../../shared/tablet_detector.dart';
 
 class NailsPolishScreen extends StatelessWidget {
   const NailsPolishScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return TabletDetector.isTablet(MediaQueryData.fromWindow(WidgetsBinding.instance.window)) ? const NailsPolishTablet() : const NailsPolishMobile();
+    return TabletDetector.isTablet(
+            MediaQueryData.fromWindow(WidgetsBinding.instance.window))
+        ? const NailsPolishTablet()
+        : const NailsPolishMobile();
   }
 }
 
@@ -66,7 +69,8 @@ class NailsPolishTablet extends StatelessWidget {
               ),
               SingleChildScrollView(
                 child: Container(
-                  decoration: const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
+                  decoration: const BoxDecoration(
+                      color: Color.fromRGBO(240, 240, 240, 1)),
                   // padding: const EdgeInsets.all(50),
                   child: Column(
                     children: [
@@ -95,10 +99,10 @@ class NailsPolishTablet extends StatelessWidget {
             ],
           ),
           const CustomBottomBar(
-        imagePath: "assets/categories/NailsPolishLarge.png",
-        heroTag: "NailsPolish",
-        categoryName: "NAILS POLISH",
-      ),
+            imagePath: "assets/categories/NailsPolishLarge.png",
+            heroTag: "NailsPolish",
+            categoryName: "NAILS POLISH",
+          ),
         ],
       ),
     );

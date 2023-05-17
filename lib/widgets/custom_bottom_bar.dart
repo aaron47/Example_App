@@ -18,7 +18,7 @@ class CustomBottomBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Positioned(
+    return Positioned(
       bottom: 0,
       child: Container(
         height: 125.h,
@@ -33,24 +33,21 @@ class CustomBottomBar extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Container(
-                width: double.infinity,
-               height: 5.h,
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.centerLeft,
-                    end: Alignment.centerRight,
-                    colors: [
-                      Colors.white,
-                      Colors.grey
-                    ],
-                  ),
-                ),
-              ),
+                      width: double.infinity,
+                      height: 5.h,
+                      decoration: const BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                          colors: [Colors.white, Colors.grey],
+                        ),
+                      ),
+                    ),
                     Container(
                       height: 60.h,
                       width: MediaQuery.of(context).size.width,
                       // color: Colors.grey.withOpacity(0.2),
-                      
+
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -83,9 +80,9 @@ class CustomBottomBar extends StatelessWidget {
                         ],
                       ),
                     ).asGlass(
-                        tintColor: Colors.transparent,
-                        clipBorderRadius: BorderRadius.circular(15.0),
-                      ),
+                      tintColor: Colors.transparent,
+                      clipBorderRadius: BorderRadius.circular(15.0),
+                    ),
                   ],
                 ),
               ),

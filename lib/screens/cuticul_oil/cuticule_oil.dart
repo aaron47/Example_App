@@ -1,8 +1,7 @@
 import 'package:essential_beauty/models/cuticul_oil.dart';
 import 'package:essential_beauty/models/gel_builder.dart';
 import 'package:essential_beauty/screens/apple_details.dart';
-import 'package:essential_beauty/screens/builder_gel_details.dart';
-import 'package:essential_beauty/screens/cuticul_oil_details.dart';
+import 'package:essential_beauty/screens/cuticul_oil/cuticul_oil_details.dart';
 import 'package:essential_beauty/screens/orange_details.dart';
 import 'package:essential_beauty/widgets/custom_bottom_bar.dart';
 import 'package:essential_beauty/widgets/nails/custom_app_bar.dart';
@@ -55,7 +54,7 @@ class CuticuleOilScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-         appBar: CustomAppBar(),
+      appBar: CustomAppBar(),
       body: Stack(
         children: [
           Column(
@@ -92,11 +91,17 @@ class CuticuleOilScreen extends StatelessWidget {
                                   },
                                   child: GestureDetector(
                                     onTap: () {
-                                      Get.to(CuticulOilDetails(oil: e, oils: builderOilList), duration: const Duration(milliseconds: 800));
+                                      Get.to(
+                                          CuticulOilDetails(
+                                              oil: e, oils: builderOilList),
+                                          duration: const Duration(
+                                              milliseconds: 800));
                                     },
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
                                       children: [
                                         Hero(
                                           tag: 'oil${e.id}',
@@ -116,7 +121,8 @@ class CuticuleOilScreen extends StatelessWidget {
                                               fontSize: 30.sp,
                                               fontFamily: "Gotham",
                                               fontWeight: FontWeight.w700,
-                                              color: const Color.fromRGBO(20, 76, 80, 1),
+                                              color: const Color.fromRGBO(
+                                                  20, 76, 80, 1),
                                             ),
                                           ),
                                         ),
@@ -149,7 +155,8 @@ class CuticuleOilScreen extends StatelessWidget {
                                   children: [
                                     GestureDetector(
                                       onTap: () {
-                                        Get.to(() => const AppleDetailsScreen());
+                                        Get.to(
+                                            () => const AppleDetailsScreen());
                                       },
                                       child: Image.asset(
                                         "assets/cuticul_oil/Apple.png",
@@ -158,7 +165,8 @@ class CuticuleOilScreen extends StatelessWidget {
                                       ),
                                     ),
                                     Container(
-                                      margin: EdgeInsets.only(top: 20.h, bottom: 15.h),
+                                      margin: EdgeInsets.only(
+                                          top: 20.h, bottom: 15.h),
                                       child: Text(
                                         "Apple",
                                         style: TextStyle(
@@ -180,7 +188,8 @@ class CuticuleOilScreen extends StatelessWidget {
                                   children: [
                                     GestureDetector(
                                       onTap: () {
-                                        Get.to(() => const OrangeDetailsScreen());
+                                        Get.to(
+                                            () => const OrangeDetailsScreen());
                                       },
                                       child: Image.asset(
                                         "assets/cuticul_oil/Orange.png",
@@ -188,7 +197,8 @@ class CuticuleOilScreen extends StatelessWidget {
                                       ),
                                     ),
                                     Container(
-                                      margin: EdgeInsets.only(top: 20.h, bottom: 15.h),
+                                      margin: EdgeInsets.only(
+                                          top: 20.h, bottom: 15.h),
                                       child: Text(
                                         "Orange",
                                         style: TextStyle(
@@ -218,10 +228,10 @@ class CuticuleOilScreen extends StatelessWidget {
             ],
           ),
           const CustomBottomBar(
-        imagePath: "assets/categories/CuticuleOilLarge.png",
-        heroTag: "CuticuleOil",
-        categoryName: "CUTICULE OIL",
-      ),
+            imagePath: "assets/categories/CuticuleOilLarge.png",
+            heroTag: "CuticuleOil",
+            categoryName: "CUTICULE OIL",
+          ),
         ],
       ),
     );

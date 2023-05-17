@@ -1,5 +1,4 @@
 import 'package:essential_beauty/models/gel_builder.dart';
-import 'package:essential_beauty/screens/builder_gel_details.dart';
 import 'package:essential_beauty/shared/tablet_detector.dart';
 import 'package:essential_beauty/widgets/custom_bottom_bar.dart';
 import 'package:essential_beauty/widgets/nails/custom_app_bar.dart';
@@ -7,25 +6,55 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import 'builder_gel_details.dart';
+
 class BuilderGelScreen extends StatelessWidget {
   BuilderGelScreen({super.key});
 
   final List<BuilderGel> builderGelListRow = [
-    BuilderGel(imgPath: "assets/gel_builder/01.png", icon: "assets/gel_builder/small/01.png", id: "01", shape: "assets/gel_builder/shape/01.png"),
-    BuilderGel(imgPath: "assets/gel_builder/03.png", icon: "assets/gel_builder/small/03.png", id: "03", shape: "assets/gel_builder/shape/03.png"),
-    BuilderGel(imgPath: "assets/gel_builder/04.png", icon: "assets/gel_builder/small/04.png", id: "04", shape: "assets/gel_builder/shape/04.png"),
-    BuilderGel(imgPath: "assets/gel_builder/06.png", icon: "assets/gel_builder/small/06.png", id: "06", shape: "assets/gel_builder/shape/06.png"),
-    BuilderGel(imgPath: "assets/gel_builder/07.png", icon: "assets/gel_builder/small/07.png", id: "07", shape: "assets/gel_builder/shape/07.png"),
-    BuilderGel(imgPath: "assets/gel_builder/12.png", icon: "assets/gel_builder/small/12.png", id: "12", shape: "assets/gel_builder/shape/12.png"),
-    BuilderGel(imgPath: "assets/gel_builder/17.png", icon: "assets/gel_builder/small/17.png", id: "17", shape: "assets/gel_builder/shape/17.png"),
+    BuilderGel(
+        imgPath: "assets/gel_builder/01.png",
+        icon: "assets/gel_builder/small/01.png",
+        id: "01",
+        shape: "assets/gel_builder/shape/01.png"),
+    BuilderGel(
+        imgPath: "assets/gel_builder/03.png",
+        icon: "assets/gel_builder/small/03.png",
+        id: "03",
+        shape: "assets/gel_builder/shape/03.png"),
+    BuilderGel(
+        imgPath: "assets/gel_builder/04.png",
+        icon: "assets/gel_builder/small/04.png",
+        id: "04",
+        shape: "assets/gel_builder/shape/04.png"),
+    BuilderGel(
+        imgPath: "assets/gel_builder/06.png",
+        icon: "assets/gel_builder/small/06.png",
+        id: "06",
+        shape: "assets/gel_builder/shape/06.png"),
+    BuilderGel(
+        imgPath: "assets/gel_builder/07.png",
+        icon: "assets/gel_builder/small/07.png",
+        id: "07",
+        shape: "assets/gel_builder/shape/07.png"),
+    BuilderGel(
+        imgPath: "assets/gel_builder/12.png",
+        icon: "assets/gel_builder/small/12.png",
+        id: "12",
+        shape: "assets/gel_builder/shape/12.png"),
+    BuilderGel(
+        imgPath: "assets/gel_builder/17.png",
+        icon: "assets/gel_builder/small/17.png",
+        id: "17",
+        shape: "assets/gel_builder/shape/17.png"),
   ];
-  final isTablet = TabletDetector.isTablet(MediaQueryData.fromWindow(WidgetsBinding.instance.window));
+  final isTablet = TabletDetector.isTablet(
+      MediaQueryData.fromWindow(WidgetsBinding.instance.window));
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-            appBar: CustomAppBar(),
-
+      appBar: CustomAppBar(),
       body: Stack(
         children: [
           Column(
@@ -34,7 +63,9 @@ class BuilderGelScreen extends StatelessWidget {
             children: [
               Center(
                 child: Padding(
-                  padding: isTablet ? const EdgeInsets.all(20) : const EdgeInsets.all(40),
+                  padding: isTablet
+                      ? const EdgeInsets.all(20)
+                      : const EdgeInsets.all(40),
                   child: Text(
                     "Builder gel",
                     style: TextStyle(
@@ -53,10 +84,22 @@ class BuilderGelScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       isTablet
-                          ? ListGel(builderGelListRow: builderGelListRow.take(4).toList())
-                          : ListGel(builderGelListRow: builderGelListRow.take(3).toList()),
-                      isTablet ? ListGel(builderGelListRow: builderGelListRow.sublist(4)) : ListGel(builderGelListRow: builderGelListRow.sublist(3, 6)),
-                      isTablet ? Container() : ListGel(builderGelListRow: builderGelListRow.sublist(6)),
+                          ? ListGel(
+                              builderGelListRow:
+                                  builderGelListRow.take(4).toList())
+                          : ListGel(
+                              builderGelListRow:
+                                  builderGelListRow.take(3).toList()),
+                      isTablet
+                          ? ListGel(
+                              builderGelListRow: builderGelListRow.sublist(4))
+                          : ListGel(
+                              builderGelListRow:
+                                  builderGelListRow.sublist(3, 6)),
+                      isTablet
+                          ? Container()
+                          : ListGel(
+                              builderGelListRow: builderGelListRow.sublist(6)),
                     ],
                   ),
                 ),
@@ -64,10 +107,10 @@ class BuilderGelScreen extends StatelessWidget {
             ],
           ),
           const CustomBottomBar(
-        categoryName: 'BUILDER GEL',
-        heroTag: 'BuilderGel',
-        imagePath: "assets/categories/BuilderGelLarge.png",
-      ),
+            categoryName: 'BUILDER GEL',
+            heroTag: 'BuilderGel',
+            imagePath: "assets/categories/BuilderGelLarge.png",
+          ),
         ],
       ),
     );
@@ -81,7 +124,8 @@ class ListGel extends StatelessWidget {
   });
 
   final List<BuilderGel> builderGelListRow;
-  final isTablet = TabletDetector.isTablet(MediaQueryData.fromWindow(WidgetsBinding.instance.window));
+  final isTablet = TabletDetector.isTablet(
+      MediaQueryData.fromWindow(WidgetsBinding.instance.window));
 
   @override
   Widget build(BuildContext context) {

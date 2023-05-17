@@ -29,8 +29,8 @@ class CuticulOilDetails extends StatelessWidget {
             child: CarouselSlider(
               options: CarouselOptions(
                 initialPage: int.parse(oil.id) - 1,
-                 viewportFraction: 1.0,
-                 height: MediaQuery.of(context).size.height,
+                viewportFraction: 1.0,
+                height: MediaQuery.of(context).size.height,
                 // enableInfiniteScroll: true,
                 //    enlargeCenterPage: true,
                 //     enlargeFactor: 0.8,
@@ -47,12 +47,11 @@ class CuticulOilDetails extends StatelessWidget {
               }).toList(),
             ),
           ),
-
-            const CustomBottomBar(
-        imagePath: "assets/categories/CuticuleOilLarge.png",
-        heroTag: "CuticuleOil",
-        categoryName: "CUTICULE OIL",
-      ),
+          const CustomBottomBar(
+            imagePath: "assets/categories/CuticuleOilLarge.png",
+            heroTag: "CuticuleOil",
+            categoryName: "CUTICULE OIL",
+          ),
         ],
       ),
     );
@@ -70,13 +69,23 @@ class BaseCuticulOilWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width,
+      width: 1511.w,
       height: MediaQuery.of(context).size.height,
       decoration: const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          InkWell(
+            onTap: () {
+              Get.back();
+            },
+            child: Align(
+              alignment: Alignment.topRight,
+              child: Image.asset("assets/CloseButton.png",
+                  width: 66.21.w, height: 66.h),
+            ),
+          ),
           Center(
             heightFactor: 1,
             child: Row(
@@ -86,10 +95,10 @@ class BaseCuticulOilWidget extends StatelessWidget {
                 Stack(
                   children: [
                     Container(
-                      margin: EdgeInsets.only(top: 90.h),
+                      margin: EdgeInsets.only(top: 50.h),
                       child: Image.asset(
                         "assets/cuticul_oil/Card-oil.png",
-                         //height: 450.h,
+                        //height: 450.h,
                         // width: 533.w,
                       ),
                     ),
@@ -167,7 +176,7 @@ class BaseCuticulOilWidget extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(height: 12.5),
+          SizedBox(height: 40.h),
         ],
       ),
     );

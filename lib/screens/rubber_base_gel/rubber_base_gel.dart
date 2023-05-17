@@ -1,22 +1,21 @@
 import 'package:essential_beauty/screens/how_to_apply.dart';
-import 'package:essential_beauty/screens/rubber_base_gel_details.dart';
+import 'package:essential_beauty/screens/rubber_base_gel/rubber_base_gel_details.dart';
 import 'package:essential_beauty/widgets/custom_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../shared/tablet_detector.dart';
-import '../widgets/nails/Nail.dart';
-import '../widgets/nails/custom_app_bar.dart';
-import '../widgets/nails/nail_widget.dart';
-import '../widgets/nails/nails_row.dart';
+import '../../shared/tablet_detector.dart';
+import '../../widgets/nails/Nail.dart';
+import '../../widgets/nails/custom_app_bar.dart';
 
 class RubberBaseGelScreen extends StatelessWidget {
   const RubberBaseGelScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return TabletDetector.isTablet(MediaQueryData.fromWindow(WidgetsBinding.instance.window))
+    return TabletDetector.isTablet(
+            MediaQueryData.fromWindow(WidgetsBinding.instance.window))
         ? const RubberBaseGelTablet()
         : const RubberBaseGelPhone();
   }
@@ -30,7 +29,7 @@ class RubberBaseGelTablet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-appBar: const CustomAppBar(),
+      appBar: const CustomAppBar(),
       body: Stack(
         children: [
           Row(
@@ -72,7 +71,8 @@ appBar: const CustomAppBar(),
               SingleChildScrollView(
                 child: Container(
                   width: 1400.w,
-                  decoration: const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
+                  decoration: const BoxDecoration(
+                      color: Color.fromRGBO(240, 240, 240, 1)),
                   padding: const EdgeInsets.all(50),
                   child: Column(
                     children: [
@@ -155,16 +155,20 @@ class _RubberBaseGelRow extends StatefulWidget {
 
 class _RubberBaseGelRowState extends State<_RubberBaseGelRow> {
   List<Nail> nails = [];
-  final isTablet = TabletDetector.isTablet(MediaQueryData.fromWindow(WidgetsBinding.instance.window));
+  final isTablet = TabletDetector.isTablet(
+      MediaQueryData.fromWindow(WidgetsBinding.instance.window));
 
   void generateNails() {
     for (int i = 1; i < 21; i++) {
       String id = i.toString().padLeft(2, '0');
-      String imgPath = isTablet ? "assets/rubber_base_gel/$id.png" : "assets/rubber_base_gel/small/$id.png";
+      String imgPath = isTablet
+          ? "assets/rubber_base_gel/$id.png"
+          : "assets/rubber_base_gel/small/$id.png";
       Nail nail = Nail(
         imgPath: imgPath,
         id: id,
-        description: 'Time of polymerization in light of the UV lamp-2-3minutes LED-lamp-1 minute',
+        description:
+            'Time of polymerization in light of the UV lamp-2-3minutes LED-lamp-1 minute',
       );
       nails.add(nail);
     }
@@ -180,7 +184,8 @@ class _RubberBaseGelRowState extends State<_RubberBaseGelRow> {
   Widget build(BuildContext context) {
     List<List<Nail>> rowsOfNails = List.generate(
       (nails.length / 5).ceil(),
-      (index) => nails.sublist(index * 5, (index + 1) * 5 > nails.length ? nails.length : (index + 1) * 5),
+      (index) => nails.sublist(index * 5,
+          (index + 1) * 5 > nails.length ? nails.length : (index + 1) * 5),
     );
 
     return Container(
@@ -211,7 +216,8 @@ class _RubberBaseGelRowState extends State<_RubberBaseGelRow> {
 class _RubberBaseGelNailWidget extends StatelessWidget {
   final Nail nail;
   final List<Nail> nails;
-  final isTablet = TabletDetector.isTablet(MediaQueryData.fromWindow(WidgetsBinding.instance.window));
+  final isTablet = TabletDetector.isTablet(
+      MediaQueryData.fromWindow(WidgetsBinding.instance.window));
 
   _RubberBaseGelNailWidget({required this.nail, required this.nails});
 
@@ -226,7 +232,9 @@ class _RubberBaseGelNailWidget extends StatelessWidget {
               nails: nails,
             ));
           },
-          child: isTablet ? Image.asset(nail.imgPath, width: 92.12.w, height: 203.79.h) : Image.asset(nail.imgPath),
+          child: isTablet
+              ? Image.asset(nail.imgPath, width: 92.12.w, height: 203.79.h)
+              : Image.asset(nail.imgPath),
         ),
         const SizedBox(height: 10),
         Text(

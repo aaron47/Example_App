@@ -1,12 +1,12 @@
-import 'package:essential_beauty/screens/builder_gel.dart';
-import 'package:essential_beauty/screens/cat_eyes.dart';
-import 'package:essential_beauty/screens/cuticule_oil.dart';
-import 'package:essential_beauty/screens/rubber_base_gel.dart';
+import 'package:essential_beauty/screens/builder_gel/builder_gel.dart';
+import 'package:essential_beauty/screens/cat_eyes/cat_eyes.dart';
+import 'package:essential_beauty/screens/rubber_base_gel/rubber_base_gel.dart';
 import 'package:essential_beauty/widgets/categories/category.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../shared/tablet_detector.dart';
-import 'flasch_nail.dart';
-import 'nails_polish.dart';
+import 'cuticul_oil/cuticule_oil.dart';
+import 'flasch_nail/flasch_nail.dart';
+import 'nails_polish/nails_polish.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,7 +16,10 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TabletDetector.isTablet(MediaQueryData.fromWindow(WidgetsBinding.instance.window)) ? const HomeScreenTablet() : const HomeScreenPhone();
+    return TabletDetector.isTablet(
+            MediaQueryData.fromWindow(WidgetsBinding.instance.window))
+        ? const HomeScreenTablet()
+        : const HomeScreenPhone();
   }
 }
 
@@ -60,22 +63,28 @@ class HomeScreenTablet extends StatelessWidget {
                       imgPath: "assets/categories/RubberBaseGelLarge.png",
                       categoryName: 'Rubber Base Gel',
                       onChangeScreen: () {
-                        Get.to(const RubberBaseGelScreen(), duration: const Duration(milliseconds: 800));
-                      }, tag: 'RubberBaseGel',
+                        Get.to(const RubberBaseGelScreen(),
+                            duration: const Duration(milliseconds: 800));
+                      },
+                      tag: 'RubberBaseGel',
                     ),
                     Category(
                       imgPath: "assets/categories/FlaschNailLarge.png",
                       categoryName: 'Flasch Nail',
                       onChangeScreen: () {
-                        Get.to(FlaschNailScreen(), duration: const Duration(milliseconds: 800));
-                      }, tag: 'FlaschNail',
+                        Get.to(FlaschNailScreen(),
+                            duration: const Duration(milliseconds: 800));
+                      },
+                      tag: 'FlaschNail',
                     ),
                     Category(
                       imgPath: "assets/categories/NailsPolishLarge.png",
                       categoryName: 'Nails Polish',
                       onChangeScreen: () {
-                        Get.to(const NailsPolishScreen(), duration: const Duration(milliseconds: 800));
-                      }, tag: 'NailsPolish',
+                        Get.to(const NailsPolishScreen(),
+                            duration: const Duration(milliseconds: 800));
+                      },
+                      tag: 'NailsPolish',
                     ),
                   ],
                 ),
@@ -86,21 +95,28 @@ class HomeScreenTablet extends StatelessWidget {
                       imgPath: "assets/categories/CatEyesLarge.png",
                       categoryName: 'Cat Eyes',
                       onChangeScreen: () {
-                        Get.to(const CatEyesScreen(), duration: const Duration(milliseconds: 800));
-                      }, tag: 'CatEyes',
+                        Get.to(const CatEyesScreen(),
+                            duration: const Duration(milliseconds: 800));
+                      },
+                      tag: 'CatEyes',
                     ),
                     Category(
-                        imgPath: "assets/categories/BuilderGelLarge.png",
-                        categoryName: 'Builder Gel',
-                        onChangeScreen: () {
-                          Get.to(BuilderGelScreen(), duration: const Duration(milliseconds: 800));
-                        }, tag: 'BuilderGel',),
+                      imgPath: "assets/categories/BuilderGelLarge.png",
+                      categoryName: 'Builder Gel',
+                      onChangeScreen: () {
+                        Get.to(BuilderGelScreen(),
+                            duration: const Duration(milliseconds: 800));
+                      },
+                      tag: 'BuilderGel',
+                    ),
                     Category(
                       imgPath: "assets/categories/CuticuleOilLarge.png",
                       categoryName: 'Cuticule Oil',
                       onChangeScreen: () {
-                        Get.to(CuticuleOilScreen(), duration: const Duration(milliseconds: 800));
-                      }, tag: 'CuticuleOil',
+                        Get.to(CuticuleOilScreen(),
+                            duration: const Duration(milliseconds: 800));
+                      },
+                      tag: 'CuticuleOil',
                     ),
                   ],
                 ),
@@ -153,15 +169,19 @@ class HomeScreenPhone extends StatelessWidget {
                       imgPath: "assets/categories/RubberBaseGel.png",
                       categoryName: 'Rubber Base Gel',
                       onChangeScreen: () {
-                        Get.to(const RubberBaseGelScreen(), duration: const Duration(milliseconds: 800));
-                      }, tag: 'RubberBaseGel',
+                        Get.to(const RubberBaseGelScreen(),
+                            duration: const Duration(milliseconds: 800));
+                      },
+                      tag: 'RubberBaseGel',
                     ),
                     Category(
                       imgPath: "assets/categories/FlaschNail.png",
                       categoryName: 'Flasch Nail',
                       onChangeScreen: () {
-                        Get.to(FlaschNailScreen(), duration: const Duration(milliseconds: 800));
-                      }, tag: 'FlaschNail',
+                        Get.to(FlaschNailScreen(),
+                            duration: const Duration(milliseconds: 800));
+                      },
+                      tag: 'FlaschNail',
                     ),
                   ],
                 ),
@@ -172,15 +192,19 @@ class HomeScreenPhone extends StatelessWidget {
                       imgPath: "assets/categories/NailsPolish.png",
                       categoryName: 'Nails Polish',
                       onChangeScreen: () {
-                        Get.to(const NailsPolishScreen(), duration: const Duration(milliseconds: 800));
-                      }, tag: 'CatEyes',
+                        Get.to(const NailsPolishScreen(),
+                            duration: const Duration(milliseconds: 800));
+                      },
+                      tag: 'CatEyes',
                     ),
                     Category(
                       imgPath: "assets/categories/CatEyes.png",
                       categoryName: 'Cat Eyes',
                       onChangeScreen: () {
-                        Get.to(const CatEyesScreen(), duration: const Duration(milliseconds: 800));
-                      }, tag: 'CatEyes',
+                        Get.to(const CatEyesScreen(),
+                            duration: const Duration(milliseconds: 800));
+                      },
+                      tag: 'CatEyes',
                     ),
                   ],
                 ),
@@ -188,17 +212,22 @@ class HomeScreenPhone extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Category(
-                        imgPath: "assets/categories/BuilderGel.png",
-                        categoryName: 'Builder Gel',
-                        onChangeScreen: () {
-                          Get.to(BuilderGelScreen(), duration: const Duration(milliseconds: 800));
-                        }, tag: 'BuilderGel',),
+                      imgPath: "assets/categories/BuilderGel.png",
+                      categoryName: 'Builder Gel',
+                      onChangeScreen: () {
+                        Get.to(BuilderGelScreen(),
+                            duration: const Duration(milliseconds: 800));
+                      },
+                      tag: 'BuilderGel',
+                    ),
                     Category(
                       imgPath: "assets/categories/CuticuleOil.png",
                       categoryName: 'Cuticule Oil',
                       onChangeScreen: () {
-                        Get.to(CuticuleOilScreen(), duration: const Duration(milliseconds: 800));
-                      }, tag: 'CuticuleOil',
+                        Get.to(CuticuleOilScreen(),
+                            duration: const Duration(milliseconds: 800));
+                      },
+                      tag: 'CuticuleOil',
                     ),
                   ],
                 ),

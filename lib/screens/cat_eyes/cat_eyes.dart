@@ -1,4 +1,3 @@
-import 'package:essential_beauty/screens/cat_eyes_details.dart';
 import 'package:essential_beauty/widgets/custom_bottom_bar.dart';
 import 'package:essential_beauty/widgets/custom_ripple_effect.dart';
 import 'package:essential_beauty/widgets/nails/custom_app_bar.dart';
@@ -6,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../models/cat_eye_nail.dart';
+import '../../models/cat_eye_nail.dart';
+import 'cat_eyes_details.dart';
 
 class CatEyesScreen extends StatelessWidget {
   const CatEyesScreen({super.key});
@@ -14,7 +14,8 @@ class CatEyesScreen extends StatelessWidget {
   final List<CatEyeNail> catEyeNails = const [
     CatEyeNail(imgPath: "assets/cat_eyes/SILVER.png", ref: "SILVER", id: "1"),
     CatEyeNail(imgPath: "assets/cat_eyes/RED.png", ref: "RED", id: "2"),
-    CatEyeNail(imgPath: "assets/cat_eyes/CHAMPAGNE.png", ref: "CHAMPAGNE", id: "3"),
+    CatEyeNail(
+        imgPath: "assets/cat_eyes/CHAMPAGNE.png", ref: "CHAMPAGNE", id: "3"),
     CatEyeNail(imgPath: "assets/cat_eyes/PINK.png", ref: "PINK", id: "4"),
     CatEyeNail(imgPath: "assets/cat_eyes/ORANGE.png", ref: "ORANGE", id: "5"),
   ];
@@ -27,7 +28,8 @@ class CatEyesScreen extends StatelessWidget {
           Center(
             child: Container(
               width: 1511.w,
-              decoration: const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
+              decoration:
+                  const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
               padding: const EdgeInsets.all(50),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -50,7 +52,8 @@ class CatEyesScreen extends StatelessWidget {
                   Container(
                     margin: const EdgeInsets.only(bottom: 10),
                     alignment: Alignment.bottomCenter,
-                    width: MediaQuery.of(context).size.width - MediaQuery.of(context).size.width / 3.5,
+                    width: MediaQuery.of(context).size.width -
+                        MediaQuery.of(context).size.width / 3.5,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [

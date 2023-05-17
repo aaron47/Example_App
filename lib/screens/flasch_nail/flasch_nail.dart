@@ -1,11 +1,11 @@
-import 'package:essential_beauty/screens/flasch_nail_details.dart';
+import 'package:essential_beauty/screens/flasch_nail/flasch_nail_details.dart';
 import 'package:essential_beauty/widgets/custom_bottom_bar.dart';
 import 'package:essential_beauty/widgets/nails/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../widgets/flasch_nail_widgets/FlaschNail.dart';
+import '../../widgets/flasch_nail_widgets/FlaschNail.dart';
 
 class FlaschNailScreen extends StatelessWidget {
   FlaschNailScreen({super.key});
@@ -23,7 +23,7 @@ class FlaschNailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-  appBar: const CustomAppBar(),
+      appBar: const CustomAppBar(),
       body: Stack(
         children: [
           Center(
@@ -48,14 +48,16 @@ class FlaschNailScreen extends StatelessWidget {
                   child: Container(
                     margin: const EdgeInsets.only(bottom: 10),
                     alignment: Alignment.bottomCenter,
-                    width: MediaQuery.of(context).size.width - MediaQuery.of(context).size.width / 3.5,
+                    width: MediaQuery.of(context).size.width -
+                        MediaQuery.of(context).size.width / 3.5,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         for (var nail in flaschNailImages)
                           GestureDetector(
                             onTap: () {
-                              Get.to(FlaschNailDetails(flaschNail: nail, nails: flaschNailImages));
+                              Get.to(FlaschNailDetails(
+                                  flaschNail: nail, nails: flaschNailImages));
                             },
                             child: Image.asset(
                               nail.path,
@@ -72,13 +74,15 @@ class FlaschNailScreen extends StatelessWidget {
                     width: MediaQuery.of(context).size.width,
                     decoration: const BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage("assets/flasch_nail/FlaschNailBg.png"),
+                        image:
+                            AssetImage("assets/flasch_nail/FlaschNailBg.png"),
                         fit: BoxFit.cover,
                       ),
                     ),
                     child: Center(
                       child: SizedBox(
-                        width: MediaQuery.of(context).size.width - MediaQuery.of(context).size.width / 3.5,
+                        width: MediaQuery.of(context).size.width -
+                            MediaQuery.of(context).size.width / 3.5,
                         child: SingleChildScrollView(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -98,14 +102,17 @@ class FlaschNailScreen extends StatelessWidget {
                                     ),
                                     GestureDetector(
                                       onTap: () {
-                                        Get.to(FlaschNailDetails(flaschNail: nail, nails: flaschNailImages));
+                                        Get.to(FlaschNailDetails(
+                                            flaschNail: nail,
+                                            nails: flaschNailImages));
                                       },
                                       child: Stack(
                                         children: [
                                           Image.asset(
                                             nail.path,
                                           ),
-                                          Image.asset("assets/flasch_nail/Calque.png"),
+                                          Image.asset(
+                                              "assets/flasch_nail/Calque.png"),
                                         ],
                                       ),
                                     ),
@@ -122,10 +129,10 @@ class FlaschNailScreen extends StatelessWidget {
             ),
           ),
           const CustomBottomBar(
-        categoryName: 'FLASCH NAIL',
-        heroTag: 'FlaschNail',
-        imagePath: "assets/categories/FlaschNailLarge.png",
-      ),
+            categoryName: 'FLASCH NAIL',
+            heroTag: 'FlaschNail',
+            imagePath: "assets/categories/FlaschNailLarge.png",
+          ),
         ],
       ),
     );
