@@ -150,7 +150,7 @@ class BaseCuticulOilWidget extends StatelessWidget {
                             SizedBox(
                               width: 600.w,
                               child: Text(
-                                "ce soin riche aux huiles naturelles régénere à la base de huil de ricin , restructure et hydrate lescuticules fissuré et séchesil assoucit la peau et permet de détacher en douceur les cutils des angles et accélére leur repousse soigne l’épiderme et améliore sa capacitéde tétention de l’humidité",
+                                "ce soin riche aux huiles naturelles régénere à la base de huil de ricin , restructure et hydrate lescuticules fissuré et séchesil assoucit la peau et permet de détacher en douceur les cutils des angles et accélére leur repousse ",
                                 style: TextStyle(
                                   fontFamily: "Gotham",
                                   fontWeight: FontWeight.w400,
@@ -237,7 +237,7 @@ class _ScaleImageState extends State<ScaleImage> with SingleTickerProviderStateM
       vsync: this,
     );
 
-    _scaleAnimation = Tween<double>(begin: 1.0, end: 1.8).animate(_animationController); // Specify the target scale values
+    _scaleAnimation = Tween<double>(begin: 1.0, end: 1.6).animate(_animationController); // Specify the target scale values
 
     _animationController.forward(); // Start the animation
   }
