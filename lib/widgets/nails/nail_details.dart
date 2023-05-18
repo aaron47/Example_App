@@ -243,17 +243,39 @@ class BaseNail extends StatelessWidget {
                         ],
                       ),
                       SizedBox(width: MediaQuery.of(context).size.width * 0.1),
-                      Stack(
+                      Column(
                         children: [
-                          Positioned(
-                              bottom: 0,
-                              right: 50,
-                              child: Image.asset(
-                                nail.imgPath,
-                                width: 150.w,
-                              )),
-                          Image.asset("assets/bottleNailPolich.png",
-                              width: 250.w),
+                          Stack(
+                            children: [
+                              Positioned(
+                                  bottom: 0,
+                                  right: 50,
+                                  child: Image.asset(
+                                    nail.imgPath,
+                                    width: 150.w,
+                                  )),
+                              Image.asset("assets/bottleNailPolich.png",
+                                  width: 250.w),
+                              Positioned(
+                                bottom: 2,
+                                child: Container(
+                                  width: 500.w,
+                                  height: 10.w,
+                                  decoration: const BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(50)),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black54,
+                                        blurRadius: 20.0,
+                                        offset: Offset(0.0, 0.005),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
                         ],
                       )
                     ],

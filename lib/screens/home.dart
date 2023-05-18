@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../shared/tablet_detector.dart';
 import 'cuticul_oil/cuticule_oil.dart';
 import 'flasch_nail/flasch_nail.dart';
+import 'flasch_nail/new_flasch_nail.dart';
 import 'nails_polish/nails_polish.dart';
 
 import 'package:flutter/material.dart';
@@ -72,7 +73,7 @@ class HomeScreenTablet extends StatelessWidget {
                       imgPath: "assets/categories/FlaschNailLarge.png",
                       categoryName: 'Flasch Nail',
                       onChangeScreen: () {
-                        Get.to(FlaschNailScreen(),
+                        Get.to(NewFlaschNailScreen(),
                             duration: const Duration(milliseconds: 800));
                       },
                       tag: 'FlaschNail',
