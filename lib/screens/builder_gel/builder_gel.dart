@@ -156,7 +156,8 @@ class ListGel extends StatelessWidget {
                             gel: e,
                             gels: builderGelListRow,
                           ),
-                          duration: const Duration(milliseconds: 800));
+                           duration: const Duration(milliseconds: 800)
+                          );
                     },
                     child: Stack(
                       alignment: Alignment.center,
@@ -164,6 +165,7 @@ class ListGel extends StatelessWidget {
                         Center(
                           child: Hero(
                             tag: 'Gel${e.id}',
+                            
                             child: Image.asset(
                               e.imgPath,
                               width: isTablet ? 220.w : 440.w,

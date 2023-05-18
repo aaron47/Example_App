@@ -94,6 +94,7 @@ class BaseCuticulOilWidget extends StatelessWidget {
               children: [
                 Stack(
                   children: [
+                
                     Container(
                       margin: EdgeInsets.only(top: 50.h),
                       child: Image.asset(
@@ -108,15 +109,7 @@ class BaseCuticulOilWidget extends StatelessWidget {
                         child: Align(
                           child: RotatedBox(
                             quarterTurns: 1,
-                            child: Container(
-                              // margin: EdgeInsets.only(right: 700.w),
-                              child: Image.asset(
-                                oil.imgPath,
-                                fit: BoxFit.contain,
-                                height: 92.17.h,
-                                width: 836.49.w,
-                              ),
-                            ),
+                            child: ScaleImage(imagePath: oil.imgPath),
                           ),
                         ),
                       ),
@@ -223,3 +216,53 @@ class BaseCuticulOilWidget extends StatelessWidget {
 //           ],
 //         ),
 //       ),
+class ScaleImage extends StatefulWidget {
+  final String imagePath;
+
+  ScaleImage({required this.imagePath});
+
+  @override
+  _ScaleImageState createState() => _ScaleImageState();
+}
+
+class _ScaleImageState extends State<ScaleImage> with SingleTickerProviderStateMixin {
+  late AnimationController _animationController;
+  late Animation<double> _scaleAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      duration: Duration(milliseconds: 500), // Set the desired animation duration
+      vsync: this,
+    );
+
+    _scaleAnimation = Tween<double>(begin: 1.0, end: 1.8).animate(_animationController); // Specify the target scale values
+
+    _animationController.forward(); // Start the animation
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: _scaleAnimation,
+      builder: (context, child) {
+        return Transform.scale(
+          scale: _scaleAnimation.value,
+          child: Image.asset(
+            widget.imagePath,
+            fit: BoxFit.contain,
+            height: 52.17.h,
+            width: 836.49.w,
+          ),
+        );
+      },
+    );
+  }
+}

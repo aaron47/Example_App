@@ -97,14 +97,13 @@ class BaseBuilderGelDetailWidget extends StatelessWidget {
                    Align(
                     alignment: Alignment.topCenter,
                      child: Stack(
-                       children: [
-                         Container(
-                            // margin: isTablet ? EdgeInsets.only(bottom: 20.h, left: 420.w) : EdgeInsets.only(left: 220.w, top: 150.w),
-                            child: Image.asset(
-                              gel.shape,
-                              width: isTablet ? 840.w : MediaQuery.of(context).size.width,
-                            ),
-                          ),
+                       children: [    SizedBox(width:  840.w,
+                        height:840.w ,),
+                         Image.asset(
+                           gel.shape,
+                           width: isTablet ? 840.w : MediaQuery.of(context).size.width,
+                         ),
+                    
                                 Positioned.fill(
                                   top: 840.w-(77.w+10.h+30.h),
                                   bottom: 0.0,

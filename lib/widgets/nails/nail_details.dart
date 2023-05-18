@@ -257,20 +257,22 @@ class BaseNail extends StatelessWidget {
                               Image.asset("assets/bottleNailPolich.png",
                                   width: 250.w),
                               Positioned(
-                                bottom: 2,
-                                child: Container(
-                                  width: 500.w,
-                                  height: 10.w,
-                                  decoration: const BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(50)),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.black54,
-                                        blurRadius: 20.0,
-                                        offset: Offset(0.0, 0.005),
-                                      )
-                                    ],
+                                bottom: 1,
+                                child: Center(
+                                  child: Container(
+                                    width: 240.w,
+                                    height: 10.w,
+                                    decoration:  BoxDecoration(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(10)),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.black54,
+                                          blurRadius: 20.0,
+                                          offset: Offset(2.0, 2),
+                                        )
+                                      ],
+                                    ),
                                   ),
                                 ),
                               )

@@ -60,14 +60,10 @@ class CuticuleOilScreen extends StatelessWidget {
         children: [
           Row(
             children: [
-                                 const ButtonPlayVideo(),
-
-                 Container(
-                 
-                        width: 1511.w,
-                        decoration: const BoxDecoration(
-                            color: Color.fromRGBO(240, 240, 240, 1)
-                            ),
+              const ButtonPlayVideo(),
+              Container(
+                width: 1511.w,
+                decoration: const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -102,20 +98,25 @@ class CuticuleOilScreen extends StatelessWidget {
                                         },
                                         child: GestureDetector(
                                           onTap: () {
-                                            Get.to(
-                                                CuticulOilDetails(
-                                                    oil: e, oils: builderOilList),
-                                                duration: const Duration(
-                                                    milliseconds: 800));
+                                            Get.to(CuticulOilDetails(oil: e, oils: builderOilList), duration: const Duration(milliseconds: 800));
                                           },
                                           child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            crossAxisAlignment: CrossAxisAlignment.center,
                                             children: [
                                               Hero(
                                                 tag: 'oil${e.id}',
+                                                flightShuttleBuilder: (BuildContext flightContext, Animation<double> animation,
+                                                    HeroFlightDirection flightDirection, BuildContext fromHeroContext, BuildContext toHeroContext) {
+                                                  return RotationTransition(
+                                                    turns:
+                                                        Tween(begin: 0.0, end: 0.25).animate(animation), // Control the animation to perform half turns
+                                                    child: Image.asset(
+                                                      e.imgPath,
+                                                      // width: 217.w,
+                                                    ),
+                                                  );
+                                                },
                                                 child: Image.asset(
                                                   e.imgPath,
                                                   // width: 217.w,
@@ -124,17 +125,13 @@ class CuticuleOilScreen extends StatelessWidget {
                                               SizedBox(
                                                 width: 20.h,
                                               ),
-                                              Hero(
-                                                tag: 'id${e.id}',
-                                                child: Text(
-                                                  e.id,
-                                                  style: TextStyle(
-                                                    fontSize: 30.sp,
-                                                    fontFamily: "Gotham",
-                                                    fontWeight: FontWeight.w700,
-                                                    color: const Color.fromRGBO(
-                                                        20, 76, 80, 1),
-                                                  ),
+                                              Text(
+                                                e.id,
+                                                style: TextStyle(
+                                                  fontSize: 30.sp,
+                                                  fontFamily: "Gotham",
+                                                  fontWeight: FontWeight.w700,
+                                                  color: const Color.fromRGBO(20, 76, 80, 1),
                                                 ),
                                               ),
                                             ],
@@ -148,87 +145,86 @@ class CuticuleOilScreen extends StatelessWidget {
                                 Container(
                                   height: 470.h,
                                   width: 600.56.w,
+                                  // color: Colors.white,
                                   alignment: Alignment.bottomCenter,
                                   child: Image.asset(
                                     "assets/cuticul_oil/oil_background.png",
                                     width: 533.w,
                                   ),
                                 ),
-                                SizedBox(
-                                  width: 533.56.w,
-                                  height: 600.h,
-                                  //  color: Colors.amber,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-                                      Column(
-                                        children: [
-                                          GestureDetector(
-                                            onTap: () {
-                                              Get.to(
-                                                  () => const AppleDetailsScreen());
-                                            },
-                                            child: Image.asset(
-                                              "assets/cuticul_oil/Apple.png",
-                                              width: 153.w,
-                                              height: 393.h,
+                                Positioned.fill(
+                                  child: SizedBox(
+                                    width: 500.w,
+                                    height: 600.h,
+                                    //  color: Colors.amber,
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Column(
+                                          children: [
+                                            GestureDetector(
+                                              onTap: () {
+                                                Get.to(() => const AppleDetailsScreen());
+                                              },
+                                              child: Image.asset(
+                                                "assets/cuticul_oil/Apple.png",
+                                                width: 153.w,
+                                                height: 393.h,
+                                              ),
                                             ),
-                                          ),
-                                          Container(
-                                            margin: EdgeInsets.only(
-                                                top: 5.h, bottom: 15.h),
-                                            child: Text(
-                                              "Apple",
-                                              style: TextStyle(
-                                                fontSize: 20.sp,
-                                                fontFamily: "Gotham",
-                                                fontWeight: FontWeight.w700,
-                                                color: const Color.fromRGBO(
-                                                  150,
-                                                  150,
-                                                  150,
-                                                  1,
+                                            Container(
+                                              margin: EdgeInsets.only(top: 5.h, bottom: 15.h),
+                                              child: Text(
+                                                "Apple",
+                                                style: TextStyle(
+                                                  fontSize: 20.sp,
+                                                  fontFamily: "Gotham",
+                                                  fontWeight: FontWeight.w700,
+                                                  color: const Color.fromRGBO(
+                                                    150,
+                                                    150,
+                                                    150,
+                                                    1,
+                                                  ),
                                                 ),
                                               ),
                                             ),
-                                          ),
-                                        ],
-                                      ),
-                                      Column(
-                                        children: [
-                                          GestureDetector(
-                                            onTap: () {
-                                              Get.to(
-                                                  () => const OrangeDetailsScreen());
-                                            },
-                                            child: Image.asset(
-                                              "assets/cuticul_oil/Orange.png",
-                                                    width: 153.w,
-                                              height: 393.h,
+                                          ],
+                                        ),
+                                        Column(
+                                          children: [
+                                            GestureDetector(
+                                              onTap: () {
+                                                Get.to(() => const OrangeDetailsScreen());
+                                              },
+                                              child: Image.asset(
+                                                "assets/cuticul_oil/Orange.png",
+                                                width: 153.w,
+                                                height: 393.h,
+                                              ),
                                             ),
-                                          ),
-                                          Container(
-                                            margin: EdgeInsets.only(
-                                                top: 5.h, bottom: 15.h),
-                                            child: Text(
-                                              "Orange",
-                                              style: TextStyle(
-                                                fontSize: 20.sp,
-                                                fontFamily: "Gotham",
-                                                fontWeight: FontWeight.w700,
-                                                color: const Color.fromRGBO(
-                                                  150,
-                                                  150,
-                                                  150,
-                                                  1,
+                                            Container(
+                                              margin: EdgeInsets.only(top: 5.h, bottom: 15.h),
+                                              child: Text(
+                                                "Orange",
+                                                style: TextStyle(
+                                                  fontSize: 20.sp,
+                                                  fontFamily: "Gotham",
+                                                  fontWeight: FontWeight.w700,
+                                                  color: const Color.fromRGBO(
+                                                    150,
+                                                    150,
+                                                    150,
+                                                    1,
+                                                  ),
                                                 ),
                                               ),
                                             ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
+                                          ],
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ],
