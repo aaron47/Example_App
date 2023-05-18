@@ -22,6 +22,7 @@ class CatEyesDetails extends StatelessWidget {
         children: [
           SizedBox(
             width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
             child: CarouselSlider(
               options: CarouselOptions(
                 viewportFraction: 1.0,
@@ -31,7 +32,8 @@ class CatEyesDetails extends StatelessWidget {
                 return Builder(
                   builder: (BuildContext context) {
                     return Container(
-                      decoration: const BoxDecoration(color: Colors.white),
+                         height: MediaQuery.of(context).size.height,
+                      //decoration: const BoxDecoration(color: Colors.white),
                       child: BaseCatEyeNail(nail: n),
                     );
                   },
@@ -60,102 +62,101 @@ class BaseCatEyeNail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        width: 1511.w,
-        decoration:
-            const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
-        padding: const EdgeInsets.all(50),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            InkWell(
-              onTap: () {
-                Get.back();
-              },
-              child: Align(
-                alignment: Alignment.topRight,
-                child: Image.asset("assets/CloseButton.png",
-                    width: 66.21.w, height: 66.h),
-              ),
+    return Container(
+      width: 1511.w,
+       height: MediaQuery.of(context).size.height,
+      decoration:
+          const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
+      // padding: const EdgeInsets.all(50),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          InkWell(
+            onTap: () {
+              Get.back();
+            },
+            child: Align(
+              alignment: Alignment.topRight,
+              child: Image.asset("assets/CloseButton.png",
+                  width: 66.21.w, height: 66.h),
             ),
-            Center(
-              heightFactor: 1,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  _CatEyeNailCard(
-                    catEyeNail: nail,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "CAT EYES",
-                        style: TextStyle(
-                          fontSize: 32.sp,
-                          fontFamily: "Gotham",
-                          fontWeight: FontWeight.w700,
-                          color: const Color.fromRGBO(35, 40, 55, 1),
+          ),
+          Center(
+           // heightFactor: 1,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                _CatEyeNailCard(
+                  catEyeNail: nail,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "CAT EYES",
+                      style: TextStyle(
+                        fontSize: 32.sp,
+                        fontFamily: "Gotham",
+                        fontWeight: FontWeight.w700,
+                        color: const Color.fromRGBO(35, 40, 55, 1),
+                      ),
+                    ),
+                    const PlayButtonLarge(
+                      bottomMargin: 0,
+                    ),
+                    SizedBox(
+                      width: 350,
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Ref:${nail.ref}",
+                              style: TextStyle(
+                                fontSize: 32.sp,
+                                fontFamily: "Gotham",
+                                fontWeight: FontWeight.w700,
+                                color: const Color.fromRGBO(80, 79, 79, 1),
+                              ),
+                            ),
+                            Text(
+                              "Flasching Disco Gel",
+                              style: TextStyle(
+                                fontFamily: "Gotham",
+                                fontWeight: FontWeight.w400,
+                                fontSize: 32.sp,
+                                color: const Color.fromRGBO(97, 95, 95, 1),
+                              ),
+                            ),
+                            Text(
+                              "Time of polymerization in light of the UV lamp-2-3minutes LED-lamp-1 minute",
+                              style: TextStyle(
+                                fontFamily: "Gotham",
+                                fontWeight: FontWeight.w400,
+                                fontSize: 24.sp,
+                                color: const Color.fromRGBO(126, 126, 126, 1),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      const PlayButtonLarge(
-                        bottomMargin: 0,
-                      ),
-                      SizedBox(
-                        width: 350,
-                        child: Padding(
-                          padding: const EdgeInsets.all(12.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Ref:${nail.ref}",
-                                style: TextStyle(
-                                  fontSize: 32.sp,
-                                  fontFamily: "Gotham",
-                                  fontWeight: FontWeight.w700,
-                                  color: const Color.fromRGBO(80, 79, 79, 1),
-                                ),
-                              ),
-                              Text(
-                                "Flasching Disco Gel",
-                                style: TextStyle(
-                                  fontFamily: "Gotham",
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 32.sp,
-                                  color: const Color.fromRGBO(97, 95, 95, 1),
-                                ),
-                              ),
-                              Text(
-                                "Time of polymerization in light of the UV lamp-2-3minutes LED-lamp-1 minute",
-                                style: TextStyle(
-                                  fontFamily: "Gotham",
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 24.sp,
-                                  color: const Color.fromRGBO(126, 126, 126, 1),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(width: MediaQuery.of(context).size.width * 0.1),
-                  Image.asset(
-                    "assets/cat_eyes/CatEyesBottle.png",
-                    width: 232.w,
-                    height: 594.h,
-                  ),
-                ],
-              ),
+                    ),
+                  ],
+                ),
+                SizedBox(width: MediaQuery.of(context).size.width * 0.1),
+                Image.asset(
+                  "assets/cat_eyes/CatEyesBottle.png",
+                  width: 232.w,
+                  height: 594.h,
+                ),
+              ],
             ),
-            const SizedBox(height: 10),
-          ],
-        ),
+          ),
+         
+        ],
       ),
     );
   }
@@ -169,8 +170,8 @@ class _CatEyeNailCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 379.13.w,
-      height: 783.43.h,
+      width: 360.13.w,
+      height: 700.h,
       child: Stack(
         children: [
           Image.asset(

@@ -1,4 +1,5 @@
 import 'package:essential_beauty/models/gel_builder.dart';
+import 'package:essential_beauty/screens/rubber_base_gel/rubber_base_gel.dart';
 import 'package:essential_beauty/shared/tablet_detector.dart';
 import 'package:essential_beauty/widgets/custom_bottom_bar.dart';
 import 'package:essential_beauty/widgets/nails/custom_app_bar.dart';
@@ -57,53 +58,65 @@ class BuilderGelScreen extends StatelessWidget {
       appBar: CustomAppBar(),
       body: Stack(
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.start,
+          Row(
             children: [
-              Center(
-                child: Padding(
-                  padding: isTablet
-                      ? const EdgeInsets.all(20)
-                      : const EdgeInsets.all(40),
-                  child: Text(
-                    "Builder gel",
-                    style: TextStyle(
-                      fontSize: isTablet ? 32 : 22,
-                      fontFamily: "Gotham",
-                      fontWeight: FontWeight.w700,
-                      color: Color.fromRGBO(11, 43, 45, 1),
+ const ButtonPlayVideo(),
+
+              Container(
+            
+                    width: 1511.w,
+                    decoration: const BoxDecoration(
+                        color: Color.fromRGBO(240, 240, 240, 1)),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Center(
+                      child: Padding(
+                        padding: isTablet
+                            ? const EdgeInsets.all(20)
+                            : const EdgeInsets.all(40),
+                        child: Text(
+                          "Builder gel",
+                          style: TextStyle(
+                            fontSize: isTablet ? 32 : 22,
+                            fontFamily: "Gotham",
+                            fontWeight: FontWeight.w700,
+                            color: Color.fromRGBO(11, 43, 45, 1),
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
+                    Expanded(
+                      child: Container(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            isTablet
+                                ? ListGel(
+                                    builderGelListRow:
+                                        builderGelListRow.take(4).toList())
+                                : ListGel(
+                                    builderGelListRow:
+                                        builderGelListRow.take(3).toList()),
+                            isTablet
+                                ? ListGel(
+                                    builderGelListRow: builderGelListRow.sublist(4))
+                                : ListGel(
+                                    builderGelListRow:
+                                        builderGelListRow.sublist(3, 6)),
+                            isTablet
+                                ? Container()
+                                : ListGel(
+                                    builderGelListRow: builderGelListRow.sublist(6)),
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
                 ),
               ),
-              Expanded(
-                child: Container(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      isTablet
-                          ? ListGel(
-                              builderGelListRow:
-                                  builderGelListRow.take(4).toList())
-                          : ListGel(
-                              builderGelListRow:
-                                  builderGelListRow.take(3).toList()),
-                      isTablet
-                          ? ListGel(
-                              builderGelListRow: builderGelListRow.sublist(4))
-                          : ListGel(
-                              builderGelListRow:
-                                  builderGelListRow.sublist(3, 6)),
-                      isTablet
-                          ? Container()
-                          : ListGel(
-                              builderGelListRow: builderGelListRow.sublist(6)),
-                    ],
-                  ),
-                ),
-              )
             ],
           ),
           const CustomBottomBar(
@@ -160,8 +173,9 @@ class ListGel extends StatelessWidget {
                         Hero(
                           tag: 'Cover${e.id}',
                           child: Image.asset(
-                            "assets/gel_builder/Coverr7.png",
-                            width: isTablet ? 250.w : 500.w,
+                            "assets/gel_builder/Coverr4.png",
+                             width: isTablet ? 220.w : 500.w,
+                            // fit: BoxFit.cover,
                           ),
                         ),
                       ],

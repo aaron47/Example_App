@@ -34,39 +34,7 @@ class RubberBaseGelTablet extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.12,
-                child: Align(
-                  alignment: Alignment.topLeft,
-                  child: Container(
-                    margin: const EdgeInsets.only(top: 80),
-                    width: 158.w,
-                    height: 147.h,
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(0),
-                        topRight: Radius.circular(75),
-                        bottomLeft: Radius.circular(0),
-                        bottomRight: Radius.circular(75),
-                      ),
-                      image: DecorationImage(
-                        image: AssetImage("assets/AppBarBackground.png"),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    child: GestureDetector(
-                      onTap: () {
-                        Get.to(const HowToApplyScreen());
-                      },
-                      child: Image.asset(
-                        "assets/PlayButtonLarge.png",
-                        width: 65.w,
-                        height: 65.h,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              ButtonPlayVideo(),
               SingleChildScrollView(
                 child: Container(
                   width: 1400.w,
@@ -101,6 +69,49 @@ class RubberBaseGelTablet extends StatelessWidget {
             imagePath: "assets/categories/RubberBaseGelLarge.png",
           ),
         ],
+      ),
+    );
+  }
+}
+
+class ButtonPlayVideo extends StatelessWidget {
+  const ButtonPlayVideo({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: MediaQuery.of(context).size.width * 0.12,
+      child: Align(
+        alignment: Alignment.topLeft,
+        child: Container(
+          margin: const EdgeInsets.only(top: 80),
+          width: 158.w,
+          height: 147.h,
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(0),
+              topRight: Radius.circular(75),
+              bottomLeft: Radius.circular(0),
+              bottomRight: Radius.circular(75),
+            ),
+            image: DecorationImage(
+              image: AssetImage("assets/AppBarBackground.png"),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: GestureDetector(
+            onTap: () {
+              Get.to(const HowToApplyScreen());
+            },
+            child: Image.asset(
+              "assets/PlayButtonLarge.png",
+              width: 65.w,
+              height: 65.h,
+            ),
+          ),
+        ),
       ),
     );
   }
