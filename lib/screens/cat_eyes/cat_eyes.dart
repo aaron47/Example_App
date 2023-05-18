@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:essential_beauty/widgets/custom_bottom_bar.dart';
 import 'package:essential_beauty/widgets/custom_ripple_effect.dart';
 import 'package:essential_beauty/widgets/nails/custom_app_bar.dart';
@@ -67,9 +69,14 @@ class CatEyesScreen extends StatelessWidget {
                             },
                             child: Column(
                               children: [
-                                Image.asset(
-                                  nail.imgPath,
-                                  // width: MediaQuery.of(context).size.width / 10,
+                                Transform.rotate(
+                                  angle: pi,
+                                  child: Image.asset(
+                                    nail.imgPath,
+                                    height: 496.h,
+                                    width: 133.w,
+                                    // width: MediaQuery.of(context).size.width / 10,
+                                  ),
                                 ),
                                 SizedBox(height: 15.h),
                                 Text(

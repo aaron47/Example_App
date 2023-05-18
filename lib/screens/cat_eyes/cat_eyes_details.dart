@@ -62,14 +62,24 @@ class BaseCatEyeNail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        width: MediaQuery.of(context).size.width,
+        width: 1511.w,
         decoration:
             const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
         padding: const EdgeInsets.all(50),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            InkWell(
+              onTap: () {
+                Get.back();
+              },
+              child: Align(
+                alignment: Alignment.topRight,
+                child: Image.asset("assets/CloseButton.png",
+                    width: 66.21.w, height: 66.h),
+              ),
+            ),
             Center(
               heightFactor: 1,
               child: Row(
@@ -134,6 +144,12 @@ class BaseCatEyeNail extends StatelessWidget {
                       ),
                     ],
                   ),
+                  SizedBox(width: MediaQuery.of(context).size.width * 0.1),
+                  Image.asset(
+                    "assets/cat_eyes/CatEyesBottle.png",
+                    width: 232.w,
+                    height: 594.h,
+                  ),
                 ],
               ),
             ),
@@ -152,32 +168,38 @@ class _CatEyeNailCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Image.asset(
-          "assets/flasch_nail/FlaschNailCard1.png",
-          width: 379.13.w,
-          height: 630.79.h,
-          fit: BoxFit.contain,
-        ),
-        Positioned.fill(
-          child: Align(
+    return SizedBox(
+      width: 379.13.w,
+      height: 783.43.h,
+      child: Stack(
+        children: [
+          Image.asset(
+            "assets/flasch_nail/FlaschNailCard1.png",
+            width: 379.13.w,
+            height: 630.79.h,
+            fit: BoxFit.contain,
+          ),
+          Align(
+            alignment: Alignment.center,
             child: Transform.rotate(
-              angle: 170,
+              angle: 525,
               child: Stack(
                 children: [
-                  Image.asset(
-                    catEyeNail.imgPath,
-                    fit: BoxFit.contain,
-                    width: 203.94.w,
-                    height: 760.13.h,
+                  Container(
+                    margin: EdgeInsets.only(top: 50.h, left: 50.w),
+                    child: Image.asset(
+                      catEyeNail.imgPath,
+                      fit: BoxFit.contain,
+                      width: 211.12.w,
+                      height: 783.43.h,
+                    ),
                   ),
                 ],
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
