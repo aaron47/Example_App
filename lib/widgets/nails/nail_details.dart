@@ -149,7 +149,7 @@ class BaseNail extends StatelessWidget {
     return Center(
       child: SizedBox(
         width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
+        // height: MediaQuery.of(context).size.height,
         child: Center(
           child: Container(
             width: MediaQuery.of(context).size.width,
@@ -259,7 +259,7 @@ class BaseNail extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(height: 300.h),
+                SizedBox(height: 20),
               ],
             ),
           ),

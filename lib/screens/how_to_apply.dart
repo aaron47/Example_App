@@ -1,6 +1,7 @@
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:video_player/video_player.dart';
 
 import '../widgets/nails/custom_app_bar.dart';
@@ -29,7 +30,15 @@ class _HowToApplyScreenState extends State<HowToApplyScreen> {
   }
 
   void _createChewieController() {
-    _chewieController = ChewieController(videoPlayerController: _videoPlayerController);
+    _chewieController = ChewieController(videoPlayerController: _videoPlayerController,
+    materialProgressColors: ChewieProgressColors(
+      
+      backgroundColor: Colors.white,
+      playedColor: Color.fromRGBO(26, 127, 134, 100),
+      bufferedColor:  Color.fromRGBO(26, 127, 134, 20),
+      ),
+      
+    );
   }
 
   @override
@@ -42,7 +51,27 @@ class _HowToApplyScreenState extends State<HowToApplyScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:  RightSide(chewieController: _chewieController),
+      appBar: const CustomAppBar(),
+      body:  Container(
+                width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+             decoration: const BoxDecoration(
+        gradient: RadialGradient(
+          center: Alignment(0.0393, 1.0),
+          radius: 4.1932,
+          colors: [
+            Color.fromRGBO(20, 77, 81, 0.8),
+            Color.fromRGBO(0, 0, 0, 0.8),
+          ],
+        )),
+        child: Row(
+         
+          children: [
+            const LeftSide(),
+            RightSide(chewieController: _chewieController),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -58,15 +87,38 @@ class RightSide extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: AspectRatio(
-        aspectRatio: 16 / 9,
-        child: Center(
-          child: _chewieController != null && _chewieController!.videoPlayerController.value.isInitialized
-              ? Chewie(
-                  controller: _chewieController!,
-                )
-              :           CircularProgressIndicator(),
-        ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SizedBox(width: MediaQuery.of(context).size.width / 2,),
+                InkWell(
+                onTap: () {
+                  Get.back();
+                },
+                child: Align(
+                  alignment: Alignment.topRight,
+                  child: Image.asset("assets/CloseButton.png",
+                      width: 66.21.w, height: 66.h),
+                ),
+                        ),
+              ],
+            ),
+          Container(
+            margin: EdgeInsets.only(left: 40.w),
+            width: MediaQuery.of(context).size.width / 2,
+                  height: MediaQuery.of(context).size.height / 2,
+            child: Center(
+              child: _chewieController != null && _chewieController!.videoPlayerController.value.isInitialized
+                  ? Chewie(
+                      controller: _chewieController!,
+                    )
+                  :           const CircularProgressIndicator(backgroundColor: Color.fromRGBO(20, 77, 81, 0.8),),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -83,38 +135,42 @@ class LeftSide extends StatelessWidget {
       children: [
         Align(
           alignment: Alignment.topLeft,
-          child: Container(
-            margin: const EdgeInsets.only(top: 20, bottom: 20),
-            width: 536.w,
-            height: 147.h,
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(0),
-                topRight: Radius.circular(75),
-                bottomLeft: Radius.circular(0),
-                bottomRight: Radius.circular(75),
+          child: Hero(
+            tag: "HowToApply",
+            child: Container(
+              margin:  EdgeInsets.only(top: 20.h, bottom: 20),
+          
+              width: 636.w,
+              height: 147.h,
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(0),
+                  topRight: Radius.circular(75),
+                  bottomLeft: Radius.circular(0),
+                  bottomRight: Radius.circular(75),
+                ),
+                image: DecorationImage(
+                  image: AssetImage("assets/AppBarBackground.png"),
+                  fit: BoxFit.cover,
+                ),
               ),
-              image: DecorationImage(
-                image: AssetImage("assets/AppBarBackground.png"),
-                fit: BoxFit.cover,
-              ),
-            ),
-            child: GestureDetector(
-              onTap: () {},
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text(
-                    "How to apply",
-                    style: TextStyle(
-                      fontFamily: "Gotham",
-                      fontWeight: FontWeight.w700,
-                      fontSize: 35.sp,
-                      color: Colors.white,
+              child: GestureDetector(
+                onTap: () {},
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text(
+                      "How to apply",
+                      style: TextStyle(
+                        fontFamily: "Gotham",
+                        fontWeight: FontWeight.w700,
+                        fontSize: 35.sp,
+                        color: Colors.white,
+                      ),
                     ),
-                  ),
-                  Image.asset("assets/PlayButtonLarge.png"),
-                ],
+                    Image.asset("assets/PlayButtonLarge.png"),
+                  ],
+                ),
               ),
             ),
           ),
@@ -122,7 +178,7 @@ class LeftSide extends StatelessWidget {
         Container(
           margin: const EdgeInsets.symmetric(vertical: 20),
           padding: const EdgeInsets.all(40),
-          width: 460.87.w,
+          width: 560.87.w,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             border: Border.all(color: Colors.white),
@@ -139,6 +195,7 @@ class LeftSide extends StatelessWidget {
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
                     children: const [
@@ -162,10 +219,10 @@ class LeftSide extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(width: 40),
-                  const Text(
+                   Text(
                     "Color Gel Polish",
                     style: TextStyle(
-                      shadows: [
+                      shadows: const [
                         Shadow(
                           color: Color.fromRGBO(0, 0, 0, 0.25),
                           offset: Offset(0, 3.5),
@@ -173,19 +230,19 @@ class LeftSide extends StatelessWidget {
                       ],
                       color: Colors.white,
                       fontFamily: "Gotham",
-                      fontSize: 24,
+                      fontSize: 28.w,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
                 ],
               ),
-              const Text(
+               Text(
                 "Time of polymerization in light of the UV lamp-2-3minutes LED-lamp-1 minute",
                 style: TextStyle(
                   fontFamily: "Gotham",
                   fontWeight: FontWeight.w400,
-                  fontSize: 24,
-                  color: Color.fromRGBO(235, 235, 235, 1),
+                  fontSize: 28.w,
+                  color: const Color.fromRGBO(235, 235, 235, 1),
                 ),
               ),
             ],

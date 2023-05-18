@@ -18,15 +18,18 @@ class NailWidget extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-            Get.to(NailDetails(nail: nail, nails: nails));
+            Get.to(NailDetails(nail: nail, nails: nails),duration: Duration(milliseconds: 800));
           },
           child: TabletDetector.isTablet(
                   MediaQueryData.fromWindow(WidgetsBinding.instance.window))
-              ? Image.asset(
-                  nail.imgPath,
-                  width: 92.12.w,
-                  height: 203.79.h,
-                )
+              ?Hero(
+                  tag: "NailsPolish${nail.id}",
+                child: Image.asset(
+                    nail.imgPath,
+                    width: 92.12.w,
+                    height: 203.79.h,
+                  ),
+              )
               : Image.asset(
                   nail.imgPath,
                 ),

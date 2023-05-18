@@ -16,7 +16,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
           margin: EdgeInsets.only(
             right: MediaQuery.of(context).size.height * 0.02,
           ),
-          child: Image.asset("assets/PlayButton.png"),
+          child: Icon(Icons.menu,color: Colors.white,size: MediaQuery.of(context).size.height * 0.03 ,),
         ),
       ],
       title: Container(

@@ -271,27 +271,30 @@ class BaseGelNailPhone extends StatelessWidget {
       children: [
         Align(
           alignment: Alignment.topLeft,
-          child: Container(
-            margin: const EdgeInsets.only(top: 20),
-            width: 75,
-            height: 69,
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(0),
-                topRight: Radius.circular(75),
-                bottomLeft: Radius.circular(0),
-                bottomRight: Radius.circular(75),
+          child: Hero(
+                   tag: "HowToApply",
+            child: Container(
+              margin: const EdgeInsets.only(top: 20),
+              width: 75,
+              height: 69,
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(0),
+                  topRight: Radius.circular(75),
+                  bottomLeft: Radius.circular(0),
+                  bottomRight: Radius.circular(75),
+                ),
+                image: DecorationImage(
+                  image: AssetImage("assets/AppBarBackground.png"),
+                  fit: BoxFit.cover,
+                ),
               ),
-              image: DecorationImage(
-                image: AssetImage("assets/AppBarBackground.png"),
-                fit: BoxFit.cover,
-              ),
+              child: GestureDetector(
+                  onTap: () {
+                    Get.to(() =>const HowToApplyScreen(),duration: Duration(milliseconds: 800));
+                  },
+                  child: Image.asset("assets/PlayButton.png")),
             ),
-            child: GestureDetector(
-                onTap: () {
-                  Get.to(() => const HowToApplyScreen());
-                },
-                child: Image.asset("assets/PlayButton.png")),
           ),
         ),
         Center(
@@ -362,12 +365,14 @@ class _RubberBaseGelCard extends StatelessWidget {
     return Stack(
       children: [
         isTablet
-            ? Image.asset(
-                "assets/nails/Card.png",
-                width: 379.13.w,
-                height: 630.79.h,
-                fit: BoxFit.contain,
-              )
+            ? Container(
+              child: Image.asset(
+                  "assets/nails/Card.png",
+                  width: 379.13.w,
+                  height: 630.79.h,
+                  fit: BoxFit.contain,
+                ),
+            )
             : Image.asset(
                 "assets/nails/Card.png",
                 // width: 183.13.w,
@@ -377,13 +382,16 @@ class _RubberBaseGelCard extends StatelessWidget {
         Positioned.fill(
           child: Align(
             child: isTablet
-                ? Image.asset(
-                    "assets/rubber_base_gel/${nail.id}.png",
-                    fit: BoxFit.contain,
-                    height: 478.h,
-                    width: 216.w,
-                    // height: 200,
-                  )
+                ? Hero(
+             tag: "RubberBaseGel${nail.id}",
+                  child: Image.asset(
+                      "assets/rubber_base_gel/${nail.id}.png",
+                      fit: BoxFit.contain,
+                      height: 478.h,
+                      width: 216.w,
+                      // height: 200,
+                    ),
+                )
                 : Image.asset(
                     "assets/rubber_base_gel/${nail.id}.png",
                     fit: BoxFit.contain,
