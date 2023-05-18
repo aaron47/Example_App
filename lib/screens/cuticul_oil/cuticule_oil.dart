@@ -1,8 +1,5 @@
 import 'package:essential_beauty/models/cuticul_oil.dart';
-import 'package:essential_beauty/models/gel_builder.dart';
-import 'package:essential_beauty/screens/apple_details.dart';
 import 'package:essential_beauty/screens/cuticul_oil/cuticul_oil_details.dart';
-import 'package:essential_beauty/screens/orange_details.dart';
 import 'package:essential_beauty/screens/rubber_base_gel/rubber_base_gel.dart';
 import 'package:essential_beauty/widgets/custom_bottom_bar.dart';
 import 'package:essential_beauty/widgets/nails/custom_app_bar.dart';
@@ -10,8 +7,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import 'bottle_screen.dart';
+
 class CuticuleOilScreen extends StatelessWidget {
   CuticuleOilScreen({super.key});
+
+  final List<Bottle> bottles = const [
+    Bottle("01", imgPath: "assets/cuticul_oil/Apple.png", ref: "Apple"),
+    Bottle("02", imgPath: "assets/cuticul_oil/Orange.png", ref: "Orange"),
+  ];
 
   final List<CuticulOil> builderOilList = [
     CuticulOil(
@@ -63,7 +67,8 @@ class CuticuleOilScreen extends StatelessWidget {
               const ButtonPlayVideo(),
               Container(
                 width: 1511.w,
-                decoration: const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
+                decoration: const BoxDecoration(
+                    color: Color.fromRGBO(240, 240, 240, 1)),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -98,19 +103,37 @@ class CuticuleOilScreen extends StatelessWidget {
                                         },
                                         child: GestureDetector(
                                           onTap: () {
-                                            Get.to(CuticulOilDetails(oil: e, oils: builderOilList), duration: const Duration(milliseconds: 800));
+                                            Get.to(
+                                                CuticulOilDetails(
+                                                    oil: e,
+                                                    oils: builderOilList),
+                                                duration: const Duration(
+                                                    milliseconds: 800));
                                           },
                                           child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
                                             children: [
                                               Hero(
                                                 tag: 'oil${e.id}',
-                                                flightShuttleBuilder: (BuildContext flightContext, Animation<double> animation,
-                                                    HeroFlightDirection flightDirection, BuildContext fromHeroContext, BuildContext toHeroContext) {
+                                                flightShuttleBuilder:
+                                                    (BuildContext flightContext,
+                                                        Animation<double>
+                                                            animation,
+                                                        HeroFlightDirection
+                                                            flightDirection,
+                                                        BuildContext
+                                                            fromHeroContext,
+                                                        BuildContext
+                                                            toHeroContext) {
                                                   return RotationTransition(
-                                                    turns:
-                                                        Tween(begin: 0.0, end: 0.25).animate(animation), // Control the animation to perform half turns
+                                                    turns: Tween(
+                                                            begin: 0.0,
+                                                            end: 0.25)
+                                                        .animate(
+                                                            animation), // Control the animation to perform half turns
                                                     child: Image.asset(
                                                       e.imgPath,
                                                       // width: 217.w,
@@ -131,7 +154,8 @@ class CuticuleOilScreen extends StatelessWidget {
                                                   fontSize: 30.sp,
                                                   fontFamily: "Gotham",
                                                   fontWeight: FontWeight.w700,
-                                                  color: const Color.fromRGBO(20, 76, 80, 1),
+                                                  color: const Color.fromRGBO(
+                                                      20, 76, 80, 1),
                                                 ),
                                               ),
                                             ],
@@ -158,14 +182,21 @@ class CuticuleOilScreen extends StatelessWidget {
                                     height: 600.h,
                                     //  color: Colors.amber,
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
                                       children: [
                                         Column(
                                           children: [
                                             GestureDetector(
                                               onTap: () {
-                                                Get.to(() => const AppleDetailsScreen());
+                                                Get.to(
+                                                  () => BottleScreen(
+                                                    bottle: bottles[0],
+                                                    bottles: bottles,
+                                                  ),
+                                                );
                                               },
                                               child: Image.asset(
                                                 "assets/cuticul_oil/Apple.png",
@@ -174,7 +205,8 @@ class CuticuleOilScreen extends StatelessWidget {
                                               ),
                                             ),
                                             Container(
-                                              margin: EdgeInsets.only(top: 2.h, bottom: 15.h),
+                                              margin: EdgeInsets.only(
+                                                  top: 5.h, bottom: 15.h),
                                               child: Text(
                                                 "Apple",
                                                 style: TextStyle(
@@ -196,7 +228,12 @@ class CuticuleOilScreen extends StatelessWidget {
                                           children: [
                                             GestureDetector(
                                               onTap: () {
-                                                Get.to(() => const OrangeDetailsScreen());
+                                                Get.to(
+                                                  () => BottleScreen(
+                                                    bottle: bottles[1],
+                                                    bottles: bottles,
+                                                  ),
+                                                );
                                               },
                                               child: Image.asset(
                                                 "assets/cuticul_oil/Orange.png",
@@ -205,7 +242,7 @@ class CuticuleOilScreen extends StatelessWidget {
                                               ),
                                             ),
                                             Container(
-                                              margin: EdgeInsets.only(top: 2.h, bottom: 15.h),
+                                              margin: EdgeInsets.only(top: 5.h, bottom: 15.h),
                                               child: Text(
                                                 "Orange",
                                                 style: TextStyle(
