@@ -67,8 +67,7 @@ class CuticuleOilScreen extends StatelessWidget {
               const ButtonPlayVideo(),
               Container(
                 width: 1511.w,
-                decoration: const BoxDecoration(
-                    color: Color.fromRGBO(240, 240, 240, 1)),
+                decoration: const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -103,37 +102,19 @@ class CuticuleOilScreen extends StatelessWidget {
                                         },
                                         child: GestureDetector(
                                           onTap: () {
-                                            Get.to(
-                                                CuticulOilDetails(
-                                                    oil: e,
-                                                    oils: builderOilList),
-                                                duration: const Duration(
-                                                    milliseconds: 800));
+                                            Get.to(CuticulOilDetails(oil: e, oils: builderOilList), duration: const Duration(milliseconds: 800));
                                           },
                                           child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            crossAxisAlignment: CrossAxisAlignment.center,
                                             children: [
                                               Hero(
                                                 tag: 'oil${e.id}',
-                                                flightShuttleBuilder:
-                                                    (BuildContext flightContext,
-                                                        Animation<double>
-                                                            animation,
-                                                        HeroFlightDirection
-                                                            flightDirection,
-                                                        BuildContext
-                                                            fromHeroContext,
-                                                        BuildContext
-                                                            toHeroContext) {
+                                                flightShuttleBuilder: (BuildContext flightContext, Animation<double> animation,
+                                                    HeroFlightDirection flightDirection, BuildContext fromHeroContext, BuildContext toHeroContext) {
                                                   return RotationTransition(
-                                                    turns: Tween(
-                                                            begin: 0.0,
-                                                            end: 0.25)
-                                                        .animate(
-                                                            animation), // Control the animation to perform half turns
+                                                    turns:
+                                                        Tween(begin: 0.0, end: 0.25).animate(animation), // Control the animation to perform half turns
                                                     child: Image.asset(
                                                       e.imgPath,
                                                       // width: 217.w,
@@ -142,7 +123,7 @@ class CuticuleOilScreen extends StatelessWidget {
                                                 },
                                                 child: Image.asset(
                                                   e.imgPath,
-                                                  // width: 217.w,
+                                                   width: 620.w,
                                                 ),
                                               ),
                                               SizedBox(
@@ -154,8 +135,7 @@ class CuticuleOilScreen extends StatelessWidget {
                                                   fontSize: 30.sp,
                                                   fontFamily: "Gotham",
                                                   fontWeight: FontWeight.w700,
-                                                  color: const Color.fromRGBO(
-                                                      20, 76, 80, 1),
+                                                  color: const Color.fromRGBO(20, 76, 80, 1),
                                                 ),
                                               ),
                                             ],
@@ -182,10 +162,8 @@ class CuticuleOilScreen extends StatelessWidget {
                                     height: 600.h,
                                     //  color: Colors.amber,
                                     child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
+                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
                                       children: [
                                         Column(
                                           children: [
@@ -205,8 +183,7 @@ class CuticuleOilScreen extends StatelessWidget {
                                               ),
                                             ),
                                             Container(
-                                              margin: EdgeInsets.only(
-                                                  top: 5.h, bottom: 15.h),
+                                              margin: EdgeInsets.only(top: 5.h, bottom: 15.h),
                                               child: Text(
                                                 "Apple",
                                                 style: TextStyle(

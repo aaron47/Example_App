@@ -61,8 +61,7 @@ class BaseBottle extends StatelessWidget {
           child: Container(
             width: 1511.w,
             // height: MediaQuery.of(context).size.height,
-            decoration:
-                const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
+            decoration: const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
             padding: const EdgeInsets.all(50),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -125,8 +124,7 @@ class BaseBottle extends StatelessWidget {
                                       fontSize: 20.sp,
                                       fontFamily: "Gotham",
                                       fontWeight: FontWeight.w700,
-                                      color:
-                                          const Color.fromRGBO(80, 79, 79, 1),
+                                      color: const Color.fromRGBO(80, 79, 79, 1),
                                     ),
                                   ),
                                   SizedBox(
@@ -137,8 +135,7 @@ class BaseBottle extends StatelessWidget {
                                         fontFamily: "Gotham",
                                         fontWeight: FontWeight.w400,
                                         fontSize: 24.sp,
-                                        color: const Color.fromRGBO(
-                                            126, 126, 126, 1),
+                                        color: const Color.fromRGBO(126, 126, 126, 1),
                                       ),
                                     ),
                                   ),
@@ -157,10 +154,7 @@ class BaseBottle extends StatelessWidget {
             ),
           ),
         ),
-        const CustomBottomBar(
-            imagePath: "assets/categories/CuticuleOilLarge.png",
-            heroTag: "CuticuleOil",
-            categoryName: "CUTICULE OIL"),
+        const CustomBottomBar(imagePath: "assets/categories/CuticuleOilLarge.png", heroTag: "CuticuleOil", categoryName: "CUTICULE OIL"),
       ],
     );
   }
