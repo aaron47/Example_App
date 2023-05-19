@@ -17,12 +17,12 @@ class CatEyesDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
+      appBar: const CustomAppBar(),
       body: Stack(
         children: [
           SizedBox(
             width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
+            height: MediaQuery.of(context).size.height,
             child: CarouselSlider(
               options: CarouselOptions(
                 viewportFraction: 1.0,
@@ -31,8 +31,8 @@ class CatEyesDetails extends StatelessWidget {
               items: nails.map((n) {
                 return Builder(
                   builder: (BuildContext context) {
-                    return Container(
-                         height: MediaQuery.of(context).size.height,
+                    return SizedBox(
+                      height: MediaQuery.of(context).size.height,
                       //decoration: const BoxDecoration(color: Colors.white),
                       child: BaseCatEyeNail(nail: n),
                     );
@@ -64,12 +64,11 @@ class BaseCatEyeNail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 1511.w,
-       height: MediaQuery.of(context).size.height,
-      decoration:
-          const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
+      height: MediaQuery.of(context).size.height,
+      decoration: const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
       // padding: const EdgeInsets.all(50),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           InkWell(
@@ -83,7 +82,7 @@ class BaseCatEyeNail extends StatelessWidget {
             ),
           ),
           Center(
-           // heightFactor: 1,
+            // heightFactor: 1,
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -155,7 +154,6 @@ class BaseCatEyeNail extends StatelessWidget {
               ],
             ),
           ),
-         
         ],
       ),
     );
