@@ -54,14 +54,19 @@ class CustomBottomBar extends StatelessWidget {
                           Container(
                             margin: const EdgeInsets.only(left: 20),
                             alignment: Alignment.centerLeft,
-                            child: Text(
-                              "MADE WITH LOVE BY SLOTH-LAB",
-                              style: TextStyle(
-                                fontFamily: "Gotham",
-                                fontSize: 16.sp,
-                                fontWeight: FontWeight.w700,
-                                color: const Color.fromRGBO(150, 150, 150, 1),
-                              ),
+                            child: Row(
+                              children: [
+                                Text(
+                                  "MADE WITH LOVE BY SLOTH-LAB",
+                                  style: TextStyle(
+                                    fontFamily: "Gotham",
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w700,
+                                    color: const Color.fromRGBO(150, 150, 150, 1),
+                                  ),
+                                ),
+                                Image.asset("assets/sloth.png")
+                              ],
                             ),
                           ),
                           Container(
