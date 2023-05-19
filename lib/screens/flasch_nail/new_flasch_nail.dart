@@ -99,7 +99,7 @@ class NewFlaschNailScreen extends StatelessWidget {
         children: [
           Row(
             children: [
-                   const ButtonPlayVideo(),
+              const ButtonPlayVideo(),
               Center(
                 child: SingleChildScrollView(
                   child: Container(
@@ -136,7 +136,8 @@ class NewFlaschNailScreen extends StatelessWidget {
                                 GestureDetector(
                                   onTap: () {
                                     Get.to(FlaschNailDetails(
-                                        flaschNail: nail, nails: flaschNailImages));
+                                        flaschNail: nail,
+                                        nails: flaschNailImages));
                                   },
                                   child: !nail.withCalque
                                       ? Image.asset(

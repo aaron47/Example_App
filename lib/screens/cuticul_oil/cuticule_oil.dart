@@ -174,12 +174,17 @@ class CuticuleOilScreen extends StatelessWidget {
                                                     bottle: bottles[0],
                                                     bottles: bottles,
                                                   ),
+                                                  duration: const Duration(
+                                                      milliseconds: 800),
                                                 );
                                               },
-                                              child: Image.asset(
-                                                "assets/cuticul_oil/Apple.png",
-                                                width: 153.w,
-                                                height: 393.h,
+                                              child: Hero(
+                                                tag: 'Apple',
+                                                child: Image.asset(
+                                                  "assets/cuticul_oil/Apple.png",
+                                                  width: 153.w,
+                                                  height: 393.h,
+                                                ),
                                               ),
                                             ),
                                             Container(
@@ -210,12 +215,17 @@ class CuticuleOilScreen extends StatelessWidget {
                                                     bottle: bottles[1],
                                                     bottles: bottles,
                                                   ),
+                                                  duration: const Duration(
+                                                      milliseconds: 800),
                                                 );
                                               },
-                                              child: Image.asset(
-                                                "assets/cuticul_oil/Orange.png",
-                                                width: 153.w,
-                                                height: 393.h,
+                                              child: Hero(
+                                                tag: 'Orange',
+                                                child: Image.asset(
+                                                  "assets/cuticul_oil/Orange.png",
+                                                  width: 153.w,
+                                                  height: 393.h,
+                                                ),
                                               ),
                                             ),
                                             Container(

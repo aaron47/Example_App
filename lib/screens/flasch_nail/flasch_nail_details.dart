@@ -32,7 +32,7 @@ class FlaschNailDetails extends StatelessWidget {
                 viewportFraction: 1.0,
                 height: MediaQuery.of(context).size.height,
               ),
-              items: nails.map((n) {
+              items: nails.where((nail) => !nail.withCalque).map((n) {
                 return Builder(
                   builder: (BuildContext context) {
                     return Container(
@@ -56,12 +56,14 @@ class FlaschNailDetails extends StatelessWidget {
 }
 
 class BaseFlaschNail extends StatelessWidget {
-  const BaseFlaschNail({
+  BaseFlaschNail({
     super.key,
     required this.flaschNail,
   });
 
   final FlaschNail flaschNail;
+
+  final CalqueController calqueController = Get.put(CalqueController());
 
   @override
   Widget build(BuildContext context) {
