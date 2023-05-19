@@ -54,7 +54,7 @@ class _LightFlaschNailCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-            onTap: () => calqueController.toggleCalque(),
+      onTap: () => calqueController.toggleCalque(),
       child: Stack(
         children: [
           Image.asset(
@@ -107,7 +107,7 @@ class _DarkFlachNailCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-            onTap: () => calqueController.toggleCalque(),
+      onTap: () => calqueController.toggleCalque(),
       child: Stack(
         children: [
           Image.asset(

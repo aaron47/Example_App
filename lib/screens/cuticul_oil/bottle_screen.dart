@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 import '../../widgets/custom_bottom_bar.dart';
 import '../../widgets/nails/custom_app_bar.dart';
@@ -24,23 +25,32 @@ class BottleScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(),
-      body: CarouselSlider(
-        options: CarouselOptions(
-          viewportFraction: 1.0,
-          height: MediaQuery.of(context).size.height,
-          initialPage: int.parse(bottle.bottleId) - 1,
-        ),
-        items: bottles.map((bottle) {
-          return Builder(
-            builder: (BuildContext context) {
-              return SizedBox(
-                height: MediaQuery.of(context).size.height,
-                //decoration: const BoxDecoration(color: Colors.white),
-                child: BaseBottle(bottle: bottle),
+      body: Stack(
+        children: [
+          CarouselSlider(
+            options: CarouselOptions(
+              viewportFraction: 1.0,
+              height: MediaQuery.of(context).size.height,
+              initialPage: int.parse(bottle.bottleId) - 1,
+            ),
+            items: bottles.map((bottle) {
+              return Builder(
+                builder: (BuildContext context) {
+                  return Container(
+                    height: MediaQuery.of(context).size.height,
+                    decoration: const BoxDecoration(color: Colors.white),
+                    child: BaseBottle(bottle: bottle),
+                  );
+                },
               );
-            },
-          );
-        }).toList(),
+            }).toList(),
+          ),
+          const CustomBottomBar(
+            imagePath: "assets/categories/CuticuleOilLarge.png",
+            heroTag: "CuticuleOil",
+            categoryName: "CUTICULE OIL",
+          ),
+        ],
       ),
     );
   }
@@ -60,14 +70,23 @@ class BaseBottle extends StatelessWidget {
         Center(
           child: Container(
             width: 1511.w,
-            // height: MediaQuery.of(context).size.height,
             decoration:
                 const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
             padding: const EdgeInsets.all(50),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                InkWell(
+                  onTap: () {
+                    Get.back();
+                  },
+                  child: Align(
+                    alignment: Alignment.topRight,
+                    child: Image.asset("assets/CloseButton.png",
+                        width: 66.21.w, height: 66.h),
+                  ),
+                ),
                 Center(
                   heightFactor: 1,
                   child: Row(
@@ -87,11 +106,14 @@ class BaseBottle extends StatelessWidget {
                           ),
                           Positioned.fill(
                             child: Align(
-                              child: Image.asset(
-                                bottle.imgPath,
-                                fit: BoxFit.contain,
-                                height: 681.h,
-                                width: 265.w,
+                              child: Hero(
+                                tag: bottle.ref,
+                                child: Image.asset(
+                                  bottle.imgPath,
+                                  fit: BoxFit.contain,
+                                  height: 681.h,
+                                  width: 265.w,
+                                ),
                               ),
                             ),
                           ),
@@ -152,15 +174,10 @@ class BaseBottle extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: 12.5),
               ],
             ),
           ),
         ),
-        const CustomBottomBar(
-            imagePath: "assets/categories/CuticuleOilLarge.png",
-            heroTag: "CuticuleOil",
-            categoryName: "CUTICULE OIL"),
       ],
     );
   }
