@@ -252,8 +252,7 @@ class CuticuleOilScreen extends StatelessWidget {
                                               ),
                                             ),
                                             Container(
-                                              margin: EdgeInsets.only(
-                                                  top: 5.h, bottom: 15.h),
+                                              margin: EdgeInsets.only(top: 5.h, bottom: 15.h),
                                               child: Text(
                                                 "Orange",
                                                 style: TextStyle(
