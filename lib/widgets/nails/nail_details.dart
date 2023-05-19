@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:essential_beauty/screens/flasch_nail/flasch_nail_details.dart';
 import 'package:essential_beauty/screens/how_to_apply.dart';
 import 'package:essential_beauty/widgets/custom_bottom_bar.dart';
 import 'package:essential_beauty/widgets/nails/custom_app_bar.dart';
@@ -246,7 +247,7 @@ class BaseNail extends StatelessWidget {
                       Column(
                         children: [
                           Stack(
-                            children: [
+                            children: [  const BottleShadow(),
                               Positioned(
                                   bottom: 0,
                                   right: 50,
@@ -255,27 +256,9 @@ class BaseNail extends StatelessWidget {
                                     width: 150.w,
                                   )),
                               Image.asset("assets/bottleNailPolich.png",
-                                  width: 250.w),
-                              Positioned(
-                                bottom: 1,
-                                child: Center(
-                                  child: Container(
-                                    width: 240.w,
-                                    height: 10.w,
-                                    decoration:  BoxDecoration(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(10)),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.black54,
-                                          blurRadius: 20.0,
-                                          offset: Offset(2.0, 2),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              )
+                                  width: 280.w),
+                                
+
                             ],
                           ),
                         ],

@@ -73,7 +73,6 @@ class BaseBottle extends StatelessWidget {
             decoration:
                 const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
             // height: MediaQuery.of(context).size.height,
-            decoration: const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
             padding: const EdgeInsets.all(50),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -92,7 +91,7 @@ class BaseBottle extends StatelessWidget {
                 Center(
                   heightFactor: 1,
                   child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Stack(
