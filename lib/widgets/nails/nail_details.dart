@@ -255,8 +255,8 @@ class BaseNail extends StatelessWidget {
                                     nail.imgPath,
                                     width: 150.w,
                                   )),
-                              Image.asset("assets/bottleNailPolich.png",
-                                  width: 280.w),
+                              Image.asset("assets/bottle/NailsPolish.png",
+                                  width: 275.w),
                                 
 
                             ],

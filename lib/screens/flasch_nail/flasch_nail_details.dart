@@ -154,7 +154,7 @@ class BaseFlaschNail extends StatelessWidget {
                       Container(
                         width: 300.w, // Adjust the width to match your bottle image size
                         // height: 400, // Adjust the height to match your bottle image size
-                        child: Image.asset("assets/flasch_nail/DISCO.png", width: 275.w), // Replace with your bottle image source
+                        child: Image.asset("assets/bottle/flashnails.png", width: 275.w), // Replace with your bottle image source
                       ),
                       const BottleShadow(),
                     ],

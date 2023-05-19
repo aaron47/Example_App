@@ -150,14 +150,14 @@ class BaseCatEyeNail extends StatelessWidget {
                 SizedBox(width: MediaQuery.of(context).size.width * 0.1),
                 Column(
                   children: [
-                     SizedBox(height: MediaQuery.of(context).size.width * 0.1),
+                     SizedBox(height: MediaQuery.of(context).size.width * 0.005),
                     Stack(
                       children: [
                             const BottleShadow(),
 
                         Image.asset(
-                          "assets/cat_eyes/CatEyesBottle.png",
-                          width: 232.w,
+                          "assets/bottle/catEyes.png",
+                          width: 275.w,
                           // height: 594.h,
                         ),
                       ],

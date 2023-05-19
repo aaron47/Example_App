@@ -93,7 +93,7 @@ class BaseCuticulOilWidget extends StatelessWidget {
                   child: Stack(
                     children: [
                       Container(
-                        margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.3),
+                        margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.35),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -144,7 +144,7 @@ class BaseCuticulOilWidget extends StatelessWidget {
                                   bottomMargin: 0,
                                 ),
                                 SizedBox(
-                                  width: 475.w,
+                                  width: 415.w,
                                   child: Padding(
                                     padding: const EdgeInsets.all(12.0),
                                     child: Column(
@@ -160,7 +160,7 @@ class BaseCuticulOilWidget extends StatelessWidget {
                                           ),
                                         ),
                                         SizedBox(
-                                          width: 900.w,
+                                          width: 800.w,
                                           child: Text(
                                             "ce soin riche aux huiles naturelles régénere à la base de huil de ricin ,restructure et hydrate lescuticules fissuré et séchesil assoucit la peau et permet de détacher en douceur les cutils des angles et accélére leur repousse ",
                                             style: TextStyle(

@@ -17,42 +17,38 @@ class _NailsRowState extends State<NailsRow> {
   void generateNails() {
     for (int i = 1; i < 113; i++) {
       String id = i.toString().padLeft(3, '0');
-      String imgPath = TabletDetector.isTablet(
-              MediaQueryData.fromWindow(WidgetsBinding.instance.window))
-          ? "assets/nails/large/$id.png"
-          : "assets/nails/$id.png";
+      String imgPath =
+          TabletDetector.isTablet(MediaQueryData.fromWindow(WidgetsBinding.instance.window)) ? "assets/nails/large/$id.png" : "assets/nails/$id.png";
       Nail nail = Nail(
         imgPath: imgPath,
         id: id,
-        description:
-            'Time of polymerization in light of the UV lamp-2-3minutes LED-lamp-1 minute',
+        description: 'Time of polymerization in light of the UV lamp-2-3minutes LED-lamp-1 minute',
       );
       nails.add(nail);
     }
   }
 
+  late List<List<Nail>> rowsOfNails;
+  late List<List<Nail>> rowsOfNailsPhone;
   @override
   void initState() {
     super.initState();
     generateNails();
-  }
 
-  @override
-  Widget build(BuildContext context) {
-    List<List<Nail>> rowsOfNails = List.generate(
+    rowsOfNails = List.generate(
       (nails.length / 10).ceil(),
-      (index) => nails.sublist(index * 10,
-          (index + 1) * 10 > nails.length ? nails.length : (index + 1) * 10),
+      (index) => nails.sublist(index * 10, (index + 1) * 10 > nails.length ? nails.length : (index + 1) * 10),
     );
 
     List<List<Nail>> rowsOfNailsPhone = List.generate(
       (nails.length / 5).ceil(),
-      (index) => nails.sublist(index * 5,
-          (index + 1) * 5 > nails.length ? nails.length : (index + 1) * 5),
+      (index) => nails.sublist(index * 5, (index + 1) * 5 > nails.length ? nails.length : (index + 1) * 5),
     );
+  }
 
-    return TabletDetector.isTablet(
-            MediaQueryData.fromWindow(WidgetsBinding.instance.window))
+  @override
+  Widget build(BuildContext context) {
+    return TabletDetector.isTablet(MediaQueryData.fromWindow(WidgetsBinding.instance.window))
         ? NailRowTablet(rowsOfNails: rowsOfNails, nails: nails)
         : NailRowPhone(rowsOfNails: rowsOfNailsPhone, nails: nails);
   }

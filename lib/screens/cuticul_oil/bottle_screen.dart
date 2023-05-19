@@ -101,8 +101,8 @@ class BaseBottle extends StatelessWidget {
                             child: Image.asset(
                               "assets/nails/Card.png",
                               fit: BoxFit.contain,
-                              height: 652.h,
-                              width: 408.w,
+                              height: 552.h,
+                              width: 308.w,
                             ),
                           ),
                           Positioned.fill(
@@ -112,8 +112,8 @@ class BaseBottle extends StatelessWidget {
                                 child: Image.asset(
                                   bottle.imgPath,
                                   fit: BoxFit.contain,
-                                  height: 681.h,
-                                  width: 265.w,
+                                  height: 581.h,
+                                  width: 200.w,
                                 ),
                               ),
                             ),
@@ -122,6 +122,7 @@ class BaseBottle extends StatelessWidget {
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
                             "CUTICULE OIL",
@@ -132,15 +133,16 @@ class BaseBottle extends StatelessWidget {
                               color: const Color.fromRGBO(35, 40, 55, 1),
                             ),
                           ),
-                          const PlayButtonLarge(
+SizedBox(height: 30.h,)      ,                    const PlayButtonLarge(
                             bottomMargin: 0,
                           ),
                           SizedBox(
-                            width: 375,
+                            width: 450,
                             child: Padding(
                               padding: const EdgeInsets.all(12.0),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
                                     "Ref:${bottle.ref}",
@@ -152,7 +154,7 @@ class BaseBottle extends StatelessWidget {
                                     ),
                                   ),
                                   SizedBox(
-                                    width: 600.w,
+                                    width: 700.w,
                                     child: Text(
                                       "ce soin riche aux huiles naturelles régénere à la base de huil de ricin , restructure et hydrate lescuticules fissuré et séchesil assoucit la peau et permet de détacher en douceur les cutils des angles et accélére leur repousse soigne l’épiderme et améliore sa capacitéde tétention de l’humidité",
                                       style: TextStyle(

@@ -147,7 +147,7 @@ class CuticuleOilScreen extends StatelessWidget {
                             Stack(
                               children: [
                                 Container(
-                                  height: 470.h,
+                                  height: 400.h,
                                   width: 600.56.w,
                                   // color: Colors.white,
                                   alignment: Alignment.bottomCenter,
@@ -159,7 +159,7 @@ class CuticuleOilScreen extends StatelessWidget {
                                 Positioned.fill(
                                   child: SizedBox(
                                     width: 500.w,
-                                    height: 600.h,
+                                     height: 600.h,
                                     //  color: Colors.amber,
                                     child: Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -183,7 +183,7 @@ class CuticuleOilScreen extends StatelessWidget {
                                                 child: Image.asset(
                                                   "assets/cuticul_oil/Apple.png",
                                                   width: 153.w,
-                                                  height: 393.h,
+                                                  // height: 393.h,
                                                 ),
                                               ),
                                             ),
@@ -224,7 +224,7 @@ class CuticuleOilScreen extends StatelessWidget {
                                                 child: Image.asset(
                                                   "assets/cuticul_oil/Orange.png",
                                                   width: 153.w,
-                                                  height: 393.h,
+                                                  // height: 393.h,
                                                 ),
                                               ),
                                             ),
