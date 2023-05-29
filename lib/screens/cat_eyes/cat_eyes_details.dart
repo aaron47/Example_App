@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:essential_beauty/screens/flasch_nail/flasch_nail_details.dart';
 import 'package:essential_beauty/widgets/custom_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -26,6 +27,7 @@ class CatEyesDetails extends StatelessWidget {
             child: CarouselSlider(
               options: CarouselOptions(
                 viewportFraction: 1.0,
+                height: MediaQuery.of(context).size.height,
                 initialPage: int.parse(nail.id) - 1,
               ),
               items: nails.map((n) {
@@ -146,10 +148,21 @@ class BaseCatEyeNail extends StatelessWidget {
                   ],
                 ),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.1),
-                Image.asset(
-                  "assets/cat_eyes/CatEyesBottle.png",
-                  width: 232.w,
-                  height: 594.h,
+                Column(
+                  children: [
+                     SizedBox(height: MediaQuery.of(context).size.width * 0.1),
+                    Stack(
+                      children: [
+                            const BottleShadow(),
+
+                        Image.asset(
+                          "assets/cat_eyes/CatEyesBottle.png",
+                          width: 232.w,
+                          // height: 594.h,
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ],
             ),

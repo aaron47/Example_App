@@ -68,113 +68,146 @@ class BaseCuticulOilWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 1511.w,
-      height: MediaQuery.of(context).size.height,
-      decoration: const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          InkWell(
-            onTap: () {
-              Get.back();
-            },
-            child: Align(
-              alignment: Alignment.topRight,
-              child: Image.asset("assets/CloseButton.png",
-                  width: 66.21.w, height: 66.h),
-            ),
-          ),
-          Center(
-            heightFactor: 1,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
+    return Stack(
+      children: [
+        Center(
+          child: Container(
+            width: 1511.w,
+            height: MediaQuery.of(context).size.height,
+            decoration: const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Stack(
-                  children: [
-                
-                    Container(
-                      margin: EdgeInsets.only(top: 50.h),
-                      child: Image.asset(
-                        "assets/cuticul_oil/Card-oil.png",
-                        //height: 450.h,
-                        // width: 533.w,
-                      ),
-                    ),
-                    Positioned.fill(
-                      child: Hero(
-                        tag: 'oil${oil.id}',
-                        child: Align(
-                          child: RotatedBox(
-                            quarterTurns: 1,
-                            child: ScaleImage(imagePath: oil.imgPath),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                InkWell(
+                  onTap: () {
+                    Get.back();
+                  },
+                  child: Align(
+                    alignment: Alignment.topRight,
+                    child: Image.asset("assets/CloseButton.png", width: 66.21.w, height: 66.h),
+                  ),
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "CUTICULE OIL",
-                      style: TextStyle(
-                        fontSize: 32.sp,
-                        fontFamily: "Gotham",
-                        fontWeight: FontWeight.w700,
-                        color: const Color.fromRGBO(35, 40, 55, 1),
-                      ),
-                    ),
-                    const PlayButtonLarge(
-                      bottomMargin: 0,
-                    ),
-                    SizedBox(
-                      width: 375,
-                      child: Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Column(
+                Center(
+                  heightFactor: 1,
+                  child: Stack(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.3),
+                        child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Text(
-                              "Ref:${oil.id}",
-                              style: TextStyle(
-                                fontSize: 20.sp,
-                                fontFamily: "Gotham",
-                                fontWeight: FontWeight.w700,
-                                color: const Color.fromRGBO(80, 79, 79, 1),
+                            Container(
+                              margin: EdgeInsets.only(top: 50.h),
+                              child: Image.asset(
+                                "assets/cuticul_oil/Card-oil.png",
+                                // height: 550.h,
+                                // width: 533.w,
                               ),
                             ),
-                            SizedBox(
-                              width: 600.w,
-                              child: Text(
-                                "ce soin riche aux huiles naturelles régénere à la base de huil de ricin , restructure et hydrate lescuticules fissuré et séchesil assoucit la peau et permet de détacher en douceur les cutils des angles et accélére leur repousse ",
-                                style: TextStyle(
-                                  fontFamily: "Gotham",
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 24.sp,
-                                  color: const Color.fromRGBO(126, 126, 126, 1),
+                            // Stack(
+                            //   children: [
+
+                            //     Container(
+                            //       margin: EdgeInsets.only(top: 50.h),
+                            //       child: Image.asset(
+                            //         "assets/cuticul_oil/Card-oil.png",
+                            //         height: 550.h,
+                            //         width: 533.w,
+                            //       ),
+                            //     ),
+                            //     Hero(
+                            //       tag: 'oil${oil.id}',
+                            //       child: Align(
+                            //         child: RotatedBox(
+                            //           quarterTurns: 1,
+                            //           child: ScaleImage(imagePath: oil.imgPath),
+                            //         ),
+                            //       ),
+                            //     ),
+                            //   ],
+                            // ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "CUTICULE OIL",
+                                  style: TextStyle(
+                                    fontSize: 32.sp,
+                                    fontFamily: "Gotham",
+                                    fontWeight: FontWeight.w700,
+                                    color: const Color.fromRGBO(35, 40, 55, 1),
+                                  ),
                                 ),
-                              ),
+                                const PlayButtonLarge(
+                                  bottomMargin: 0,
+                                ),
+                                SizedBox(
+                                  width: 475.w,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(12.0),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "Ref:${oil.id}",
+                                          style: TextStyle(
+                                            fontSize: 20.sp,
+                                            fontFamily: "Gotham",
+                                            fontWeight: FontWeight.w700,
+                                            color: const Color.fromRGBO(80, 79, 79, 1),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 900.w,
+                                          child: Text(
+                                            "ce soin riche aux huiles naturelles régénere à la base de huil de ricin ,restructure et hydrate lescuticules fissuré et séchesil assoucit la peau et permet de détacher en douceur les cutils des angles et accélére leur repousse ",
+                                            style: TextStyle(
+                                              fontFamily: "Gotham",
+                                              fontWeight: FontWeight.w400,
+                                              fontSize: 24.sp,
+                                              color: const Color.fromRGBO(126, 126, 126, 1),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
+                            SizedBox(width: MediaQuery.of(context).size.width * 0.03),
                           ],
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-                SizedBox(width: MediaQuery.of(context).size.width * 0.2),
+                // SizedBox(height: 40.h),
               ],
             ),
           ),
-          SizedBox(height: 40.h),
-        ],
-      ),
+        ),
+        Hero(
+          tag: 'oil${oil.id}',
+          child: Align(
+            // alignment: Alignment.topLeft,
+            child: RotatedBox(
+                quarterTurns: 1,
+                child: Image.asset(
+                  oil.imgPath,
+                  fit: BoxFit.contain,
+                )
+                // child: ScaleImage(imagePath: oil.imgPath),
+                ),
+          ),
+        ),
+      ],
     );
   }
 }
+
 //  body: Center(
 //         child: Column(
 //           mainAxisAlignment: MainAxisAlignment.center,
@@ -237,7 +270,7 @@ class _ScaleImageState extends State<ScaleImage> with SingleTickerProviderStateM
       vsync: this,
     );
 
-    _scaleAnimation = Tween<double>(begin: 1.0, end: 1.6).animate(_animationController); // Specify the target scale values
+    _scaleAnimation = Tween<double>(begin: 1.0, end: 1.0).animate(_animationController); // Specify the target scale values
 
     _animationController.forward(); // Start the animation
   }
@@ -258,8 +291,8 @@ class _ScaleImageState extends State<ScaleImage> with SingleTickerProviderStateM
           child: Image.asset(
             widget.imagePath,
             fit: BoxFit.contain,
-            height: 52.17.h,
-            width: 836.49.w,
+            // height: 52.17.h,
+            // width: 836.49.w,
           ),
         );
       },

@@ -10,8 +10,7 @@ import '../../widgets/nails/custom_app_bar.dart';
 import '../../widgets/nails/nail_details.dart';
 
 class FlaschNailDetails extends StatelessWidget {
-  const FlaschNailDetails(
-      {super.key, required this.flaschNail, required this.nails});
+  const FlaschNailDetails({super.key, required this.flaschNail, required this.nails});
 
   final FlaschNail flaschNail;
   final List<FlaschNail> nails;
@@ -68,8 +67,7 @@ class BaseFlaschNail extends StatelessWidget {
     return Center(
       child: Container(
         width: 1511.w,
-        decoration:
-            const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
+        decoration: const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
         padding: const EdgeInsets.all(15),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -81,8 +79,7 @@ class BaseFlaschNail extends StatelessWidget {
               },
               child: Align(
                 alignment: Alignment.topRight,
-                child: Image.asset("assets/CloseButton.png",
-                    width: 66.21.w, height: 66.h),
+                child: Image.asset("assets/CloseButton.png", width: 66.21.w, height: 66.h),
               ),
             ),
             Center(
@@ -150,11 +147,51 @@ class BaseFlaschNail extends StatelessWidget {
                     ],
                   ),
                   SizedBox(width: MediaQuery.of(context).size.width * 0.1),
-                  Image.asset("assets/flasch_nail/DISCO.png", width: 275.w)
+                  Stack(
+                    children: [
+                      Container(
+                        width: 300.w, // Adjust the width to match your bottle image size
+                        // height: 400, // Adjust the height to match your bottle image size
+                        child: Image.asset("assets/flasch_nail/DISCO.png", width: 275.w), // Replace with your bottle image source
+                      ),
+                      const BottleShadow(),
+                    ],
+                  )
+                  // widget(child: Container(child: Image.asset("assets/flasch_nail/DISCO.png", width: 275.w)))
                 ],
               ),
             ),
             const SizedBox(height: 10),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class BottleShadow extends StatelessWidget {
+  const BottleShadow({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      bottom: 0,
+      right: 0,
+      left: 0,
+      child: Container(
+        width: 300.w, // Adjust the width to match your bottle image size
+        height: 30.w, // Adjust the height to match the desired shadow height
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(100.w),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.2), // Shadow color
+              offset: Offset(0, 8),
+              spreadRadius: 5, // Offset in the y-axis
+              blurRadius: 50.w, // Spread radius
+            ),
           ],
         ),
       ),

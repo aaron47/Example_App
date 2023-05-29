@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:essential_beauty/screens/flasch_nail/flasch_nail_details.dart';
 import 'package:essential_beauty/widgets/custom_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -244,9 +245,15 @@ class BaseGelNail extends StatelessWidget {
                         ],
                       ),
                       SizedBox(width: MediaQuery.of(context).size.width * 0.1),
-                      Image.asset(
-                          "assets/rubber_base_gel/RubberBaseGelBottle.png",
-                          width: 275.w)
+                      Stack(
+                        children: [
+    const BottleShadow(),
+
+                          Image.asset(
+                              "assets/rubber_base_gel/RubberBaseGelBottle.png",
+                              width: 275.w),
+                        ],
+                      )
                     ],
                   ),
                 ),

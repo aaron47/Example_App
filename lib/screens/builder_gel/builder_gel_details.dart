@@ -97,7 +97,8 @@ class BaseBuilderGelDetailWidget extends StatelessWidget {
                    Align(
                     alignment: Alignment.topCenter,
                      child: Stack(
-                       children: [    SizedBox(width:  840.w,
+                       children: [   
+                         SizedBox(width:  840.w,
                         height:840.w ,),
                          Image.asset(
                            gel.shape,

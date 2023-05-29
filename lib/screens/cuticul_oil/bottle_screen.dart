@@ -72,6 +72,7 @@ class BaseBottle extends StatelessWidget {
             width: 1511.w,
             decoration:
                 const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
+            // height: MediaQuery.of(context).size.height,
             padding: const EdgeInsets.all(50),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -90,7 +91,7 @@ class BaseBottle extends StatelessWidget {
                 Center(
                   heightFactor: 1,
                   child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Stack(
@@ -147,8 +148,7 @@ class BaseBottle extends StatelessWidget {
                                       fontSize: 20.sp,
                                       fontFamily: "Gotham",
                                       fontWeight: FontWeight.w700,
-                                      color:
-                                          const Color.fromRGBO(80, 79, 79, 1),
+                                      color: const Color.fromRGBO(80, 79, 79, 1),
                                     ),
                                   ),
                                   SizedBox(
@@ -159,8 +159,7 @@ class BaseBottle extends StatelessWidget {
                                         fontFamily: "Gotham",
                                         fontWeight: FontWeight.w400,
                                         fontSize: 24.sp,
-                                        color: const Color.fromRGBO(
-                                            126, 126, 126, 1),
+                                        color: const Color.fromRGBO(126, 126, 126, 1),
                                       ),
                                     ),
                                   ),
