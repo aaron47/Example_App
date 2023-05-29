@@ -119,6 +119,7 @@ class NailsDetailsPhone extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const CustomAppBar(),
       body: CarouselSlider(
         options: CarouselOptions(
           initialPage: int.parse(nail.id) - 1,
@@ -247,7 +248,8 @@ class BaseNail extends StatelessWidget {
                       Column(
                         children: [
                           Stack(
-                            children: [  const BottleShadow(),
+                            children: [
+                              const BottleShadow(),
                               Positioned(
                                   bottom: 0,
                                   right: 50,
@@ -257,8 +259,6 @@ class BaseNail extends StatelessWidget {
                                   )),
                               Image.asset("assets/bottleNailPolich.png",
                                   width: 280.w),
-                                
-
                             ],
                           ),
                         ],
@@ -400,6 +400,47 @@ class PlayButtonLarge extends StatelessWidget {
           "assets/PlayButtonLarge.png",
           width: 65.w,
           height: 65.h,
+        ),
+      ),
+    );
+  }
+}
+
+class PlayButtonLargePhone extends StatelessWidget {
+  const PlayButtonLargePhone({
+    super.key,
+    required this.bottomMargin,
+  });
+
+  final double bottomMargin;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(10),
+      margin: EdgeInsets.only(bottom: bottomMargin),
+      width: 300.w,
+      height: 90.h,
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(0),
+          topRight: Radius.circular(75),
+          bottomLeft: Radius.circular(0),
+          bottomRight: Radius.circular(75),
+        ),
+        image: DecorationImage(
+          image: AssetImage("assets/AppBarBackground.png"),
+          fit: BoxFit.cover,
+        ),
+      ),
+      child: GestureDetector(
+        onTap: () {
+          Get.to(const HowToApplyScreen());
+        },
+        child: Image.asset(
+          "assets/PlayButtonLarge.png",
+          width: 20.w,
+          height: 20.h,
         ),
       ),
     );

@@ -247,8 +247,7 @@ class BaseGelNail extends StatelessWidget {
                       SizedBox(width: MediaQuery.of(context).size.width * 0.1),
                       Stack(
                         children: [
-    const BottleShadow(),
-
+                          const BottleShadow(),
                           Image.asset(
                               "assets/rubber_base_gel/RubberBaseGelBottle.png",
                               width: 275.w),
@@ -279,7 +278,7 @@ class BaseGelNailPhone extends StatelessWidget {
         Align(
           alignment: Alignment.topLeft,
           child: Hero(
-                   tag: "HowToApply",
+            tag: "HowToApply",
             child: Container(
               margin: const EdgeInsets.only(top: 20),
               width: 75,
@@ -298,7 +297,8 @@ class BaseGelNailPhone extends StatelessWidget {
               ),
               child: GestureDetector(
                   onTap: () {
-                    Get.to(() =>const HowToApplyScreen(),duration: Duration(milliseconds: 800));
+                    Get.to(() => const HowToApplyScreen(),
+                        duration: Duration(milliseconds: 800));
                   },
                   child: Image.asset("assets/PlayButton.png")),
             ),
@@ -373,13 +373,13 @@ class _RubberBaseGelCard extends StatelessWidget {
       children: [
         isTablet
             ? Container(
-              child: Image.asset(
+                child: Image.asset(
                   "assets/nails/Card.png",
                   width: 379.13.w,
                   height: 630.79.h,
                   fit: BoxFit.contain,
                 ),
-            )
+              )
             : Image.asset(
                 "assets/nails/Card.png",
                 // width: 183.13.w,
@@ -390,20 +390,20 @@ class _RubberBaseGelCard extends StatelessWidget {
           child: Align(
             child: isTablet
                 ? Hero(
-             tag: "RubberBaseGel${nail.id}",
-                  child: Image.asset(
+                    tag: "RubberBaseGel${nail.id}",
+                    child: Image.asset(
                       "assets/rubber_base_gel/${nail.id}.png",
                       fit: BoxFit.contain,
                       height: 478.h,
                       width: 216.w,
                       // height: 200,
                     ),
-                )
+                  )
                 : Image.asset(
                     "assets/rubber_base_gel/${nail.id}.png",
                     fit: BoxFit.contain,
-                    height: 231.h,
-                    width: 104.w,
+                    height: 700.h,
+                    width: 500.w,
                     // height: 200,
                   ),
           ),

@@ -49,19 +49,25 @@ class FlaschNailScreen extends StatelessWidget {
                     margin: const EdgeInsets.only(bottom: 10),
                     alignment: Alignment.bottomCenter,
                     width: MediaQuery.of(context).size.width -
-                        MediaQuery.of(context).size.width / 3.5,
+                        MediaQuery.of(context).size.width / 4.5,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         for (var nail in flaschNailImages)
                           GestureDetector(
                             onTap: () {
-                              Get.to(FlaschNailDetails(
-                                  flaschNail: nail, nails: flaschNailImages));
+                              Get.to(
+                                FlaschNailDetails(
+                                  flaschNail: nail,
+                                  nails: flaschNailImages,
+                                ),
+                              );
                             },
                             child: Image.asset(
                               nail.path,
                               // width: MediaQuery.of(context).size.width / 10,
+                              width: 200.w,
+                              height: 300.h,
                             ),
                           ),
                       ],
@@ -82,15 +88,15 @@ class FlaschNailScreen extends StatelessWidget {
                     child: Center(
                       child: SizedBox(
                         width: MediaQuery.of(context).size.width -
-                            MediaQuery.of(context).size.width / 3.5,
+                            MediaQuery.of(context).size.width / 4.5,
+                        height: MediaQuery.of(context).size.height,
                         child: SingleChildScrollView(
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               for (var nail in flaschNailImages)
                                 Column(
                                   children: [
-                                    const SizedBox(height: 10),
                                     Text(
                                       nail.id,
                                       style: const TextStyle(
@@ -102,17 +108,25 @@ class FlaschNailScreen extends StatelessWidget {
                                     ),
                                     GestureDetector(
                                       onTap: () {
-                                        Get.to(FlaschNailDetails(
+                                        Get.to(
+                                          FlaschNailDetails(
                                             flaschNail: nail,
-                                            nails: flaschNailImages));
+                                            nails: flaschNailImages,
+                                          ),
+                                        );
                                       },
                                       child: Stack(
                                         children: [
                                           Image.asset(
                                             nail.path,
+                                            width: 200.w,
+                                            height: 300.h,
                                           ),
                                           Image.asset(
-                                              "assets/flasch_nail/Calque.png"),
+                                            "assets/flasch_nail/Calque.png",
+                                            width: 200.w,
+                                            height: 300.h,
+                                          ),
                                         ],
                                       ),
                                     ),
