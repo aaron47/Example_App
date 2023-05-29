@@ -140,11 +140,30 @@ class NewFlaschNailScreen extends StatelessWidget {
                                         nails: flaschNailImages));
                                   },
                                   child: !nail.withCalque
-                                      ? Image.asset(
-                                          nail.path,
-                                          width: 160.w,
-                                          height: 625.h,
-                                          // width: MediaQuery.of(context).size.width / 10,
+                                      ? Column(
+                                          children: [
+                                            Image.asset(
+                                              nail.path,
+                                              width: 160.w,
+                                              height: 625.h,
+                                              // width: MediaQuery.of(context).size.width / 10,
+                                            ),
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                left: 100,
+                                              ),
+                                              child: Text(
+                                                nail.id,
+                                                style: TextStyle(
+                                                  fontSize: 32.sp,
+                                                  fontFamily: "Gotham",
+                                                  fontWeight: FontWeight.w700,
+                                                  color: const Color.fromRGBO(
+                                                      35, 40, 55, 1),
+                                                ),
+                                              ),
+                                            )
+                                          ],
                                         )
                                       : Stack(
                                           children: [

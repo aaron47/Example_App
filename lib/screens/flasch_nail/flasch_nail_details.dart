@@ -63,8 +63,6 @@ class BaseFlaschNail extends StatelessWidget {
 
   final FlaschNail flaschNail;
 
-  final CalqueController calqueController = Get.put(CalqueController());
-
   @override
   Widget build(BuildContext context) {
     return Center(
