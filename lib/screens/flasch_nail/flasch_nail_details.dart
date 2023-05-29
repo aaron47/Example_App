@@ -221,7 +221,9 @@ class BaseFlaschNailPhone extends StatelessWidget {
                     ),
                   ],
                 ),
+                const SizedBox(height: 20),
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
                       decoration: const BoxDecoration(
@@ -242,29 +244,29 @@ class BaseFlaschNailPhone extends StatelessWidget {
                           children: [
                             Text(
                               "Ref:${flaschNail.id}",
-                              style: TextStyle(
-                                fontSize: 70.sp,
+                              style: const TextStyle(
+                                fontSize: 25,
                                 fontFamily: "Gotham",
                                 fontWeight: FontWeight.w700,
-                                color: const Color.fromRGBO(80, 79, 79, 1),
+                                color: Color.fromRGBO(80, 79, 79, 1),
                               ),
                             ),
-                            Text(
+                            const Text(
                               "Flasching Disco Gel",
                               style: TextStyle(
                                 fontFamily: "Gotham",
                                 fontWeight: FontWeight.w400,
-                                fontSize: 75.sp,
+                                fontSize: 25,
                                 color: const Color.fromRGBO(97, 95, 95, 1),
                               ),
                             ),
-                            Text(
+                            const Text(
                               "Time of polymerization in light of the UV lamp-2-3minutes LED-lamp-1 minute",
                               style: TextStyle(
                                 fontFamily: "Gotham",
                                 fontWeight: FontWeight.w400,
-                                fontSize: 65.sp,
-                                color: const Color.fromRGBO(126, 126, 126, 1),
+                                fontSize: 20,
+                                color: Color.fromRGBO(126, 126, 126, 1),
                               ),
                             ),
                           ],
