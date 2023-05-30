@@ -96,7 +96,7 @@ class HomeScreenTablet extends StatelessWidget {
                       imgPath: "assets/categories/CatEyesLarge.png",
                       categoryName: 'Cat Eyes',
                       onChangeScreen: () {
-                        Get.to(const CatEyesScreen(),
+                        Get.to(CatEyesScreen(),
                             duration: const Duration(milliseconds: 800));
                       },
                       tag: 'CatEyes',
@@ -202,7 +202,7 @@ class HomeScreenPhone extends StatelessWidget {
                       imgPath: "assets/categories/CatEyes.png",
                       categoryName: 'Cat Eyes',
                       onChangeScreen: () {
-                        Get.to(const CatEyesScreen(),
+                        Get.to(CatEyesScreen(),
                             duration: const Duration(milliseconds: 800));
                       },
                       tag: 'CatEyes',

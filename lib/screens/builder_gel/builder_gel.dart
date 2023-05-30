@@ -55,77 +55,181 @@ class BuilderGelScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
-      body: Stack(
-        children: [
-          Row(
-            children: [
- const ButtonPlayVideo(),
+        appBar: const CustomAppBar(),
+        body: isTablet
+            ? BuilderGelTablet(
+                isTablet: isTablet, builderGelListRow: builderGelListRow)
+            : BuilderGelPhone(
+                isTablet: isTablet, builderGelListRow: builderGelListRow));
+  }
+}
 
-              Container(
-            
-                    width: 1511.w,
-                    decoration: const BoxDecoration(
-                        color: Color.fromRGBO(240, 240, 240, 1)),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Center(
-                      child: Padding(
-                        padding: isTablet
-                            ? const EdgeInsets.all(20)
-                            : const EdgeInsets.all(40),
-                        child: Text(
-                          "Builder gel",
-                          style: TextStyle(
-                            fontSize: isTablet ? 32 : 22,
-                            fontFamily: "Gotham",
-                            fontWeight: FontWeight.w700,
-                            color: Color.fromRGBO(11, 43, 45, 1),
-                          ),
+class BuilderGelTablet extends StatelessWidget {
+  const BuilderGelTablet({
+    super.key,
+    required this.isTablet,
+    required this.builderGelListRow,
+  });
+
+  final bool isTablet;
+  final List<BuilderGel> builderGelListRow;
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Row(
+          children: [
+            const ButtonPlayVideo(),
+            Container(
+              width: 1511.w,
+              decoration:
+                  const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Center(
+                    child: Padding(
+                      padding: isTablet
+                          ? const EdgeInsets.all(20)
+                          : const EdgeInsets.all(40),
+                      child: Text(
+                        "Builder gel",
+                        style: TextStyle(
+                          fontSize: isTablet ? 32 : 22,
+                          fontFamily: "Gotham",
+                          fontWeight: FontWeight.w700,
+                          color: Color.fromRGBO(11, 43, 45, 1),
                         ),
                       ),
                     ),
-                    Expanded(
-                      child: Container(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            isTablet
-                                ? ListGel(
-                                    builderGelListRow:
-                                        builderGelListRow.take(4).toList())
-                                : ListGel(
-                                    builderGelListRow:
-                                        builderGelListRow.take(3).toList()),
-                            isTablet
-                                ? ListGel(
-                                    builderGelListRow: builderGelListRow.sublist(4))
-                                : ListGel(
-                                    builderGelListRow:
-                                        builderGelListRow.sublist(3, 6)),
-                            isTablet
-                                ? Container()
-                                : ListGel(
-                                    builderGelListRow: builderGelListRow.sublist(6)),
-                          ],
+                  ),
+                  Expanded(
+                    child: Container(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          isTablet
+                              ? ListGel(
+                                  builderGelListRow:
+                                      builderGelListRow.take(4).toList())
+                              : ListGel(
+                                  builderGelListRow:
+                                      builderGelListRow.take(3).toList()),
+                          isTablet
+                              ? ListGel(
+                                  builderGelListRow:
+                                      builderGelListRow.sublist(4))
+                              : ListGel(
+                                  builderGelListRow:
+                                      builderGelListRow.sublist(3, 6)),
+                          isTablet
+                              ? Container()
+                              : ListGel(
+                                  builderGelListRow:
+                                      builderGelListRow.sublist(6)),
+                        ],
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ],
+        ),
+        const CustomBottomBar(
+          categoryName: 'BUILDER GEL',
+          heroTag: 'BuilderGel',
+          imagePath: "assets/categories/BuilderGelLarge.png",
+        ),
+      ],
+    );
+  }
+}
+
+class BuilderGelPhone extends StatelessWidget {
+  const BuilderGelPhone({
+    super.key,
+    required this.isTablet,
+    required this.builderGelListRow,
+  });
+
+  final bool isTablet;
+  final List<BuilderGel> builderGelListRow;
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Row(
+          children: [
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.12,
+            ),
+            SizedBox(
+              width: 1511.w,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Center(
+                    child: Padding(
+                      padding: isTablet
+                          ? const EdgeInsets.all(20)
+                          : const EdgeInsets.all(40),
+                      child: Text(
+                        "Builder gel",
+                        style: TextStyle(
+                          fontSize: isTablet ? 32 : 22,
+                          fontFamily: "Gotham",
+                          fontWeight: FontWeight.w700,
+                          color: Color.fromRGBO(11, 43, 45, 1),
                         ),
                       ),
-                    )
-                  ],
-                ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          isTablet
+                              ? ListGel(
+                                  builderGelListRow:
+                                      builderGelListRow.take(4).toList())
+                              : ListGel(
+                                  builderGelListRow:
+                                      builderGelListRow.take(3).toList()),
+                          isTablet
+                              ? ListGel(
+                                  builderGelListRow:
+                                      builderGelListRow.sublist(4))
+                              : ListGel(
+                                  builderGelListRow:
+                                      builderGelListRow.sublist(3, 6)),
+                          isTablet
+                              ? Container()
+                              : ListGel(
+                                  builderGelListRow:
+                                      builderGelListRow.sublist(6)),
+                        ],
+                      ),
+                    ),
+                  )
+                ],
               ),
-            ],
-          ),
-          const CustomBottomBar(
-            categoryName: 'BUILDER GEL',
-            heroTag: 'BuilderGel',
-            imagePath: "assets/categories/BuilderGelLarge.png",
-          ),
-        ],
-      ),
+            ),
+          ],
+        ),
+        const CustomBottomBar(
+          categoryName: 'BUILDER GEL',
+          heroTag: 'BuilderGel',
+          imagePath: "assets/categories/BuilderGelLarge.png",
+        ),
+      ],
     );
   }
 }
@@ -156,8 +260,7 @@ class ListGel extends StatelessWidget {
                             gel: e,
                             gels: builderGelListRow,
                           ),
-                           duration: const Duration(milliseconds: 800)
-                          );
+                          duration: const Duration(milliseconds: 800));
                     },
                     child: Stack(
                       alignment: Alignment.center,
@@ -165,7 +268,6 @@ class ListGel extends StatelessWidget {
                         Center(
                           child: Hero(
                             tag: 'Gel${e.id}',
-                            
                             child: Image.asset(
                               e.imgPath,
                               width: isTablet ? 220.w : 440.w,
@@ -176,7 +278,7 @@ class ListGel extends StatelessWidget {
                           tag: 'Cover${e.id}',
                           child: Image.asset(
                             "assets/gel_builder/Coverr4.png",
-                             width: isTablet ? 220.w : 500.w,
+                            width: isTablet ? 220.w : 500.w,
                             // fit: BoxFit.cover,
                           ),
                         ),

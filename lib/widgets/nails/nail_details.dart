@@ -259,8 +259,6 @@ class BaseNail extends StatelessWidget {
                                   )),
                               Image.asset("assets/bottle/NailsPolish.png",
                                   width: 275.w),
-                                
-
                             ],
                           ),
                         ],
@@ -419,8 +417,8 @@ class PlayButtonLargePhone extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(10),
-      margin: EdgeInsets.only(bottom: bottomMargin),
+      padding: const EdgeInsets.all(15),
+      margin: EdgeInsets.only(bottom: bottomMargin, right: 50),
       width: 300.w,
       height: 90.h,
       decoration: const BoxDecoration(
@@ -441,8 +439,7 @@ class PlayButtonLargePhone extends StatelessWidget {
         },
         child: Image.asset(
           "assets/PlayButtonLarge.png",
-          width: 20.w,
-          height: 20.h,
+          fit: BoxFit.contain,
         ),
       ),
     );
