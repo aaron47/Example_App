@@ -31,20 +31,20 @@ class NailCard extends StatelessWidget {
           child: Align(
             child: isTablet
                 ? Hero(
-                  tag: "NailsPolish${nail.id}",
-                  child: Image.asset(
+                    tag: "NailsPolish${nail.id}",
+                    child: Image.asset(
                       "assets/nails/large/${nail.id}.png",
                       fit: BoxFit.contain,
                       height: 478.h,
                       width: 216.w,
                       // height: 200,
                     ),
-                )
+                  )
                 : Image.asset(
                     "assets/nails/large/${nail.id}.png",
                     fit: BoxFit.contain,
-                    height: 478.h,
-                    width: 104.w,
+                    height: 700.h,
+                    width: 500.w,
                     // height: 200,
                   ),
           ),

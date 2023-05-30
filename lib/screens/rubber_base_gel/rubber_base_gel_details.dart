@@ -389,8 +389,8 @@ class _RubberBaseGelCard extends StatelessWidget {
                 : Image.asset(
                     "assets/rubber_base_gel/${nail.id}.png",
                     fit: BoxFit.contain,
-                    height: 231.h,
-                    width: 104.w,
+                    height: 700.h,
+                    width: 500.w,
                     // height: 200,
                   ),
           ),
