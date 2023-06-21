@@ -48,12 +48,11 @@ class FlaschNailDetails extends StatelessWidget {
               }).toList(),
             ),
           ),
-          if (isTablet)
-            const CustomBottomBar(
-              categoryName: 'FLASCH NAIL',
-              heroTag: 'FlaschNail',
-              imagePath: "assets/categories/FlaschNailLarge.png",
-            ),
+          const CustomBottomBar(
+            categoryName: 'FLASCH NAIL',
+            heroTag: 'FlaschNail',
+            imagePath: "assets/categories/FlaschNailLarge.png",
+          ),
         ],
       ),
     );

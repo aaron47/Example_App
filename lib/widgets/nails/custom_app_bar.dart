@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
     super.key,
   });
@@ -16,7 +16,11 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
           margin: EdgeInsets.only(
             right: MediaQuery.of(context).size.height * 0.02,
           ),
-          child: Icon(Icons.menu,color: Colors.white,size: MediaQuery.of(context).size.height * 0.03 ,),
+          child: Icon(
+            Icons.menu,
+            color: Colors.white,
+            size: MediaQuery.of(context).size.height * 0.03,
+          ),
         ),
       ],
       title: Container(

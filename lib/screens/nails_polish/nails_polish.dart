@@ -118,26 +118,35 @@ class NailsPolishMobile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Center(
-              child: Container(
-                margin: const EdgeInsets.only(bottom: 20, top: 50),
-                child: const Text(
-                  "Nails Polish",
-                  style: TextStyle(
-                    fontSize: 32,
-                    fontFamily: "Gotham",
-                    fontWeight: FontWeight.w700,
-                    color: Color.fromRGBO(35, 40, 55, 1),
+      body: Stack(
+        children: [
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                Center(
+                  child: Container(
+                    margin: const EdgeInsets.only(bottom: 20, top: 50),
+                    child: const Text(
+                      "Nails Polish",
+                      style: TextStyle(
+                        fontSize: 32,
+                        fontFamily: "Gotham",
+                        fontWeight: FontWeight.w700,
+                        color: Color.fromRGBO(35, 40, 55, 1),
+                      ),
+                    ),
                   ),
                 ),
-              ),
+                const NailsRow(),
+              ],
             ),
-            const NailsRow()
-          ],
-        ),
+          ),
+          const CustomBottomBar(
+            imagePath: "assets/categories/NailsPolishLarge.png",
+            heroTag: "NailsPolish",
+            categoryName: "NAILS POLISH",
+          ),
+        ],
       ),
     );
   }
