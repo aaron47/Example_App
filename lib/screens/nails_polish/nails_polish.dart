@@ -1,4 +1,5 @@
 import 'package:essential_beauty/screens/how_to_apply.dart';
+import 'package:essential_beauty/shared/matte_controller.dart';
 import 'package:essential_beauty/widgets/custom_bottom_bar.dart';
 import 'package:essential_beauty/widgets/nails/custom_app_bar.dart';
 import 'package:essential_beauty/widgets/nails/nails_row.dart';
@@ -16,7 +17,7 @@ class NailsPolishScreen extends StatelessWidget {
     return TabletDetector.isTablet(
             MediaQueryData.fromWindow(WidgetsBinding.instance.window))
         ? const NailsPolishTablet()
-        : const NailsPolishMobile();
+        : NailsPolishMobile();
   }
 }
 
@@ -110,9 +111,11 @@ class NailsPolishTablet extends StatelessWidget {
 }
 
 class NailsPolishMobile extends StatelessWidget {
-  const NailsPolishMobile({
+  NailsPolishMobile({
     super.key,
   });
+
+  final MatteController matteController = MatteController();
 
   @override
   Widget build(BuildContext context) {
@@ -122,6 +125,7 @@ class NailsPolishMobile extends StatelessWidget {
         children: [
           SingleChildScrollView(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Center(
                   child: Container(
@@ -136,6 +140,12 @@ class NailsPolishMobile extends StatelessWidget {
                       ),
                     ),
                   ),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    matteController.changeMatte();
+                  },
+                  child: const Text("Matte"),
                 ),
                 const NailsRow(),
               ],

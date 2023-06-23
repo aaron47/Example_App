@@ -1,5 +1,8 @@
+import 'package:essential_beauty/shared/matte_controller.dart';
 import 'package:essential_beauty/widgets/nails/nail_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
 import '../../shared/tablet_detector.dart';
 import 'Nail.dart';
@@ -13,6 +16,37 @@ class NailsRow extends StatefulWidget {
 
 class _NailsRowState extends State<NailsRow> {
   List<Nail> nails = [];
+  List<String> nonMatteNails = [
+    "55",
+    "56",
+    "57",
+    "58",
+    "59",
+    "60",
+    "76",
+    "77",
+    "78",
+    "79",
+    "80",
+    "81",
+    "82",
+    "86",
+    "87",
+    "88",
+    "89",
+    "101",
+    "102",
+    "103",
+    "104"
+  ];
+
+// fihomech matte
+// 55.56.57.58.59.60
+// 76.77.78.79.80.81.82
+// 86.87.88.89.101.102
+// 103.104
+
+  final MatteController matteController = MatteController();
 
   void generateNails() {
     for (int i = 1; i < 113; i++) {
@@ -23,6 +57,9 @@ class _NailsRowState extends State<NailsRow> {
           : "assets/nails/$id.png";
       Nail nail = Nail(
         imgPath: imgPath,
+        imgPathMatte: nonMatteNails.contains(i.toString())
+            ? null
+            : "assets/nails/matte/$id.png",
         id: id,
         description:
             'Time of polymerization in light of the UV lamp-2-3minutes LED-lamp-1 minute',
@@ -83,7 +120,36 @@ class NailRowTablet extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  for (var nail in row) NailWidget(nail: nail, nails: nails),
+                  for (var nail in row) ...[
+                    if (nail.imgPath == null)
+                      Column(
+                        children: [
+                          SizedBox(
+                            width: 92.12.w,
+                            height: 203.79.h,
+                            child: Container(
+                              width: 20,
+                              height: 20,
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ),
+                          Text(
+                            nail.id,
+                            style: const TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w700,
+                              fontFamily: "Gotham",
+                              color: Color.fromRGBO(106, 104, 104, 1),
+                            ),
+                          ),
+                        ],
+                      )
+                    else
+                      NailWidget(nail: nail, nails: nails)
+                  ],
                 ],
               ),
             ),
@@ -105,21 +171,55 @@ class NailRowPhone extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        for (var row in rowsOfNails)
-          Container(
-            margin: const EdgeInsets.symmetric(vertical: 30),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                for (var nail in row) NailWidget(nail: nail, nails: nails),
-              ],
-            ),
-          ),
-      ],
-    );
+    final MatteController matteController = MatteController();
+    return Obx(() => Column(
+          children: [
+            for (var row in rowsOfNails)
+              Container(
+                margin: const EdgeInsets.symmetric(vertical: 30),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    for (var nail in row) ...[
+                      if (nail.imgPathMatte == null)
+                        Column(
+                          children: [
+                            SizedBox(
+                              width: 47.884,
+                              height: 105.926,
+                              child: Container(
+                                width: 20,
+                                height: 20,
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ),
+                            Text(
+                              nail.id,
+                              style: const TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w700,
+                                fontFamily: "Gotham",
+                                color: Color.fromRGBO(106, 104, 104, 1),
+                              ),
+                            ),
+                          ],
+                        )
+                      else
+                        NailWidget(
+                          nail: nail,
+                          nails: nails,
+                          isMatte: matteController.isMatte.value,
+                        ),
+                    ],
+                  ],
+                ),
+              ),
+          ],
+        ));
   }
 }

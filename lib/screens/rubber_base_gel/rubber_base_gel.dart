@@ -252,9 +252,9 @@ class _RubberBaseGelNailWidget extends StatelessWidget {
           child: isTablet
               ? Hero(
                   tag: "RubberBaseGel${nail.id}",
-                  child: Image.asset(nail.imgPath,
+                  child: Image.asset(nail.imgPath!,
                       width: 92.12.w, height: 203.79.h))
-              : Image.asset(nail.imgPath),
+              : Image.asset(nail.imgPath!),
         ),
         const SizedBox(height: 10),
         Text(
