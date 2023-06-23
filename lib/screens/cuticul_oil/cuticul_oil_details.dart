@@ -56,7 +56,7 @@ class CuticulOilDetails extends StatelessWidget {
   }
 }
 
-class BaseCuticulOilWidget extends StatelessWidget {
+class BaseCuticulOilWidget extends StatefulWidget {
   const BaseCuticulOilWidget({
     super.key,
     required this.oil,
@@ -65,25 +65,45 @@ class BaseCuticulOilWidget extends StatelessWidget {
   final CuticulOil oil;
 
   @override
+  State<BaseCuticulOilWidget> createState() => _BaseCuticulOilWidgetState();
+}
+
+class _BaseCuticulOilWidgetState extends State<BaseCuticulOilWidget> {
+  @override
+  bool _alignmentChanged = false;
+
+  @override
   Widget build(BuildContext context) {
+    Alignment alignment = _alignmentChanged ? Alignment.centerLeft : Alignment.center;
+
+    if (!_alignmentChanged) {
+      Future.delayed(const Duration(seconds: 1), () {
+        setState(() {
+          _alignmentChanged = true;
+        });
+      });
+    }
     return Stack(
       children: [
         Center(
           child: Container(
-            width: 1511.w,
+            // width: 1511.w,
             height: MediaQuery.of(context).size.height,
             decoration: const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                InkWell(
-                  onTap: () {
-                    Get.back();
-                  },
-                  child: Align(
-                    alignment: Alignment.topRight,
-                    child: Image.asset("assets/CloseButton.png", width: 66.21.w, height: 66.h),
+                Container(
+                  margin: EdgeInsets.only(right: MediaQuery.of(context).size.width * 0.10),
+                  child: InkWell(
+                    onTap: () {
+                      Get.back();
+                    },
+                    child: Align(
+                      alignment: Alignment.topRight,
+                      child: Image.asset("assets/CloseButton.png", width: 66.21.w, height: 66.h),
+                    ),
                   ),
                 ),
                 Center(
@@ -91,7 +111,7 @@ class BaseCuticulOilWidget extends StatelessWidget {
                   child: Stack(
                     children: [
                       Container(
-                        margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.35),
+                        margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.10),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -120,14 +140,14 @@ class BaseCuticulOilWidget extends StatelessWidget {
                                   bottomMargin: 0,
                                 ),
                                 SizedBox(
-                                  width: 415.w,
+                                  width: 716.w,
                                   child: Padding(
                                     padding: const EdgeInsets.all(12.0),
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          "Ref:${oil.id}",
+                                          "Ref:${widget.oil.id}",
                                           style: TextStyle(
                                             fontSize: 20.sp,
                                             fontFamily: "Gotham",
@@ -136,7 +156,7 @@ class BaseCuticulOilWidget extends StatelessWidget {
                                           ),
                                         ),
                                         SizedBox(
-                                          width: 800.w,
+                                          width: 900.w,
                                           child: Text(
                                             "ce soin riche aux huiles naturelles régénere à la base de huil de ricin ,restructure et hydrate lescuticules fissuré et séchesil assoucit la peau et permet de détacher en douceur les cutils des angles et accélére leur repousse ",
                                             style: TextStyle(
@@ -153,7 +173,7 @@ class BaseCuticulOilWidget extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            SizedBox(width: MediaQuery.of(context).size.width * 0.03),
+                            SizedBox(width: MediaQuery.of(context).size.width * 0.10),
                           ],
                         ),
                       ),
@@ -166,19 +186,24 @@ class BaseCuticulOilWidget extends StatelessWidget {
           ),
         ),
         Hero(
-          tag: 'oil${oil.id}',
-          child: Align(
-            // alignment: Alignment.topLeft,
-            child: GestureDetector(
-              onTap: (() => Get.back()),
-              child: RotatedBox(
-                  quarterTurns: 1,
-                  child: Image.asset(
-                    oil.imgPath,
-                    fit: BoxFit.contain,
-                  )
-                  // child: ScaleImage(imagePath: oil.imgPath),
-                  ),
+          tag: 'oil${widget.oil.id}',
+          child: Container(
+            margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.08 + MediaQuery.of(context).size.width * 0.10),
+            child: AnimatedAlign(
+              alignment: alignment,
+              duration: const Duration(seconds: 1),
+              curve: Curves.easeInBack,
+              child: GestureDetector(
+                onTap: (() => Get.back()),
+                child: RotatedBox(
+                    quarterTurns: 1,
+                    child: Image.asset(
+                      widget.oil.imgPath,
+                      fit: BoxFit.contain,
+                    )
+                    // child: ScaleImage(imagePath: oil.imgPath),
+                    ),
+              ),
             ),
           ),
         ),
@@ -251,7 +276,7 @@ class _BaseCuticulOilPhoneWidgetState extends State<BaseCuticulOilPhoneWidget> {
                               ),
                             ),
                             Container(
-                                  margin: EdgeInsets.only(top: 160.h),
+                              margin: EdgeInsets.only(top: 160.h),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [

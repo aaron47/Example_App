@@ -3,7 +3,6 @@ import 'package:essential_beauty/widgets/nails/nail_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
 import '../../shared/tablet_detector.dart';
 import 'Nail.dart';
@@ -84,52 +83,56 @@ class NailRowTablet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 200),
-      child: Column(
-        children: [
-          for (var row in rowsOfNails)
-            Container(
-              margin: const EdgeInsets.symmetric(vertical: 30),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  for (var nail in row) ...[
-                    if (nail.imgPath == null)
-                      Column(
-                        children: [
-                          SizedBox(
-                            width: 92.12.w,
-                            height: 203.79.h,
-                            child: Container(
-                              width: 20,
-                              height: 20,
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Colors.grey,
+    return Center(
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            for (var row in rowsOfNails)
+              Container(
+                margin: const EdgeInsets.symmetric(vertical: 30),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    for (var nail in row) ...[
+                      if (nail.imgPath == null)
+                        Column(
+                          children: [
+                            SizedBox(
+                              width: 92.12.w,
+                              height: 203.79.h,
+                              child: Container(
+                                width: 20,
+                                height: 20,
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Colors.grey,
+                                ),
                               ),
                             ),
-                          ),
-                          Text(
-                            nail.id,
-                            style: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w700,
-                              fontFamily: "Gotham",
-                              color: Color.fromRGBO(106, 104, 104, 1),
+                            Text(
+                              nail.id,
+                              style: const TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w700,
+                                fontFamily: "Gotham",
+                                color: Color.fromRGBO(106, 104, 104, 1),
+                              ),
                             ),
-                          ),
-                        ],
-                      )
-                    else
-                      NailWidget(nail: nail, nails: nails)
+                          ],
+                        )
+                      else
+                        NailWidget(nail: nail, nails: nails)
+                    ],
                   ],
-                ],
+                ),
               ),
-            ),
-        ],
+          ],
+        ),
       ),
     );
   }

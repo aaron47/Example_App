@@ -17,7 +17,7 @@ class Bottle {
 }
 
 class BottleScreen extends StatelessWidget {
-   BottleScreen({super.key, required this.bottles, required this.bottle});
+  BottleScreen({super.key, required this.bottles, required this.bottle});
 
   final List<Bottle> bottles;
   final Bottle bottle;
@@ -41,7 +41,7 @@ class BottleScreen extends StatelessWidget {
                   return Container(
                     height: MediaQuery.of(context).size.height,
                     decoration: const BoxDecoration(color: Colors.white),
-                    child: isTablet ?  BaseBottle(bottle: bottle) :BaseBottlePhone(bottle: bottle)  ,
+                    child: isTablet ? BaseBottle(bottle: bottle) : BaseBottlePhone(bottle: bottle),
                   );
                 },
               );
@@ -71,114 +71,116 @@ class BaseBottle extends StatelessWidget {
       children: [
         Center(
           child: Container(
-            width: 1511.w,
-            decoration: const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
+            // width: 1511.w,
+            decoration: const BoxDecoration(color: Colors.white),
             // height: MediaQuery.of(context).size.height,
             padding: const EdgeInsets.all(50),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                InkWell(
-                  onTap: () {
-                    Get.back();
-                  },
-                  child: Align(
-                    alignment: Alignment.topRight,
-                    child: Image.asset("assets/CloseButton.png", width: 66.21.w, height: 66.h),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  InkWell(
+                    onTap: () {
+                      Get.back();
+                    },
+                    child: Align(
+                      alignment: Alignment.topRight,
+                      child: Image.asset("assets/CloseButton.png", width: 66.21.w, height: 66.h),
+                    ),
                   ),
-                ),
-                Center(
-                  heightFactor: 1,
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Stack(
-                        children: [
-                          Container(
-                            margin: EdgeInsets.only(top: 95.h),
-                            child: Image.asset(
-                              "assets/nails/Card.png",
-                              fit: BoxFit.contain,
-                              height: 552.h,
-                              width: 308.w,
+                  Center(
+                    heightFactor: 1,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Stack(
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(top: 95.h),
+                              child: Image.asset(
+                                "assets/nails/Card.png",
+                                fit: BoxFit.contain,
+                                height: 552.h,
+                                width: 308.w,
+                              ),
                             ),
-                          ),
-                          Positioned.fill(
-                            child: Align(
-                              child: Hero(
-                                tag: bottle.ref,
-                                child: Image.asset(
-                                  bottle.imgPath,
-                                  fit: BoxFit.contain,
-                                  height: 581.h,
-                                  width: 200.w,
+                            Positioned.fill(
+                              child: Align(
+                                child: Hero(
+                                  tag: bottle.ref,
+                                  child: Image.asset(
+                                    bottle.imgPath,
+                                    fit: BoxFit.contain,
+                                    height: 581.h,
+                                    width: 200.w,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "CUTICULE OIL",
-                            style: TextStyle(
-                              fontSize: 32.sp,
-                              fontFamily: "Gotham",
-                              fontWeight: FontWeight.w700,
-                              color: const Color.fromRGBO(35, 40, 55, 1),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 30.h,
-                          ),
-                          const PlayButtonLarge(
-                            bottomMargin: 0,
-                          ),
-                          SizedBox(
-                            width: 450,
-                            child: Padding(
-                              padding: const EdgeInsets.all(12.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "Ref:${bottle.ref}",
-                                    style: TextStyle(
-                                      fontSize: 20.sp,
-                                      fontFamily: "Gotham",
-                                      fontWeight: FontWeight.w700,
-                                      color: const Color.fromRGBO(80, 79, 79, 1),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 700.w,
-                                    child: Text(
-                                      "ce soin riche aux huiles naturelles régénere à la base de huil de ricin , restructure et hydrate lescuticules fissuré et séchesil assoucit la peau et permet de détacher en douceur les cutils des angles et accélére leur repousse soigne l’épiderme et améliore sa capacitéde tétention de l’humidité",
-                                      style: TextStyle(
-                                        fontFamily: "Gotham",
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 24.sp,
-                                        color: const Color.fromRGBO(126, 126, 126, 1),
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                          ],
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "CUTICULE OIL",
+                              style: TextStyle(
+                                fontSize: 32.sp,
+                                fontFamily: "Gotham",
+                                fontWeight: FontWeight.w700,
+                                color: const Color.fromRGBO(35, 40, 55, 1),
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(width: MediaQuery.of(context).size.width * 0.2),
-                    ],
+                            SizedBox(
+                              height: 30.h,
+                            ),
+                            const PlayButtonLarge(
+                              bottomMargin: 0,
+                            ),
+                            SizedBox(
+                              width: 450,
+                              child: Padding(
+                                padding: const EdgeInsets.all(12.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      "Ref:${bottle.ref}",
+                                      style: TextStyle(
+                                        fontSize: 20.sp,
+                                        fontFamily: "Gotham",
+                                        fontWeight: FontWeight.w700,
+                                        color: const Color.fromRGBO(80, 79, 79, 1),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 700.w,
+                                      child: Text(
+                                        "ce soin riche aux huiles naturelles régénere à la base de huil de ricin , restructure et hydrate lescuticules fissuré et séchesil assoucit la peau et permet de détacher en douceur les cutils des angles et accélére leur repousse soigne l’épiderme et améliore sa capacitéde tétention de l’humidité",
+                                        style: TextStyle(
+                                          fontFamily: "Gotham",
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 24.sp,
+                                          color: const Color.fromRGBO(126, 126, 126, 1),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(width: MediaQuery.of(context).size.width * 0.2),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
@@ -200,7 +202,6 @@ class BaseBottlePhone extends StatelessWidget {
       children: [
         Center(
           child: Container(
-           
             decoration: const BoxDecoration(color: Colors.white),
             // height: MediaQuery.of(context).size.height,
             padding: const EdgeInsets.all(20),

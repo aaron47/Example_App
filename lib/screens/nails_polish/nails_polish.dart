@@ -37,7 +37,7 @@ class NailsPolishTablet extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(
-                width: MediaQuery.of(context).size.width * 0.12,
+                width: MediaQuery.of(context).size.width * 0.08,
                 child: Align(
                   alignment: Alignment.topLeft,
                   child: Container(
@@ -121,7 +121,7 @@ class NailsPolishTablet extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                width: MediaQuery.of(context).size.width * 0.1,
+                width: MediaQuery.of(context).size.width * 0.08,
               ),
             ],
           ),
@@ -137,7 +137,7 @@ class NailsPolishTablet extends StatelessWidget {
 }
 
 class NailsPolishMobile extends StatelessWidget {
-  NailsPolishMobile({
+  const NailsPolishMobile({
     super.key,
   });
 
