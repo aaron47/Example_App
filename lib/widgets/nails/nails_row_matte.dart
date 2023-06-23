@@ -71,9 +71,9 @@ class _NailsRowMatteState extends State<NailsRowMatte> {
     generateNails();
 
     rowsOfNails = List.generate(
-      (nails.length / 10).ceil(),
-      (index) => nails.sublist(index * 10,
-          (index + 1) * 10 > nails.length ? nails.length : (index + 1) * 10),
+      (nails.length / 15).ceil(),
+      (index) => nails.sublist(index * 15,
+          (index + 1) * 15 > nails.length ? nails.length : (index + 1) * 15),
     );
 
     rowsOfNailsPhone = List.generate(
@@ -105,7 +105,7 @@ class NailRowTablet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 200),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
         children: [
           for (var row in rowsOfNails)

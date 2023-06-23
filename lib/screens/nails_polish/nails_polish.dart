@@ -15,10 +15,7 @@ class NailsPolishScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TabletDetector.isTablet(
-            MediaQueryData.fromWindow(WidgetsBinding.instance.window))
-        ? const NailsPolishTablet()
-        : NailsPolishMobile();
+    return TabletDetector.isTablet(MediaQueryData.fromWindow(WidgetsBinding.instance.window)) ? const NailsPolishTablet() : const NailsPolishMobile();
   }
 }
 
@@ -69,54 +66,65 @@ class NailsPolishTablet extends StatelessWidget {
                   ),
                 ),
               ),
-              SingleChildScrollView(
-                child: Container(
-                  decoration: const BoxDecoration(
-                      color: Color.fromRGBO(240, 240, 240, 1)),
-                  // padding: const EdgeInsets.all(50),
-                  child: Column(
-                    children: [
-                      Center(
-                        child: Container(
-                          margin: const EdgeInsets.only(bottom: 100, top: 50),
-                          child: const Text(
-                            "Nails Polish",
-                            style: TextStyle(
-                              fontSize: 32,
-                              fontFamily: "Gotham",
-                              fontWeight: FontWeight.w700,
-                              color: Color.fromRGBO(35, 40, 55, 1),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Container(
+                    decoration: const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
+                    // padding: const EdgeInsets.all(50),
+                    child: Column(
+                      children: [
+                        Center(
+                          child: Container(
+                            margin: const EdgeInsets.only(bottom: 100, top: 50),
+                            child: const Text(
+                              "Nails Polish",
+                              style: TextStyle(
+                                fontSize: 32,
+                                fontFamily: "Gotham",
+                                fontWeight: FontWeight.w700,
+                                color: Color.fromRGBO(35, 40, 55, 1),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(
-                          left: 20,
-                        ),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Get.off(const NailsPolishMatteScreen());
-                          },
-                          style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.resolveWith<Color>(
-                              (Set<MaterialState> states) {
-                                return const Color.fromRGBO(20, 77, 81,
-                                    0.8); // Set the color when isMatte is true
-                              },
+                        Container(
+                          alignment: Alignment.centerLeft,
+                          margin: const EdgeInsets.only(
+                            left: 40,
+                          ),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              // Get.off(const NailsPolishMatteScreen());
+                              Get.off(
+                                () => const NailsPolishMatteScreen(),
+                                transition: Transition.topLevel, // Choose your desired transition
+                                duration: const Duration(seconds: 1), // Set the animation duration
+                              );
+                            },
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                                (Set<MaterialState> states) {
+                                  return const Color.fromARGB(204, 253, 254, 254); // Set the color when isMatte is true
+                                },
+                              ),
+                            ),
+                            child: Container(
+                              padding: const EdgeInsets.all(20),
+                              child: const Text(
+                                "MATTE",
+                                style: TextStyle(
+                                  fontSize: 24,
+                                  fontFamily: "Gotham",
+                                  fontWeight: FontWeight.w700,
+                                  color: Color.fromRGBO(20, 77, 81, 0.8),
+                                ),
+                              ),
                             ),
                           ),
-                          child: const Text(
-                            "MATTE",
-                            style: TextStyle(
-                              color: Colors.white,
-                            ),
-                          ),
                         ),
-                      ),
-                      const NailsRow()
-                    ],
+                        const NailsRow()
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -177,15 +185,17 @@ class NailsPolishMobile extends StatelessWidget {
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.resolveWith<Color>(
                         (Set<MaterialState> states) {
-                          return const Color.fromRGBO(20, 77, 81,
-                              0.8); // Set the color when isMatte is true
+                          return const Color.fromRGBO(20, 77, 81, 0.8); // Set the color when isMatte is true
                         },
                       ),
                     ),
-                    child: const Text(
+                    child: Text(
                       "MATTE",
                       style: TextStyle(
-                        color: Colors.white,
+                        fontFamily: "Gotham",
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w700,
+                        color: const Color.fromRGBO(150, 150, 150, 1),
                       ),
                     ),
                   ),

@@ -2,7 +2,6 @@ import 'package:essential_beauty/screens/how_to_apply.dart';
 import 'package:essential_beauty/shared/matte_controller.dart';
 import 'package:essential_beauty/widgets/custom_bottom_bar.dart';
 import 'package:essential_beauty/widgets/nails/custom_app_bar.dart';
-import 'package:essential_beauty/widgets/nails/nails_row.dart';
 import 'package:essential_beauty/widgets/nails/nails_row_matte.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -16,10 +15,7 @@ class NailsPolishMatteScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TabletDetector.isTablet(
-            MediaQueryData.fromWindow(WidgetsBinding.instance.window))
-        ? const NailsPolishTablet()
-        : NailsPolishMobile();
+    return TabletDetector.isTablet(MediaQueryData.fromWindow(WidgetsBinding.instance.window)) ? const NailsPolishTablet() : const NailsPolishMobile();
   }
 }
 
@@ -38,7 +34,7 @@ class NailsPolishTablet extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(
-                width: MediaQuery.of(context).size.width * 0.12,
+                width: MediaQuery.of(context).size.width * 0.08,
                 child: Align(
                   alignment: Alignment.topLeft,
                   child: Container(
@@ -70,59 +66,69 @@ class NailsPolishTablet extends StatelessWidget {
                   ),
                 ),
               ),
-              SingleChildScrollView(
-                child: Container(
-                  decoration: const BoxDecoration(
-                      color: Color.fromRGBO(240, 240, 240, 1)),
-                  // padding: const EdgeInsets.all(50),
-                  child: Column(
-                    children: [
-                      Center(
-                        child: Container(
-                          margin: const EdgeInsets.only(bottom: 100, top: 50),
-                          child: const Text(
-                            "Nails Polish",
-                            style: TextStyle(
-                              fontSize: 32,
-                              fontFamily: "Gotham",
-                              fontWeight: FontWeight.w700,
-                              color: Color.fromRGBO(35, 40, 55, 1),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Container(
+                    decoration: const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
+                    // padding: const EdgeInsets.all(50),
+                    child: Column(
+                      children: [
+                        Center(
+                          child: Container(
+                            margin: const EdgeInsets.only(bottom: 100, top: 50),
+                            child: const Text(
+                              "Nails Polish",
+                              style: TextStyle(
+                                fontSize: 32,
+                                fontFamily: "Gotham",
+                                fontWeight: FontWeight.w700,
+                                color: Color.fromRGBO(35, 40, 55, 1),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(
-                          left: 20,
-                        ),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Get.off(const NailsPolishScreen());
-                          },
-                          style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.resolveWith<Color>(
-                              (Set<MaterialState> states) {
-                                return const Color.fromRGBO(20, 77, 81,
-                                    0.8); // Set the color when isMatte is true
-                              },
+                        Container(
+                          alignment: Alignment.centerLeft,
+                          margin: const EdgeInsets.only(
+                            left: 40,
+                          ),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              Get.off(
+                                () => const NailsPolishScreen(),
+                                transition: Transition.topLevel, // Choose your desired transition
+                                duration: const Duration(seconds: 1), // Set the animation duration
+                              );
+                            },
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                                (Set<MaterialState> states) {
+                                  return const Color.fromRGBO(20, 77, 81, 0.8); // Set the color when isMatte is true
+                                },
+                              ),
+                            ),
+                            child: Container(
+                              padding: const EdgeInsets.all(20),
+                              child: const Text(
+                                "MATTE",
+                                style: TextStyle(
+                                  fontSize: 24,
+                                  fontFamily: "Gotham",
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.white,
+                                ),
+                              ),
                             ),
                           ),
-                          child: const Text(
-                            "NAILS POLISH",
-                            style: TextStyle(
-                              color: Colors.white,
-                            ),
-                          ),
                         ),
-                      ),
-                      const NailsRowMatte()
-                    ],
+                        const NailsRowMatte()
+                      ],
+                    ),
                   ),
                 ),
               ),
               SizedBox(
-                width: MediaQuery.of(context).size.width * 0.1,
+                width: MediaQuery.of(context).size.width * 0.08,
               ),
             ],
           ),
@@ -138,7 +144,7 @@ class NailsPolishTablet extends StatelessWidget {
 }
 
 class NailsPolishMobile extends StatelessWidget {
-  NailsPolishMobile({
+  const NailsPolishMobile({
     super.key,
   });
 

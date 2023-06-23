@@ -50,9 +50,9 @@ class _NailsRowState extends State<NailsRow> {
     generateNails();
 
     rowsOfNails = List.generate(
-      (nails.length / 10).ceil(),
-      (index) => nails.sublist(index * 10,
-          (index + 1) * 10 > nails.length ? nails.length : (index + 1) * 10),
+      (nails.length / 15).ceil(),
+      (index) => nails.sublist(index * 15,
+          (index + 1) * 15 > nails.length ? nails.length : (index + 1) * 15),
     );
 
     rowsOfNailsPhone = List.generate(
