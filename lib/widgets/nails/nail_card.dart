@@ -29,24 +29,35 @@ class NailCard extends StatelessWidget {
               ),
         Positioned.fill(
           child: Align(
-            child: isTablet
+            child: nail.imgPath!.contains("matte")
                 ? Hero(
                     tag: "NailsPolish${nail.id}",
                     child: Image.asset(
-                      "assets/nails/large/${nail.id}.png",
+                      nail.imgPath!,
                       fit: BoxFit.contain,
-                      height: 478.h,
-                      width: 216.w,
+                      height: 700.h,
+                      width: 500.w,
                       // height: 200,
                     ),
                   )
-                : Image.asset(
-                    "assets/nails/large/${nail.id}.png",
-                    fit: BoxFit.contain,
-                    height: 700.h,
-                    width: 500.w,
-                    // height: 200,
-                  ),
+                : isTablet
+                    ? Hero(
+                        tag: "NailsPolish${nail.id}",
+                        child: Image.asset(
+                          "assets/nails/large/${nail.id}.png",
+                          fit: BoxFit.contain,
+                          height: 478.h,
+                          width: 216.w,
+                          // height: 200,
+                        ),
+                      )
+                    : Image.asset(
+                        "assets/nails/large/${nail.id}.png",
+                        fit: BoxFit.contain,
+                        height: 700.h,
+                        width: 500.w,
+                        // height: 200,
+                      ),
           ),
         )
       ],

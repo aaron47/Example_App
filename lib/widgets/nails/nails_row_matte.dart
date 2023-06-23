@@ -8,15 +8,38 @@ import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import '../../shared/tablet_detector.dart';
 import 'Nail.dart';
 
-class NailsRow extends StatefulWidget {
-  const NailsRow({super.key});
+class NailsRowMatte extends StatefulWidget {
+  const NailsRowMatte({super.key});
 
   @override
-  State<NailsRow> createState() => _NailsRowState();
+  State<NailsRowMatte> createState() => _NailsRowMatteState();
 }
 
-class _NailsRowState extends State<NailsRow> {
+class _NailsRowMatteState extends State<NailsRowMatte> {
   List<Nail> nails = [];
+  List<String> nonMatteNails = [
+    "55",
+    "56",
+    "57",
+    "58",
+    "59",
+    "60",
+    "76",
+    "77",
+    "78",
+    "79",
+    "80",
+    "81",
+    "82",
+    "86",
+    "87",
+    "88",
+    "89",
+    "101",
+    "102",
+    "103",
+    "104"
+  ];
 
 // fihomech matte
 // 55.56.57.58.59.60
@@ -29,12 +52,9 @@ class _NailsRowState extends State<NailsRow> {
   void generateNails() {
     for (int i = 1; i < 113; i++) {
       String id = i.toString().padLeft(3, '0');
-      String imgPath = TabletDetector.isTablet(
-              MediaQueryData.fromWindow(WidgetsBinding.instance.window))
-          ? "assets/nails/large/$id.png"
-          : "assets/nails/$id.png";
+      String imgPath = "assets/nails/matte/$id.png";
       Nail nail = Nail(
-        imgPath: imgPath,
+        imgPath: nonMatteNails.contains(i.toString()) ? null : imgPath,
         id: id,
         description:
             'Time of polymerization in light of the UV lamp-2-3minutes LED-lamp-1 minute',
@@ -160,11 +180,38 @@ class NailRowPhone extends StatelessWidget {
               children: [
                 // Text("${matteController.isMatte.value}"),
                 for (var nail in row) ...[
-                  NailWidget(
-                    nail: nail,
-                    nails: nails,
-                    isMatte: matteController.isMatte.value,
-                  ),
+                  if (nail.imgPath == null)
+                    Column(
+                      children: [
+                        SizedBox(
+                          width: 47.884,
+                          height: 105.926,
+                          child: Container(
+                            width: 20,
+                            height: 20,
+                            decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ),
+                        Text(
+                          nail.id,
+                          style: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w700,
+                            fontFamily: "Gotham",
+                            color: Color.fromRGBO(106, 104, 104, 1),
+                          ),
+                        ),
+                      ],
+                    )
+                  else
+                    NailWidget(
+                      nail: nail,
+                      nails: nails,
+                      isMatte: matteController.isMatte.value,
+                    ),
                 ],
               ],
             ),

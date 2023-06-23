@@ -1,17 +1,17 @@
 import 'package:essential_beauty/screens/how_to_apply.dart';
-import 'package:essential_beauty/screens/nails_polish/nails_polish_matte.dart';
 import 'package:essential_beauty/shared/matte_controller.dart';
 import 'package:essential_beauty/widgets/custom_bottom_bar.dart';
 import 'package:essential_beauty/widgets/nails/custom_app_bar.dart';
 import 'package:essential_beauty/widgets/nails/nails_row.dart';
+import 'package:essential_beauty/widgets/nails/nails_row_matte.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../shared/tablet_detector.dart';
 
-class NailsPolishScreen extends StatelessWidget {
-  const NailsPolishScreen({super.key});
+class NailsPolishMatteScreen extends StatelessWidget {
+  const NailsPolishMatteScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -90,32 +90,7 @@ class NailsPolishTablet extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Container(
-                        margin: const EdgeInsets.only(
-                          left: 20,
-                        ),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Get.off(const NailsPolishMatteScreen());
-                          },
-                          style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.resolveWith<Color>(
-                              (Set<MaterialState> states) {
-                                return const Color.fromRGBO(20, 77, 81,
-                                    0.8); // Set the color when isMatte is true
-                              },
-                            ),
-                          ),
-                          child: const Text(
-                            "MATTE",
-                            style: TextStyle(
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                      const NailsRow()
+                      const NailsRowMatte()
                     ],
                   ),
                 ),
@@ -166,31 +141,7 @@ class NailsPolishMobile extends StatelessWidget {
                     ),
                   ),
                 ),
-                Container(
-                  margin: const EdgeInsets.only(
-                    left: 20,
-                  ),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Get.off(const NailsPolishMatteScreen());
-                    },
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.resolveWith<Color>(
-                        (Set<MaterialState> states) {
-                          return const Color.fromRGBO(20, 77, 81,
-                              0.8); // Set the color when isMatte is true
-                        },
-                      ),
-                    ),
-                    child: const Text(
-                      "MATTE",
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
-                const NailsRow(),
+                const NailsRowMatte(),
               ],
             ),
           ),
