@@ -9,6 +9,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../shared/tablet_detector.dart';
+import 'nails_polish.dart';
 
 class NailsPolishMatteScreen extends StatelessWidget {
   const NailsPolishMatteScreen({super.key});
@@ -86,6 +87,31 @@ class NailsPolishTablet extends StatelessWidget {
                               fontFamily: "Gotham",
                               fontWeight: FontWeight.w700,
                               color: Color.fromRGBO(35, 40, 55, 1),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(
+                          left: 20,
+                        ),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Get.off(const NailsPolishScreen());
+                          },
+                          style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.resolveWith<Color>(
+                              (Set<MaterialState> states) {
+                                return const Color.fromRGBO(20, 77, 81,
+                                    0.8); // Set the color when isMatte is true
+                              },
+                            ),
+                          ),
+                          child: const Text(
+                            "NAILS POLISH",
+                            style: TextStyle(
+                              color: Colors.white,
                             ),
                           ),
                         ),

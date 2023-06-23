@@ -35,8 +35,8 @@ class NailCard extends StatelessWidget {
                     child: Image.asset(
                       nail.imgPath!,
                       fit: BoxFit.contain,
-                      height: 700.h,
-                      width: 500.w,
+                      height: 491,
+                      width: 221,
                       // height: 200,
                     ),
                   )
