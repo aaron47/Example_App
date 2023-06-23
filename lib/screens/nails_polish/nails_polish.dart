@@ -14,10 +14,7 @@ class NailsPolishScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TabletDetector.isTablet(
-            MediaQueryData.fromWindow(WidgetsBinding.instance.window))
-        ? const NailsPolishTablet()
-        : NailsPolishMobile();
+    return TabletDetector.isTablet(MediaQueryData.fromWindow(WidgetsBinding.instance.window)) ? const NailsPolishTablet() : NailsPolishMobile();
   }
 }
 
@@ -70,8 +67,7 @@ class NailsPolishTablet extends StatelessWidget {
               ),
               SingleChildScrollView(
                 child: Container(
-                  decoration: const BoxDecoration(
-                      color: Color.fromRGBO(240, 240, 240, 1)),
+                  decoration: const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
                   // padding: const EdgeInsets.all(50),
                   child: Column(
                     children: [
@@ -115,10 +111,10 @@ class NailsPolishMobile extends StatelessWidget {
     super.key,
   });
 
-  final MatteController matteController = MatteController();
 
   @override
   Widget build(BuildContext context) {
+          final matteController = Get.put(MatteController());
     return Scaffold(
       appBar: const CustomAppBar(),
       body: Stack(
@@ -141,11 +137,34 @@ class NailsPolishMobile extends StatelessWidget {
                     ),
                   ),
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    matteController.changeMatte();
-                  },
-                  child: const Text("Matte"),
+                Container(
+                  margin: const EdgeInsets.only(
+                    left: 20,
+                  ),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      matteController.changeMatte();
+                    },
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                        (Set<MaterialState> states) {
+                          if (matteController.isMatte.value) {
+                            return const Color.fromRGBO(20, 77, 81, 0.8); // Set the color when isMatte is true
+                          } else {
+                            return Colors.grey.shade300; // Set the button color when isMatte is false
+                          }
+                        },
+                      ),
+                    ),
+                    child: Obx(
+                      () => Text(
+                        matteController.isMatte.value ? 'MATTE ON' : 'MATTE OFF',
+                        style: TextStyle(
+                          color: matteController.isMatte.value ? Colors.white : Colors.black,
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
                 const NailsRow(),
               ],

@@ -8,11 +8,7 @@ import 'Nail.dart';
 import 'nail_details.dart';
 
 class NailWidget extends StatelessWidget {
-  const NailWidget(
-      {super.key,
-      required this.nail,
-      required this.nails,
-      this.isMatte = false});
+  const NailWidget({super.key, required this.nail, required this.nails, this.isMatte = false});
 
   final Nail nail;
   final List<Nail> nails;
@@ -20,37 +16,49 @@ class NailWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final MatteController matteController = Get.put(MatteController());
+    final matteController = Get.put(MatteController());
+
     return Column(
       children: [
         GestureDetector(
           onTap: () {
-            Get.to(NailDetails(nail: nail, nails: nails),
-                duration: Duration(milliseconds: 800));
+            Get.to(NailDetails(nail: nail, nails: nails), duration: const Duration(milliseconds: 800));
           },
-          child: Obx(
-            () => TabletDetector.isTablet(
-                    MediaQueryData.fromWindow(WidgetsBinding.instance.window))
+          child: Obx(() {
+            // var imagePath = ;
+            final width = TabletDetector.isTablet(
+              MediaQueryData.fromWindow(WidgetsBinding.instance.window),
+            )
+                ? 92.12.w.toDouble()
+                : 46.0;
+            final height = TabletDetector.isTablet(
+              MediaQueryData.fromWindow(WidgetsBinding.instance.window),
+            )
+                ? 203.79.h.toDouble()
+                : 107.0;
+//return matteController.isMatte.value == true ?Text(nail.imgPath!) : Text(nail.imgPathMatte!);
+            return matteController.isMatte.value == true
                 ? Hero(
                     tag: "NailsPolish${nail.id}",
                     child: Image.asset(
-                      matteController.isMatte.value
-                          ? nail.imgPathMatte!
-                          : nail.imgPath!,
-                      width: 92.12.w,
-                      height: 203.79.h,
+                      nail.imgPath!,
+                      width: width,
+                      height: height,
                     ),
                   )
-                : Image.asset(
-                    matteController.isMatte.value
-                        ? nail.imgPathMatte!
-                        : nail.imgPath!,
-                    width: 47.884,
-                    height: 105.926,
-                  ),
-          ),
+                : Hero(
+                    tag: "NailsPolish${nail.id}",
+                    child: Image.asset(
+                      nail.imgPath!,
+                      width: width,
+                      height: height,
+                    ),
+                  );
+          }),
         ),
+
         const SizedBox(height: 10),
+        // Text("${matteController.isMatte.value}"),
         Text(
           nail.id,
           style: const TextStyle(

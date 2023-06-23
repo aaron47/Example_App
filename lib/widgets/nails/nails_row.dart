@@ -2,6 +2,7 @@ import 'package:essential_beauty/shared/matte_controller.dart';
 import 'package:essential_beauty/widgets/nails/nail_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
 import '../../shared/tablet_detector.dart';
@@ -46,23 +47,18 @@ class _NailsRowState extends State<NailsRow> {
 // 86.87.88.89.101.102
 // 103.104
 
-  final MatteController matteController = MatteController();
+      final matteController = Get.put(MatteController());
 
   void generateNails() {
     for (int i = 1; i < 113; i++) {
       String id = i.toString().padLeft(3, '0');
-      String imgPath = TabletDetector.isTablet(
-              MediaQueryData.fromWindow(WidgetsBinding.instance.window))
-          ? "assets/nails/large/$id.png"
-          : "assets/nails/$id.png";
+      String imgPath =
+          TabletDetector.isTablet(MediaQueryData.fromWindow(WidgetsBinding.instance.window)) ? "assets/nails/large/$id.png" : "assets/nails/$id.png";
       Nail nail = Nail(
         imgPath: imgPath,
-        imgPathMatte: nonMatteNails.contains(i.toString())
-            ? null
-            : "assets/nails/matte/$id.png",
+        imgPathMatte: nonMatteNails.contains(i.toString()) ? null : "assets/nails/matte/$id.png",
         id: id,
-        description:
-            'Time of polymerization in light of the UV lamp-2-3minutes LED-lamp-1 minute',
+        description: 'Time of polymerization in light of the UV lamp-2-3minutes LED-lamp-1 minute',
       );
       nails.add(nail);
     }
@@ -77,14 +73,12 @@ class _NailsRowState extends State<NailsRow> {
 
     rowsOfNails = List.generate(
       (nails.length / 10).ceil(),
-      (index) => nails.sublist(index * 10,
-          (index + 1) * 10 > nails.length ? nails.length : (index + 1) * 10),
+      (index) => nails.sublist(index * 10, (index + 1) * 10 > nails.length ? nails.length : (index + 1) * 10),
     );
 
     rowsOfNailsPhone = List.generate(
       (nails.length / 5).ceil(),
-      (index) => nails.sublist(index * 5,
-          (index + 1) * 5 > nails.length ? nails.length : (index + 1) * 5),
+      (index) => nails.sublist(index * 5, (index + 1) * 5 > nails.length ? nails.length : (index + 1) * 5),
     );
   }
 
@@ -171,7 +165,7 @@ class NailRowPhone extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final MatteController matteController = MatteController();
+      final matteController = Get.put(MatteController());
     return Obx(() => Column(
           children: [
             for (var row in rowsOfNails)
@@ -182,6 +176,7 @@ class NailRowPhone extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
+                   // Text("${matteController.isMatte.value}"),
                     for (var nail in row) ...[
                       if (nail.imgPathMatte == null)
                         Column(

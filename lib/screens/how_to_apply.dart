@@ -17,8 +17,7 @@ class HowToApplyScreen extends StatefulWidget {
 class _HowToApplyScreenState extends State<HowToApplyScreen> {
   late VideoPlayerController _videoPlayerController;
   ChewieController? _chewieController;
-  final isTablet = TabletDetector.isTablet(
-      MediaQueryData.fromWindow(WidgetsBinding.instance.window));
+  final isTablet = TabletDetector.isTablet(MediaQueryData.fromWindow(WidgetsBinding.instance.window));
 
   @override
   void initState() {
@@ -28,20 +27,18 @@ class _HowToApplyScreenState extends State<HowToApplyScreen> {
   }
 
   Future<void> initializePlayer() async {
-    _videoPlayerController =
-        VideoPlayerController.asset("assets/nail_video.mp4")
-          ..initialize().then((_) => setState(() {}));
+    _videoPlayerController = VideoPlayerController.asset("assets/nail_video.mp4")..initialize().then((_) => setState(() {}));
     _createChewieController();
   }
 
   void _createChewieController() {
     _chewieController = ChewieController(
       videoPlayerController: _videoPlayerController,
-      materialProgressColors: ChewieProgressColors(
-        backgroundColor: Colors.white,
-        playedColor: Color.fromRGBO(26, 127, 134, 100),
-        bufferedColor: Color.fromRGBO(26, 127, 134, 20),
-      ),
+      // materialProgressColors: ChewieProgressColors(
+      //   backgroundColor: Colors.white,
+      //   playedColor: const Color.fromRGBO(26, 127, 134, 100),
+      //   bufferedColor: const Color.fromRGBO(26, 127, 134, 20),
+      // ),
     );
   }
 
@@ -67,7 +64,8 @@ class _HowToApplyScreenState extends State<HowToApplyScreen> {
             Color.fromRGBO(20, 77, 81, 0.8),
             Color.fromRGBO(0, 0, 0, 0.8),
           ],
-        )),
+        )
+        ),
         child: Row(
           children: [
             if (isTablet) ...[
@@ -116,8 +114,7 @@ class RightSide extends StatelessWidget {
                 },
                 child: Align(
                   alignment: Alignment.topRight,
-                  child: Image.asset("assets/CloseButton.png",
-                      width: 66.21.w, height: 66.h),
+                  child: Image.asset("assets/CloseButton.png", width: 66.21.w, height: 66.h),
                 ),
               ),
             ],
@@ -127,9 +124,7 @@ class RightSide extends StatelessWidget {
             width: MediaQuery.of(context).size.width / 2,
             height: MediaQuery.of(context).size.height / 2,
             child: Center(
-              child: _chewieController != null &&
-                      _chewieController!
-                          .videoPlayerController.value.isInitialized
+              child: _chewieController != null && _chewieController!.videoPlayerController.value.isInitialized
                   ? Chewie(
                       controller: _chewieController!,
                     )
@@ -155,119 +150,125 @@ class RightSidePhone extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const Text(
-            "NAILS POLISH",
-            style: TextStyle(
-              fontFamily: "Gotham",
-              fontWeight: FontWeight.w700,
-              fontSize: 25,
-              color: Color.fromRGBO(248, 248, 248, 1),
+      child: Container(
+        alignment: Alignment.center,
+        padding: const EdgeInsets.all(40),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              "NAILS POLISH",
+              style: TextStyle(
+                fontFamily: "Gotham",
+                fontWeight: FontWeight.w700,
+                fontSize: 25,
+                color: Color.fromRGBO(248, 248, 248, 1),
+              ),
             ),
-          ),
-          SizedBox(
-            width: 305.85,
-            height: 197.76,
-            child: Center(
-              child: _chewieController != null &&
-                      _chewieController!
-                          .videoPlayerController.value.isInitialized
-                  ? Stack(children: [
-                      InkWell(
-                        onTap: () {
-                          Get.back();
-                        },
-                        child: Align(
-                          alignment: Alignment.topRight,
-                          child: Image.asset("assets/CloseButton.png",
-                              width: 21.82, height: 21.75),
+            SizedBox(
+              width: 305.85,
+              child: Align(
+                alignment: Alignment.topRight,
+                child:
+                    Container(margin: const EdgeInsets.only(bottom: 20), child: Image.asset("assets/CloseButton.png", width: 21.82, height: 21.75)),
+              ),
+            ),
+            SizedBox(
+              width: 305.85,
+              height: 277.76,
+              child: Center(
+                child: _chewieController != null && _chewieController!.videoPlayerController.value.isInitialized
+                    ? Stack(children: [
+                        InkWell(
+                          onTap: () {
+                            Get.back();
+                          },
+                        ),
+                        Chewie(
+                          controller: _chewieController!,
+                        ),
+                      ])
+                    : const CircularProgressIndicator(
+                        backgroundColor: Color.fromRGBO(20, 77, 81, 0.8),
+                      ),
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.symmetric(vertical: 10),
+              padding: const EdgeInsets.all(15),
+              width: 300,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(color: Colors.white),
+                gradient: const RadialGradient(
+                  radius: 3,
+                  colors: [
+                    Color.fromRGBO(165, 239, 255, 0.2),
+                    Color.fromRGBO(110, 191, 244, 0.04),
+                    Color.fromRGBO(70, 144, 212, 0),
+                  ],
+                ),
+              ),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: const [
+                          Icon(
+                            Icons.circle,
+                            color: Color.fromRGBO(255, 255, 255, 0.5),
+                            size: 8,
+                          ),
+                          SizedBox(width: 5),
+                          Icon(
+                            Icons.circle,
+                            color: Color.fromRGBO(255, 255, 255, 0.5),
+                            size: 8,
+                          ),
+                          SizedBox(width: 5),
+                          Icon(
+                            Icons.circle,
+                            color: Color.fromRGBO(255, 255, 255, 0.5),
+                            size: 8,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(width: 40),
+                      const Text(
+                        "Color Gel Polish",
+                        style: TextStyle(
+                          shadows: [
+                            Shadow(
+                              color: Color.fromRGBO(0, 0, 0, 0.25),
+                              offset: Offset(0, 3.5),
+                            ),
+                          ],
+                          color: Colors.white,
+                          fontFamily: "Gotham",
+                          fontSize: 15,
+                          fontWeight: FontWeight.w700,
                         ),
                       ),
-                      Chewie(
-                        controller: _chewieController!,
-                      ),
-                    ])
-                  : const CircularProgressIndicator(
-                      backgroundColor: Color.fromRGBO(20, 77, 81, 0.8),
+                    ],
+                  ),
+                  const Text(
+                    "Time of polymerization in light of the UV lamp-2-3minutes LED-lamp-1 minute",
+                    style: TextStyle(
+                      fontFamily: "Gotham",
+                      fontWeight: FontWeight.w400,
+                      fontSize: 12,
+                      color: Color.fromRGBO(235, 235, 235, 1),
                     ),
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.symmetric(vertical: 10),
-            padding: const EdgeInsets.all(15),
-            width: 300,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              border: Border.all(color: Colors.white),
-              gradient: const RadialGradient(
-                radius: 3,
-                colors: [
-                  Color.fromRGBO(165, 239, 255, 0.2),
-                  Color.fromRGBO(110, 191, 244, 0.04),
-                  Color.fromRGBO(70, 144, 212, 0),
+                  ),
                 ],
               ),
             ),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: const [
-                        Icon(
-                          Icons.circle,
-                          color: Color.fromRGBO(255, 255, 255, 0.5),
-                          size: 8,
-                        ),
-                        SizedBox(width: 5),
-                        Icon(
-                          Icons.circle,
-                          color: Color.fromRGBO(255, 255, 255, 0.5),
-                          size: 8,
-                        ),
-                        SizedBox(width: 5),
-                        Icon(
-                          Icons.circle,
-                          color: Color.fromRGBO(255, 255, 255, 0.5),
-                          size: 8,
-                        ),
-                      ],
-                    ),
-                    const SizedBox(width: 40),
-                    const Text(
-                      "Color Gel Polish",
-                      style: TextStyle(
-                        shadows: [
-                          Shadow(
-                            color: Color.fromRGBO(0, 0, 0, 0.25),
-                            offset: Offset(0, 3.5),
-                          ),
-                        ],
-                        color: Colors.white,
-                        fontFamily: "Gotham",
-                        fontSize: 15,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ],
-                ),
-                const Text(
-                  "Time of polymerization in light of the UV lamp-2-3minutes LED-lamp-1 minute",
-                  style: TextStyle(
-                    fontFamily: "Gotham",
-                    fontWeight: FontWeight.w400,
-                    fontSize: 12,
-                    color: const Color.fromRGBO(235, 235, 235, 1),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

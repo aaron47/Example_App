@@ -1,18 +1,16 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:essential_beauty/models/cuticul_oil.dart';
-import 'package:essential_beauty/models/gel_builder.dart';
-import 'package:essential_beauty/screens/how_to_apply.dart';
+import 'package:essential_beauty/shared/tablet_detector.dart';
 import 'package:essential_beauty/widgets/custom_bottom_bar.dart';
 import 'package:essential_beauty/widgets/nails/custom_app_bar.dart';
-import 'package:essential_beauty/widgets/nails/nail_card.dart';
 import 'package:essential_beauty/widgets/nails/nail_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class CuticulOilDetails extends StatelessWidget {
-  const CuticulOilDetails({super.key, required this.oil, required this.oils});
-
+  CuticulOilDetails({super.key, required this.oil, required this.oils});
+  final isTablet = TabletDetector.isTablet(MediaQueryData.fromWindow(WidgetsBinding.instance.window));
   final CuticulOil oil;
   final List<CuticulOil> oils;
 
@@ -40,7 +38,7 @@ class CuticulOilDetails extends StatelessWidget {
                   builder: (BuildContext context) {
                     return Container(
                       decoration: const BoxDecoration(color: Colors.white),
-                      child: BaseCuticulOilWidget(oil: n),
+                      child: isTablet ? BaseCuticulOilWidget(oil: n) : BaseCuticulOilPhoneWidget(oil: n),
                     );
                   },
                 );
@@ -106,28 +104,6 @@ class BaseCuticulOilWidget extends StatelessWidget {
                                 // width: 533.w,
                               ),
                             ),
-                            // Stack(
-                            //   children: [
-
-                            //     Container(
-                            //       margin: EdgeInsets.only(top: 50.h),
-                            //       child: Image.asset(
-                            //         "assets/cuticul_oil/Card-oil.png",
-                            //         height: 550.h,
-                            //         width: 533.w,
-                            //       ),
-                            //     ),
-                            //     Hero(
-                            //       tag: 'oil${oil.id}',
-                            //       child: Align(
-                            //         child: RotatedBox(
-                            //           quarterTurns: 1,
-                            //           child: ScaleImage(imagePath: oil.imgPath),
-                            //         ),
-                            //       ),
-                            //     ),
-                            //   ],
-                            // ),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -193,14 +169,17 @@ class BaseCuticulOilWidget extends StatelessWidget {
           tag: 'oil${oil.id}',
           child: Align(
             // alignment: Alignment.topLeft,
-            child: RotatedBox(
-                quarterTurns: 1,
-                child: Image.asset(
-                  oil.imgPath,
-                  fit: BoxFit.contain,
-                )
-                // child: ScaleImage(imagePath: oil.imgPath),
-                ),
+            child: GestureDetector(
+              onTap: (() => Get.back()),
+              child: RotatedBox(
+                  quarterTurns: 1,
+                  child: Image.asset(
+                    oil.imgPath,
+                    fit: BoxFit.contain,
+                  )
+                  // child: ScaleImage(imagePath: oil.imgPath),
+                  ),
+            ),
           ),
         ),
       ],
@@ -208,51 +187,159 @@ class BaseCuticulOilWidget extends StatelessWidget {
   }
 }
 
-//  body: Center(
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           crossAxisAlignment: CrossAxisAlignment.center,
-//           children: [
-//             Stack(
-//               children: [
-//                 Center(
-//                   child: Container(
-//                     margin: EdgeInsets.only(top: 95.h),
-//                     child: Image.asset(
-//                       "assets/cuticul_oil/Card-oil.png",
-//                       // height: 651.h,
-//                       // width: 533.w,
-//                     ),
-//                   ),
-//                 ),
-//                 Center(
-//                   child: RotatedBox(
-//                     quarterTurns: 1,
-//                     child: Container(
-//                       // margin: EdgeInsets.only(right: 700.w),
-//                       child: Hero(
-//                         tag: 'oil${oil.id}',
-//                         child: Image.asset(
-//                           oil.imgPath,
-//                           fit: BoxFit.contain,
-//                           height: 95.h,
-//                         ),
-//                       ),
-//                     ),
-//                   ),
-//                 ),
-//               ],
-//             ),
-//             SizedBox(
-//               height: 12.h,
-//             ),
-//           ],
-//         ),
-//       ),
+class BaseCuticulOilPhoneWidget extends StatefulWidget {
+  const BaseCuticulOilPhoneWidget({
+    super.key,
+    required this.oil,
+  });
+
+  final CuticulOil oil;
+
+  @override
+  State<BaseCuticulOilPhoneWidget> createState() => _BaseCuticulOilPhoneWidgetState();
+}
+
+class _BaseCuticulOilPhoneWidgetState extends State<BaseCuticulOilPhoneWidget> {
+  bool _alignmentChanged = false;
+
+  @override
+  Widget build(BuildContext context) {
+    Alignment alignment = _alignmentChanged ? Alignment.centerLeft : Alignment.center;
+
+    if (!_alignmentChanged) {
+      Future.delayed(const Duration(seconds: 1), () {
+        setState(() {
+          _alignmentChanged = true;
+        });
+      });
+    }
+    return Stack(
+      children: [
+        Center(
+          child: Container(
+            height: MediaQuery.of(context).size.height,
+            decoration: const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                // InkWell(
+                //   onTap: () {
+                //     Get.back();
+                //   },
+                //   child: Align(
+                //     alignment: Alignment.topRight,
+                //     child: Image.asset("assets/CloseButton.png", width: 66.21.w, height: 66.h),
+                //   ),
+                // ),
+                Center(
+                  heightFactor: 1,
+                  child: Stack(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.05),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(top: 80.h),
+                              child: Image.asset(
+                                "assets/cuticul_oil/Card-oil.png",
+                                height: 550.h,
+                                width: 733.w,
+                              ),
+                            ),
+                            Container(
+                                  margin: EdgeInsets.only(top: 160.h),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "CUTICULE OIL",
+                                    style: TextStyle(
+                                      fontSize: 32.sp,
+                                      fontFamily: "Gotham",
+                                      fontWeight: FontWeight.w700,
+                                      color: const Color.fromRGBO(35, 40, 55, 1),
+                                    ),
+                                  ),
+                                  const PlayButtonLargePhone(
+                                    bottomMargin: 0,
+                                  ),
+                                  SizedBox(
+                                    width: 915.w,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(12.0),
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            "Ref:${widget.oil.id}",
+                                            style: TextStyle(
+                                              fontSize: 70.sp,
+                                              fontFamily: "Gotham",
+                                              fontWeight: FontWeight.w700,
+                                              color: const Color.fromRGBO(80, 79, 79, 1),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: 1900.w,
+                                            child: Text(
+                                              "ce soin riche aux huiles naturelles régénere à la base de huil de ricin ,restructure et hydrate lescuticules fissuré et séchesil assoucit la peau et permet de détacher en douceur les cutils des angles et accélére leur repousse ",
+                                              style: TextStyle(
+                                                fontFamily: "Gotham",
+                                                fontWeight: FontWeight.w400,
+                                                fontSize: 54.sp,
+                                                color: const Color.fromRGBO(126, 126, 126, 1),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            SizedBox(width: MediaQuery.of(context).size.width * 0.01),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                // SizedBox(height: 40.h),
+              ],
+            ),
+          ),
+        ),
+        Hero(
+          tag: 'oil${widget.oil.id}',
+          child: AnimatedAlign(
+            alignment: alignment,
+            duration: const Duration(seconds: 1),
+            curve: Curves.easeInBack,
+            child: Container(
+              margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.15),
+              child: GestureDetector(
+                onTap: (() => Get.back()),
+                child: RotatedBox(quarterTurns: 1, child: Image.asset(widget.oil.imgPath, fit: BoxFit.contain, width: 2200.w)
+                    // child: ScaleImage(imagePath: oil.imgPath),
+                    ),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
 class ScaleImage extends StatefulWidget {
   final String imagePath;
 
-  ScaleImage({required this.imagePath});
+  const ScaleImage({required this.imagePath});
 
   @override
   _ScaleImageState createState() => _ScaleImageState();
@@ -266,7 +353,7 @@ class _ScaleImageState extends State<ScaleImage> with SingleTickerProviderStateM
   void initState() {
     super.initState();
     _animationController = AnimationController(
-      duration: Duration(milliseconds: 500), // Set the desired animation duration
+      duration: const Duration(milliseconds: 500), // Set the desired animation duration
       vsync: this,
     );
 
