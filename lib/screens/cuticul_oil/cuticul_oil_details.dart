@@ -10,7 +10,8 @@ import 'package:get/get.dart';
 
 class CuticulOilDetails extends StatelessWidget {
   CuticulOilDetails({super.key, required this.oil, required this.oils});
-  final isTablet = TabletDetector.isTablet(MediaQueryData.fromWindow(WidgetsBinding.instance.window));
+  final isTablet = TabletDetector.isTablet(
+      MediaQueryData.fromWindow(WidgetsBinding.instance.window));
   final CuticulOil oil;
   final List<CuticulOil> oils;
 
@@ -38,7 +39,9 @@ class CuticulOilDetails extends StatelessWidget {
                   builder: (BuildContext context) {
                     return Container(
                       decoration: const BoxDecoration(color: Colors.white),
-                      child: isTablet ? BaseCuticulOilWidget(oil: n) : BaseCuticulOilPhoneWidget(oil: n),
+                      child: isTablet
+                          ? BaseCuticulOilWidget(oil: n)
+                          : BaseCuticulOilPhoneWidget(oil: n),
                     );
                   },
                 );
@@ -74,7 +77,8 @@ class _BaseCuticulOilWidgetState extends State<BaseCuticulOilWidget> {
 
   @override
   Widget build(BuildContext context) {
-    Alignment alignment = _alignmentChanged ? Alignment.centerLeft : Alignment.center;
+    Alignment alignment =
+        _alignmentChanged ? Alignment.centerLeft : Alignment.center;
 
     if (!_alignmentChanged) {
       Future.delayed(const Duration(seconds: 1), () {
@@ -89,20 +93,23 @@ class _BaseCuticulOilWidgetState extends State<BaseCuticulOilWidget> {
           child: Container(
             // width: 1511.w,
             height: MediaQuery.of(context).size.height,
-            decoration: const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
+            decoration:
+                const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
-                  margin: EdgeInsets.only(right: MediaQuery.of(context).size.width * 0.10),
+                  margin: EdgeInsets.only(
+                      right: MediaQuery.of(context).size.width * 0.10),
                   child: InkWell(
                     onTap: () {
                       Get.back();
                     },
                     child: Align(
                       alignment: Alignment.topRight,
-                      child: Image.asset("assets/CloseButton.png", width: 66.21.w, height: 66.h),
+                      child: Image.asset("assets/CloseButton.png",
+                          width: 66.21.w, height: 66.h),
                     ),
                   ),
                 ),
@@ -111,7 +118,8 @@ class _BaseCuticulOilWidgetState extends State<BaseCuticulOilWidget> {
                   child: Stack(
                     children: [
                       Container(
-                        margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.10),
+                        margin: EdgeInsets.only(
+                            left: MediaQuery.of(context).size.width * 0.10),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -144,7 +152,8 @@ class _BaseCuticulOilWidgetState extends State<BaseCuticulOilWidget> {
                                   child: Padding(
                                     padding: const EdgeInsets.all(12.0),
                                     child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           "Ref:${widget.oil.id}",
@@ -152,7 +161,8 @@ class _BaseCuticulOilWidgetState extends State<BaseCuticulOilWidget> {
                                             fontSize: 20.sp,
                                             fontFamily: "Gotham",
                                             fontWeight: FontWeight.w700,
-                                            color: const Color.fromRGBO(80, 79, 79, 1),
+                                            color: const Color.fromRGBO(
+                                                80, 79, 79, 1),
                                           ),
                                         ),
                                         SizedBox(
@@ -163,7 +173,8 @@ class _BaseCuticulOilWidgetState extends State<BaseCuticulOilWidget> {
                                               fontFamily: "Gotham",
                                               fontWeight: FontWeight.w400,
                                               fontSize: 24.sp,
-                                              color: const Color.fromRGBO(126, 126, 126, 1),
+                                              color: const Color.fromRGBO(
+                                                  126, 126, 126, 1),
                                             ),
                                           ),
                                         ),
@@ -173,7 +184,9 @@ class _BaseCuticulOilWidgetState extends State<BaseCuticulOilWidget> {
                                 ),
                               ],
                             ),
-                            SizedBox(width: MediaQuery.of(context).size.width * 0.10),
+                            SizedBox(
+                                width:
+                                    MediaQuery.of(context).size.width * 0.10),
                           ],
                         ),
                       ),
@@ -188,7 +201,9 @@ class _BaseCuticulOilWidgetState extends State<BaseCuticulOilWidget> {
         Hero(
           tag: 'oil${widget.oil.id}',
           child: Container(
-            margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.08 + MediaQuery.of(context).size.width * 0.10),
+            margin: EdgeInsets.only(
+                left: MediaQuery.of(context).size.width * 0.03 +
+                    MediaQuery.of(context).size.width * 0.10),
             child: AnimatedAlign(
               alignment: alignment,
               duration: const Duration(seconds: 1),
@@ -221,7 +236,8 @@ class BaseCuticulOilPhoneWidget extends StatefulWidget {
   final CuticulOil oil;
 
   @override
-  State<BaseCuticulOilPhoneWidget> createState() => _BaseCuticulOilPhoneWidgetState();
+  State<BaseCuticulOilPhoneWidget> createState() =>
+      _BaseCuticulOilPhoneWidgetState();
 }
 
 class _BaseCuticulOilPhoneWidgetState extends State<BaseCuticulOilPhoneWidget> {
@@ -229,7 +245,8 @@ class _BaseCuticulOilPhoneWidgetState extends State<BaseCuticulOilPhoneWidget> {
 
   @override
   Widget build(BuildContext context) {
-    Alignment alignment = _alignmentChanged ? Alignment.centerLeft : Alignment.center;
+    Alignment alignment =
+        _alignmentChanged ? Alignment.centerLeft : Alignment.center;
 
     if (!_alignmentChanged) {
       Future.delayed(const Duration(seconds: 1), () {
@@ -243,7 +260,8 @@ class _BaseCuticulOilPhoneWidgetState extends State<BaseCuticulOilPhoneWidget> {
         Center(
           child: Container(
             height: MediaQuery.of(context).size.height,
-            decoration: const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
+            decoration:
+                const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -262,7 +280,8 @@ class _BaseCuticulOilPhoneWidgetState extends State<BaseCuticulOilPhoneWidget> {
                   child: Stack(
                     children: [
                       Container(
-                        margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.05),
+                        margin: EdgeInsets.only(
+                            left: MediaQuery.of(context).size.width * 0.05),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -286,7 +305,8 @@ class _BaseCuticulOilPhoneWidgetState extends State<BaseCuticulOilPhoneWidget> {
                                       fontSize: 32.sp,
                                       fontFamily: "Gotham",
                                       fontWeight: FontWeight.w700,
-                                      color: const Color.fromRGBO(35, 40, 55, 1),
+                                      color:
+                                          const Color.fromRGBO(35, 40, 55, 1),
                                     ),
                                   ),
                                   const PlayButtonLargePhone(
@@ -297,7 +317,8 @@ class _BaseCuticulOilPhoneWidgetState extends State<BaseCuticulOilPhoneWidget> {
                                     child: Padding(
                                       padding: const EdgeInsets.all(12.0),
                                       child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             "Ref:${widget.oil.id}",
@@ -305,7 +326,8 @@ class _BaseCuticulOilPhoneWidgetState extends State<BaseCuticulOilPhoneWidget> {
                                               fontSize: 70.sp,
                                               fontFamily: "Gotham",
                                               fontWeight: FontWeight.w700,
-                                              color: const Color.fromRGBO(80, 79, 79, 1),
+                                              color: const Color.fromRGBO(
+                                                  80, 79, 79, 1),
                                             ),
                                           ),
                                           SizedBox(
@@ -316,7 +338,8 @@ class _BaseCuticulOilPhoneWidgetState extends State<BaseCuticulOilPhoneWidget> {
                                                 fontFamily: "Gotham",
                                                 fontWeight: FontWeight.w400,
                                                 fontSize: 54.sp,
-                                                color: const Color.fromRGBO(126, 126, 126, 1),
+                                                color: const Color.fromRGBO(
+                                                    126, 126, 126, 1),
                                               ),
                                             ),
                                           ),
@@ -327,7 +350,9 @@ class _BaseCuticulOilPhoneWidgetState extends State<BaseCuticulOilPhoneWidget> {
                                 ],
                               ),
                             ),
-                            SizedBox(width: MediaQuery.of(context).size.width * 0.01),
+                            SizedBox(
+                                width:
+                                    MediaQuery.of(context).size.width * 0.01),
                           ],
                         ),
                       ),
@@ -346,10 +371,14 @@ class _BaseCuticulOilPhoneWidgetState extends State<BaseCuticulOilPhoneWidget> {
             duration: const Duration(seconds: 1),
             curve: Curves.easeInBack,
             child: Container(
-              margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.15),
+              margin: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.width * 0.15),
               child: GestureDetector(
                 onTap: (() => Get.back()),
-                child: RotatedBox(quarterTurns: 1, child: Image.asset(widget.oil.imgPath, fit: BoxFit.contain, width: 2200.w)
+                child: RotatedBox(
+                    quarterTurns: 1,
+                    child: Image.asset(widget.oil.imgPath,
+                        fit: BoxFit.contain, width: 2200.w)
                     // child: ScaleImage(imagePath: oil.imgPath),
                     ),
               ),
@@ -370,7 +399,8 @@ class ScaleImage extends StatefulWidget {
   _ScaleImageState createState() => _ScaleImageState();
 }
 
-class _ScaleImageState extends State<ScaleImage> with SingleTickerProviderStateMixin {
+class _ScaleImageState extends State<ScaleImage>
+    with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _scaleAnimation;
 
@@ -378,11 +408,13 @@ class _ScaleImageState extends State<ScaleImage> with SingleTickerProviderStateM
   void initState() {
     super.initState();
     _animationController = AnimationController(
-      duration: const Duration(milliseconds: 500), // Set the desired animation duration
+      duration: const Duration(
+          milliseconds: 500), // Set the desired animation duration
       vsync: this,
     );
 
-    _scaleAnimation = Tween<double>(begin: 1.0, end: 1.0).animate(_animationController); // Specify the target scale values
+    _scaleAnimation = Tween<double>(begin: 1.0, end: 1.0)
+        .animate(_animationController); // Specify the target scale values
 
     _animationController.forward(); // Start the animation
   }
