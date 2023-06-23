@@ -33,7 +33,7 @@ class NailsPolishTablet extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(
-                width: MediaQuery.of(context).size.width * 0.12,
+                width: MediaQuery.of(context).size.width * 0.08,
                 child: Align(
                   alignment: Alignment.topLeft,
                   child: Container(
@@ -65,33 +65,35 @@ class NailsPolishTablet extends StatelessWidget {
                   ),
                 ),
               ),
-              SingleChildScrollView(
-                child: Container(
-                  decoration: const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
-                  // padding: const EdgeInsets.all(50),
-                  child: Column(
-                    children: [
-                      Center(
-                        child: Container(
-                          margin: const EdgeInsets.only(bottom: 100, top: 50),
-                          child: const Text(
-                            "Nails Polish",
-                            style: TextStyle(
-                              fontSize: 32,
-                              fontFamily: "Gotham",
-                              fontWeight: FontWeight.w700,
-                              color: Color.fromRGBO(35, 40, 55, 1),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Container(
+                    decoration: const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
+                    // padding: const EdgeInsets.all(50),
+                    child: Column(
+                      children: [
+                        Center(
+                          child: Container(
+                            margin: const EdgeInsets.only(bottom: 100, top: 50),
+                            child: const Text(
+                              "Nails Polish",
+                              style: TextStyle(
+                                fontSize: 32,
+                                fontFamily: "Gotham",
+                                fontWeight: FontWeight.w700,
+                                color: Color.fromRGBO(35, 40, 55, 1),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      const NailsRow()
-                    ],
+                        const NailsRow()
+                      ],
+                    ),
                   ),
                 ),
               ),
               SizedBox(
-                width: MediaQuery.of(context).size.width * 0.1,
+                width: MediaQuery.of(context).size.width * 0.08,
               ),
             ],
           ),
@@ -107,14 +109,13 @@ class NailsPolishTablet extends StatelessWidget {
 }
 
 class NailsPolishMobile extends StatelessWidget {
-  NailsPolishMobile({
+  const NailsPolishMobile({
     super.key,
   });
 
-
   @override
   Widget build(BuildContext context) {
-          final matteController = Get.put(MatteController());
+    final matteController = Get.put(MatteController());
     return Scaffold(
       appBar: const CustomAppBar(),
       body: Stack(
