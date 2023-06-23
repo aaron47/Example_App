@@ -196,7 +196,7 @@ class HomeScreenPhone extends StatelessWidget {
                         Get.to(const NailsPolishScreen(),
                             duration: const Duration(milliseconds: 800));
                       },
-                      tag: 'CatEyes',
+                      tag: 'NailsPolish',
                     ),
                     Category(
                       imgPath: "assets/categories/CatEyes.png",

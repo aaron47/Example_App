@@ -12,8 +12,7 @@ import 'bottle_screen.dart';
 
 class CuticuleOilScreen extends StatelessWidget {
   CuticuleOilScreen({super.key});
-  final isTablet = TabletDetector.isTablet(
-      MediaQueryData.fromWindow(WidgetsBinding.instance.window));
+  final isTablet = TabletDetector.isTablet(MediaQueryData.fromWindow(WidgetsBinding.instance.window));
 
   final List<Bottle> bottles = const [
     Bottle("01", imgPath: "assets/cuticul_oil/Apple.png", ref: "Apple"),
@@ -64,10 +63,8 @@ class CuticuleOilScreen extends StatelessWidget {
     return Scaffold(
         appBar: const CustomAppBar(),
         body: isTablet
-            ? CuticuleOilTablet(
-                builderOilList: builderOilList, bottles: bottles)
-            : CuticuleOilPhone(
-                builderOilList: builderOilList, bottles: bottles));
+            ? CuticuleOilTablet(builderOilList: builderOilList, bottles: bottles)
+            : CuticuleOilPhone(builderOilList: builderOilList, bottles: bottles));
   }
 }
 
@@ -90,8 +87,7 @@ class CuticuleOilTablet extends StatelessWidget {
             const ButtonPlayVideo(),
             Container(
               width: 1511.w,
-              decoration:
-                  const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
+              decoration: const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -126,35 +122,19 @@ class CuticuleOilTablet extends StatelessWidget {
                                       },
                                       child: GestureDetector(
                                         onTap: () {
-                                          Get.to(
-                                              CuticulOilDetails(
-                                                  oil: e, oils: builderOilList),
-                                              duration: const Duration(
-                                                  milliseconds: 800));
+                                          Get.to(CuticulOilDetails(oil: e, oils: builderOilList), duration: const Duration(milliseconds: 800));
                                         },
                                         child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          crossAxisAlignment: CrossAxisAlignment.center,
                                           children: [
                                             Hero(
                                               tag: 'oil${e.id}',
-                                              flightShuttleBuilder:
-                                                  (BuildContext flightContext,
-                                                      Animation<double>
-                                                          animation,
-                                                      HeroFlightDirection
-                                                          flightDirection,
-                                                      BuildContext
-                                                          fromHeroContext,
-                                                      BuildContext
-                                                          toHeroContext) {
+                                              flightShuttleBuilder: (BuildContext flightContext, Animation<double> animation,
+                                                  HeroFlightDirection flightDirection, BuildContext fromHeroContext, BuildContext toHeroContext) {
                                                 return RotationTransition(
-                                                  turns: Tween(
-                                                          begin: 0.0, end: 0.25)
-                                                      .animate(
-                                                          animation), // Control the animation to perform half turns
+                                                  turns:
+                                                      Tween(begin: 0.0, end: 0.25).animate(animation), // Control the animation to perform half turns
                                                   child: Image.asset(
                                                     e.imgPath,
                                                     // width: 217.w,
@@ -175,8 +155,7 @@ class CuticuleOilTablet extends StatelessWidget {
                                                 fontSize: 30.sp,
                                                 fontFamily: "Gotham",
                                                 fontWeight: FontWeight.w700,
-                                                color: const Color.fromRGBO(
-                                                    20, 76, 80, 1),
+                                                color: const Color.fromRGBO(20, 76, 80, 1),
                                               ),
                                             ),
                                           ],
@@ -203,10 +182,8 @@ class CuticuleOilTablet extends StatelessWidget {
                                   height: 600.h,
                                   //  color: Colors.amber,
                                   child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
                                     children: [
                                       Column(
                                         children: [
@@ -217,8 +194,7 @@ class CuticuleOilTablet extends StatelessWidget {
                                                   bottle: bottles[0],
                                                   bottles: bottles,
                                                 ),
-                                                duration: const Duration(
-                                                    milliseconds: 800),
+                                                duration: const Duration(milliseconds: 800),
                                               );
                                             },
                                             child: Hero(
@@ -231,8 +207,7 @@ class CuticuleOilTablet extends StatelessWidget {
                                             ),
                                           ),
                                           Container(
-                                            margin: EdgeInsets.only(
-                                                top: 5.h, bottom: 15.h),
+                                            margin: EdgeInsets.only(top: 5.h, bottom: 15.h),
                                             child: Text(
                                               "Apple",
                                               style: TextStyle(
@@ -259,8 +234,7 @@ class CuticuleOilTablet extends StatelessWidget {
                                                   bottle: bottles[1],
                                                   bottles: bottles,
                                                 ),
-                                                duration: const Duration(
-                                                    milliseconds: 800),
+                                                duration: const Duration(milliseconds: 800),
                                               );
                                             },
                                             child: Hero(
@@ -273,8 +247,7 @@ class CuticuleOilTablet extends StatelessWidget {
                                             ),
                                           ),
                                           Container(
-                                            margin: EdgeInsets.only(
-                                                top: 5.h, bottom: 15.h),
+                                            margin: EdgeInsets.only(top: 5.h, bottom: 15.h),
                                             child: Text(
                                               "Orange",
                                               style: TextStyle(
@@ -348,7 +321,7 @@ class CuticuleOilPhone extends StatelessWidget {
                       child: Text(
                         "CUTICULE OIL",
                         style: TextStyle(
-                          fontSize: 32.sp,
+                          fontSize: 100.sp,
                           fontFamily: "Gotham",
                           fontWeight: FontWeight.w700,
                           color: const Color.fromRGBO(11, 43, 45, 1),
@@ -358,7 +331,7 @@ class CuticuleOilPhone extends StatelessWidget {
                   ),
                   Expanded(
                     child: Container(
-                      child: Row(
+                      child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -372,35 +345,19 @@ class CuticuleOilPhone extends StatelessWidget {
                                       },
                                       child: GestureDetector(
                                         onTap: () {
-                                          Get.to(
-                                              CuticulOilDetails(
-                                                  oil: e, oils: builderOilList),
-                                              duration: const Duration(
-                                                  milliseconds: 800));
+                                          Get.to(CuticulOilDetails(oil: e, oils: builderOilList), duration: const Duration(milliseconds: 800));
                                         },
                                         child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          crossAxisAlignment: CrossAxisAlignment.center,
                                           children: [
                                             Hero(
                                               tag: 'oil${e.id}',
-                                              flightShuttleBuilder:
-                                                  (BuildContext flightContext,
-                                                      Animation<double>
-                                                          animation,
-                                                      HeroFlightDirection
-                                                          flightDirection,
-                                                      BuildContext
-                                                          fromHeroContext,
-                                                      BuildContext
-                                                          toHeroContext) {
+                                              flightShuttleBuilder: (BuildContext flightContext, Animation<double> animation,
+                                                  HeroFlightDirection flightDirection, BuildContext fromHeroContext, BuildContext toHeroContext) {
                                                 return RotationTransition(
-                                                  turns: Tween(
-                                                          begin: 0.0, end: 0.25)
-                                                      .animate(
-                                                          animation), // Control the animation to perform half turns
+                                                  turns:
+                                                      Tween(begin: 0.0, end: 0.25).animate(animation), // Control the animation to perform half turns
                                                   child: Image.asset(
                                                     e.imgPath,
                                                     // width: 217.w,
@@ -421,8 +378,7 @@ class CuticuleOilPhone extends StatelessWidget {
                                                 fontSize: 30.sp,
                                                 fontFamily: "Gotham",
                                                 fontWeight: FontWeight.w700,
-                                                color: const Color.fromRGBO(
-                                                    20, 76, 80, 1),
+                                                color: const Color.fromRGBO(20, 76, 80, 1),
                                               ),
                                             ),
                                           ],
@@ -434,7 +390,7 @@ class CuticuleOilPhone extends StatelessWidget {
                           Stack(
                             children: [
                               Container(
-                                height: 400.h,
+                                height: 120.h,
                                 width: 600.56.w,
                                 // color: Colors.white,
                                 alignment: Alignment.bottomCenter,
@@ -443,103 +399,95 @@ class CuticuleOilPhone extends StatelessWidget {
                                   width: 533.w,
                                 ),
                               ),
-                              Positioned.fill(
-                                child: SizedBox(
-                                  width: 500.w,
-                                  height: 600.h,
-                                  //  color: Colors.amber,
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Column(
-                                        children: [
-                                          GestureDetector(
-                                            onTap: () {
-                                              Get.to(
-                                                () => BottleScreen(
-                                                  bottle: bottles[0],
-                                                  bottles: bottles,
-                                                ),
-                                                duration: const Duration(
-                                                    milliseconds: 800),
-                                              );
-                                            },
-                                            child: Hero(
-                                              tag: 'Apple',
-                                              child: Image.asset(
-                                                "assets/cuticul_oil/Apple.png",
-                                                width: 153.w,
-                                                // height: 393.h,
+                              SizedBox(
+                                width: 600.w,
+                                height: 200.h,
+                                // color: Colors.amber,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Column(
+                                      children: [
+                                        GestureDetector(
+                                          onTap: () {
+                                            Get.to(
+                                              () => BottleScreen(
+                                                bottle: bottles[0],
+                                                bottles: bottles,
+                                              ),
+                                              duration: const Duration(milliseconds: 800),
+                                            );
+                                          },
+                                          child: Hero(
+                                            tag: 'Apple',
+                                            child: Image.asset(
+                                              "assets/cuticul_oil/Apple.png",
+                                              width: 153.w,
+                                              // height: 393.h,
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          margin: EdgeInsets.only(top: 5.h, bottom: 15.h),
+                                          child: Text(
+                                            "Apple",
+                                            style: TextStyle(
+                                              fontSize: 20.sp,
+                                              fontFamily: "Gotham",
+                                              fontWeight: FontWeight.w700,
+                                              color: const Color.fromRGBO(
+                                                150,
+                                                150,
+                                                150,
+                                                1,
                                               ),
                                             ),
                                           ),
-                                          Container(
-                                            margin: EdgeInsets.only(
-                                                top: 5.h, bottom: 15.h),
-                                            child: Text(
-                                              "Apple",
-                                              style: TextStyle(
-                                                fontSize: 20.sp,
-                                                fontFamily: "Gotham",
-                                                fontWeight: FontWeight.w700,
-                                                color: const Color.fromRGBO(
-                                                  150,
-                                                  150,
-                                                  150,
-                                                  1,
-                                                ),
+                                        ),
+                                      ],
+                                    ),
+                                    Column(
+                                      children: [
+                                        GestureDetector(
+                                          onTap: () {
+                                            Get.to(
+                                              () => BottleScreen(
+                                                bottle: bottles[1],
+                                                bottles: bottles,
+                                              ),
+                                              duration: const Duration(milliseconds: 800),
+                                            );
+                                          },
+                                          child: Hero(
+                                            tag: 'Orange',
+                                            child: Image.asset(
+                                              "assets/cuticul_oil/Orange.png",
+                                              width: 153.w,
+                                              // height: 393.h,
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          margin: EdgeInsets.only(top: 5.h, bottom: 15.h),
+                                          child: Text(
+                                            "Orange",
+                                            style: TextStyle(
+                                              fontSize: 20.sp,
+                                              fontFamily: "Gotham",
+                                              fontWeight: FontWeight.w700,
+                                              color: const Color.fromRGBO(
+                                                150,
+                                                150,
+                                                150,
+                                                1,
                                               ),
                                             ),
                                           ),
-                                        ],
-                                      ),
-                                      Column(
-                                        children: [
-                                          GestureDetector(
-                                            onTap: () {
-                                              Get.to(
-                                                () => BottleScreen(
-                                                  bottle: bottles[1],
-                                                  bottles: bottles,
-                                                ),
-                                                duration: const Duration(
-                                                    milliseconds: 800),
-                                              );
-                                            },
-                                            child: Hero(
-                                              tag: 'Orange',
-                                              child: Image.asset(
-                                                "assets/cuticul_oil/Orange.png",
-                                                width: 153.w,
-                                                // height: 393.h,
-                                              ),
-                                            ),
-                                          ),
-                                          Container(
-                                            margin: EdgeInsets.only(
-                                                top: 5.h, bottom: 15.h),
-                                            child: Text(
-                                              "Orange",
-                                              style: TextStyle(
-                                                fontSize: 20.sp,
-                                                fontFamily: "Gotham",
-                                                fontWeight: FontWeight.w700,
-                                                color: const Color.fromRGBO(
-                                                  150,
-                                                  150,
-                                                  150,
-                                                  1,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
                                 ),
                               ),
                             ],

@@ -53,7 +53,7 @@ class _NailsRowState extends State<NailsRow> {
 
   @override
   Widget build(BuildContext context) {
-    return TabletDetector.isTablet(MediaQueryData.fromView(View.of(context)))
+    return TabletDetector.isTablet(MediaQueryData.fromWindow(WidgetsBinding.instance.window))
         ? NailRowTablet(rowsOfNails: rowsOfNails, nails: nails)
         : NailRowPhone(rowsOfNails: rowsOfNailsPhone, nails: nails);
   }

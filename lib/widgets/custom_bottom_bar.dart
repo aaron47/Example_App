@@ -20,8 +20,7 @@ class CustomBottomBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isTablet =
-        TabletDetector.isTablet(MediaQueryData.fromView(View.of(context)));
+    final isTablet = TabletDetector.isTablet(MediaQueryData.fromWindow(WidgetsBinding.instance.window));
     return isTablet
         ? CustomBottomBarTablet(
             categoryName: categoryName,
@@ -75,7 +74,7 @@ class CustomBottomBarTablet extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       height: 60.h,
                       width: MediaQuery.of(context).size.width,
                       // color: Colors.grey.withOpacity(0.2),
@@ -94,8 +93,7 @@ class CustomBottomBarTablet extends StatelessWidget {
                                     fontFamily: "Gotham",
                                     fontSize: 14.sp,
                                     fontWeight: FontWeight.w700,
-                                    color:
-                                        const Color.fromRGBO(150, 150, 150, 1),
+                                    color: const Color.fromRGBO(150, 150, 150, 1),
                                   ),
                                 ),
                                 Image.asset("assets/sloth.png")
@@ -207,8 +205,8 @@ class CustomBottomBarMobile extends StatelessWidget {
                         Container(
                           margin: const EdgeInsets.only(left: 20),
                           alignment: Alignment.centerLeft,
-                          child: const Row(
-                            children: [],
+                          child: Row(
+                            children: const [],
                           ),
                         ),
                         Container(
