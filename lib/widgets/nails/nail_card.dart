@@ -1,66 +1,156 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 import '../../shared/tablet_detector.dart';
 import 'Nail.dart';
 
-class NailCard extends StatelessWidget {
-  NailCard({super.key, required this.nail});
-  final isTablet = TabletDetector.isTablet(
-      MediaQueryData.fromWindow(WidgetsBinding.instance.window));
+class CalqueMatteController extends GetxController {
+  var isCalqueMatteActivated = true.obs;
 
+  void toggleCalque() {
+    isCalqueMatteActivated.value = !isCalqueMatteActivated.value;
+  }
+}
+
+class NailCard extends StatefulWidget {
+  const NailCard({super.key, required this.nail});
   final Nail nail;
+
+  @override
+  State<NailCard> createState() => _NailCardState();
+}
+
+class _NailCardState extends State<NailCard> {
+  final isTablet = TabletDetector.isTablet(MediaQueryData.fromWindow(WidgetsBinding.instance.window));
+  final CalqueMatteController calqueController = Get.put(CalqueMatteController());
+  bool showMatte = true;
+  List<String> nonMatteNails = [
+    "055",
+    "056",
+    "057",
+    "058",
+    "059",
+    "060",
+    "076",
+    "077",
+    "078",
+    "079",
+    "080",
+    "081",
+    "082",
+    "086",
+    "087",
+    "088",
+    "089",
+    "101",
+    "102",
+    "103",
+    "104"
+  ];
+  void toggleShowMatte() {
+    setState(() {
+      showMatte = !showMatte;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        isTablet
-            ? Image.asset(
-                "assets/nails/Card.png",
-                width: 379.13.w,
-                height: 630.79.h,
-                fit: BoxFit.contain,
-              )
-            : Image.asset(
-                "assets/nails/Card.png",
-                // width: 183.13.w,
-                // height: 304.79.h,
-                fit: BoxFit.contain,
-              ),
-        Positioned.fill(
-          child: Align(
-            child: nail.imgPath!.contains("matte")
-                ? Hero(
-                    tag: "NailsPolish${nail.id}",
-                    child: Image.asset(
-                      nail.imgPath!,
-                      fit: BoxFit.contain,
-                      height: 491,
-                      width: 221,
-                      // height: 200,
-                    ),
-                  )
-                : isTablet
-                    ? Hero(
-                        tag: "NailsPolish${nail.id}",
-                        child: Image.asset(
-                          "assets/nails/large/${nail.id}.png",
+    return GestureDetector(
+      onTap: toggleShowMatte,
+      child: Stack(
+        children: [
+          isTablet
+              ? Image.asset(
+                  "assets/nails/Card.png",
+                  width: 379.13.w,
+                  height: 630.79.h,
+                  fit: BoxFit.contain,
+                )
+              : Image.asset(
+                  "assets/nails/Card.png",
+                  // width: 183.13.w,
+                  // height: 304.79.h,
+                  fit: BoxFit.contain,
+                ),
+          Positioned.fill(
+            child: Align(
+              child: AnimatedCrossFade(
+                firstChild: Hero(
+                  tag: "NailsPolishMatt${widget.nail.id}",
+                  child: widget.nail.imgPath != null && !nonMatteNails.contains(widget.nail.id)
+                      ? Image.asset(
+                          // widget.nail.imgPath!,
+                          "assets/nails/matte/${widget.nail.id}.png",
                           fit: BoxFit.contain,
                           height: 478.h,
                           width: 216.w,
                           // height: 200,
+                        )
+                      : SizedBox(
+                          height: 478.h,
+                          width: 216.w,
                         ),
-                      )
-                    : Image.asset(
-                        "assets/nails/large/${nail.id}.png",
-                        fit: BoxFit.contain,
-                        height: 700.h,
-                        width: 500.w,
-                        // height: 200,
+                ),
+                secondChild: widget.nail.imgPath != null
+                    ? isTablet
+                        ? Hero(
+                            tag: "NailsPolish${widget.nail.id}",
+                            child: Image.asset(
+                              "assets/nails/large/${widget.nail.id}.png",
+                              fit: BoxFit.contain,
+                              height: 478.h,
+                              width: 216.w,
+                              // height: 200,
+                            ),
+                          )
+                        : Image.asset(
+                            "assets/nails/large/${widget.nail.id}.png",
+                            fit: BoxFit.contain,
+                            height: 700.h,
+                            width: 500.w,
+                            // height: 200,
+                          )
+                    : SizedBox(
+                        height: 478.h,
+                        width: 216.w,
                       ),
+                crossFadeState: showMatte ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+                duration: const Duration(milliseconds: 300),
+              ),
+            ),
           ),
-        )
-      ],
+          Positioned(
+            bottom: 70,
+            right: 16,
+            child: ElevatedButton(
+              onPressed: toggleShowMatte,
+              // child: Text(showMatte ? 'Show Other' : 'Show Matte'),
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                  (Set<MaterialState> states) {
+                    return showMatte
+                        ? const Color.fromRGBO(20, 77, 81, 0.8)
+                        : const Color.fromARGB(204, 253, 254, 254); // Set the color when isMatte is true
+                  },
+                ),
+              ),
+              child: Container(
+                padding: const EdgeInsets.all(10),
+                child: Text(
+                  "MATTE",
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontFamily: "Gotham",
+                    fontWeight: FontWeight.w700,
+                    color: showMatte ? Colors.white : const Color.fromRGBO(20, 77, 81, 0.8),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

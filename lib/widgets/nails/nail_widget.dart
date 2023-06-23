@@ -39,7 +39,7 @@ class NailWidget extends StatelessWidget {
 //return matteController.isMatte.value == true ?Text(nail.imgPath!) : Text(nail.imgPathMatte!);
             return matteController.isMatte.value == true
                 ? Hero(
-                    tag: "NailsPolish${nail.id}",
+                    tag: "NailsPolishMatt${nail.id}",
                     child: Image.asset(
                       nail.imgPath!,
                       width: width,
