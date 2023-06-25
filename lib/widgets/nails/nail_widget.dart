@@ -8,7 +8,11 @@ import 'Nail.dart';
 import 'nail_details.dart';
 
 class NailWidget extends StatelessWidget {
-  const NailWidget({super.key, required this.nail, required this.nails, this.isMatte = false});
+  const NailWidget(
+      {super.key,
+      required this.nail,
+      required this.nails,
+      this.isMatte = false});
 
   final Nail nail;
   final List<Nail> nails;
@@ -22,7 +26,11 @@ class NailWidget extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-            Get.to(NailDetails(nail: nail, nails: nails), duration: const Duration(milliseconds: 800));
+            nail.imgPath!.contains("matte")
+                ? matteController.setMatteTrue()
+                : matteController.setMatteFalse();
+            Get.to(NailDetails(nail: nail, nails: nails),
+                duration: const Duration(milliseconds: 800));
           },
           child: Obx(() {
             // var imagePath = ;

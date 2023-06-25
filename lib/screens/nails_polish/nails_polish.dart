@@ -189,22 +189,27 @@ class NailsPolishMobile extends StatelessWidget {
 
                   child: InkWell(
                     onTap: () {
+                      matteController.setMatteFalse();
                       Get.off(const NailsPolishMatteScreen());
                     },
                     child: Stack(
                       children: [
-                        Image.asset("assets/nails/matte/RectangleMatteVert.png",
-                            width: 75, height: 45, fit: BoxFit.contain),
+                        Image.asset(
+                            "assets/nails/matte/RectangleMatteBlanc.png",
+                            width: 75,
+                            height: 45,
+                            fit: BoxFit.contain),
                         const Positioned.fill(
-                            child: Align(
-                          child: Text(
-                            "MATTE",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w700,
+                          child: Align(
+                            child: Text(
+                              "MATTE",
+                              style: TextStyle(
+                                color: Color.fromRGBO(47, 90, 92, 1),
+                                fontWeight: FontWeight.w700,
+                              ),
                             ),
                           ),
-                        )),
+                        ),
                       ],
                     ),
                   ),

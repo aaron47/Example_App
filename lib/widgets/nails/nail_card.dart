@@ -1,3 +1,4 @@
+import 'package:essential_beauty/shared/matte_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -58,109 +59,180 @@ class _NailCardState extends State<NailCard> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: toggleShowMatte,
-      child: Stack(
-        children: [
-          isTablet
-              ? Image.asset(
-                  "assets/nails/Card.png",
-                  width: 379.13.w,
-                  height: 630.79.h,
-                  fit: BoxFit.contain,
-                )
-              : Image.asset(
-                  "assets/nails/Card.png",
-                  // width: 183.13.w,
-                  // height: 304.79.h,
-                  fit: BoxFit.contain,
-                ),
-          Positioned.fill(
-            child: Align(
-              child: AnimatedCrossFade(
-                firstChild: Hero(
-                  tag: "NailsPolishMatt${widget.nail.id}",
-                  child: widget.nail.imgPath != null &&
-                          !nonMatteNails.contains(widget.nail.id)
-                      ? Image.asset(
-                          // widget.nail.imgPath!,
-                          "assets/nails/matte/${widget.nail.id}.png",
-                          fit: BoxFit.contain,
-                          height: 231,
-                          width: 104,
-                          // height: 200,
-                        )
-                      : const SizedBox(
-                          height: 231,
-                          width: 104,
-                        ),
-                ),
-                secondChild: widget.nail.imgPath != null
-                    ? isTablet
-                        ? Hero(
-                            tag: "NailsPolish${widget.nail.id}",
-                            child: Image.asset(
-                              "assets/nails/large/${widget.nail.id}.png",
-                              fit: BoxFit.contain,
-                              height: 478.h,
-                              width: 216.w,
-                              // height: 200,
-                            ),
-                          )
-                        : Image.asset(
-                            "assets/nails/large/${widget.nail.id}.png",
-                            fit: BoxFit.contain,
-                            height: 700.h,
-                            width: 500.w,
-                            // height: 200,
-                          )
-                    : SizedBox(
-                        height: 478.h,
-                        width: 216.w,
-                      ),
-                crossFadeState: showMatte
-                    ? CrossFadeState.showSecond
-                    : CrossFadeState.showFirst,
-                duration: const Duration(milliseconds: 300),
-              ),
-            ),
-          ),
-          Positioned(
-            bottom: 0,
-            left: 105,
-            child: InkWell(
-              onTap: () {
-                toggleShowMatte();
-              },
-              child: Stack(
-                children: [
-                  showMatte
-                      ? Image.asset("assets/nails/matte/RectangleMatteVert.png",
-                          width: 75, height: 45, fit: BoxFit.contain)
-                      : Image.asset(
-                          "assets/nails/matte/RectangleMatteBlanc.png",
-                          width: 75,
-                          height: 45,
-                          fit: BoxFit.contain,
-                        ),
-                  Positioned.fill(
+    final matteControler = Get.put(MatteController());
+
+    return Obx(() => GestureDetector(
+          onTap: toggleShowMatte,
+          child: Stack(
+            children: [
+              isTablet
+                  ? Image.asset(
+                      "assets/nails/Card.png",
+                      width: 379.13.w,
+                      height: 630.79.h,
+                      fit: BoxFit.contain,
+                    )
+                  : Image.asset(
+                      "assets/nails/Card.png",
+                      // width: 183.13.w,
+                      // height: 304.79.h,
+                      fit: BoxFit.contain,
+                    ),
+              matteControler.isMatte.value == false
+                  ? Positioned.fill(
                       child: Align(
-                    child: Text(
-                      "MATTE",
-                      style: TextStyle(
-                        color: showMatte
-                            ? Colors.white
-                            : const Color.fromRGBO(47, 90, 92, 1),
-                        fontWeight: FontWeight.w700,
+                        child: AnimatedCrossFade(
+                          firstChild: Hero(
+                            tag: "NailsPolishMatt${widget.nail.id}",
+                            child: widget.nail.imgPath != null &&
+                                    !nonMatteNails.contains(widget.nail.id)
+                                ? Image.asset(
+                                    // widget.nail.imgPath!,
+                                    "assets/nails/matte/${widget.nail.id}.png",
+                                    fit: BoxFit.contain,
+                                    height: 231,
+                                    width: 104,
+                                    // height: 200,
+                                  )
+                                : const SizedBox(
+                                    height: 231,
+                                    width: 104,
+                                  ),
+                          ),
+                          secondChild: widget.nail.imgPath != null
+                              ? isTablet
+                                  ? Hero(
+                                      tag: "NailsPolish${widget.nail.id}",
+                                      child: Image.asset(
+                                        "assets/nails/large/${widget.nail.id}.png",
+                                        fit: BoxFit.contain,
+                                        height: 478.h,
+                                        width: 216.w,
+                                        // height: 200,
+                                      ),
+                                    )
+                                  : Image.asset(
+                                      "assets/nails/large/${widget.nail.id}.png",
+                                      fit: BoxFit.contain,
+                                      height: 700.h,
+                                      width: 500.w,
+                                      // height: 200,
+                                    )
+                              : SizedBox(
+                                  height: 478.h,
+                                  width: 216.w,
+                                ),
+                          crossFadeState: showMatte
+                              ? CrossFadeState.showSecond
+                              : CrossFadeState.showFirst,
+                          duration: const Duration(milliseconds: 300),
+                        ),
+                      ),
+                    )
+                  : Positioned.fill(
+                      child: Align(
+                        child: AnimatedCrossFade(
+                          secondChild: Hero(
+                            tag: "NailsPolishMatt${widget.nail.id}",
+                            child: widget.nail.imgPath != null &&
+                                    !nonMatteNails.contains(widget.nail.id)
+                                ? Image.asset(
+                                    // widget.nail.imgPath!,
+                                    "assets/nails/matte/${widget.nail.id}.png",
+                                    fit: BoxFit.contain,
+                                    height: 231,
+                                    width: 104,
+                                    // height: 200,
+                                  )
+                                : const SizedBox(
+                                    height: 231,
+                                    width: 104,
+                                  ),
+                          ),
+                          firstChild: widget.nail.imgPath != null
+                              ? isTablet
+                                  ? Hero(
+                                      tag: "NailsPolish${widget.nail.id}",
+                                      child: Image.asset(
+                                        "assets/nails/large/${widget.nail.id}.png",
+                                        fit: BoxFit.contain,
+                                        height: 478.h,
+                                        width: 216.w,
+                                        // height: 200,
+                                      ),
+                                    )
+                                  : Image.asset(
+                                      "assets/nails/large/${widget.nail.id}.png",
+                                      fit: BoxFit.contain,
+                                      height: 700.h,
+                                      width: 500.w,
+                                      // height: 200,
+                                    )
+                              : SizedBox(
+                                  height: 478.h,
+                                  width: 216.w,
+                                ),
+                          crossFadeState: showMatte
+                              ? CrossFadeState.showSecond
+                              : CrossFadeState.showFirst,
+                          duration: const Duration(milliseconds: 300),
+                        ),
                       ),
                     ),
-                  )),
-                ],
+              Positioned(
+                bottom: 0,
+                left: 105,
+                child: InkWell(
+                  onTap: () {
+                    toggleShowMatte();
+                  },
+                  child: Stack(
+                    children: [
+                      // !showMatte
+                      //     ? Image.asset(
+                      //         "assets/nails/matte/RectangleMatteVert.png",
+                      //         width: 75,
+                      //         height: 45,
+                      //         fit: BoxFit.contain,
+                      //       )
+                      //     : Image.asset(
+                      //         "assets/nails/matte/RectangleMatteBlanc.png",
+                      //         width: 75,
+                      //         height: 45,
+                      //         fit: BoxFit.contain,
+                      //       ),
+                      showMatte
+                          ? Image.asset(
+                              "assets/nails/matte/RectangleMatteVert.png",
+                              width: 75,
+                              height: 45,
+                              fit: BoxFit.contain,
+                            )
+                          : Image.asset(
+                              "assets/nails/matte/RectangleMatteBlanc.png",
+                              width: 75,
+                              height: 45,
+                              fit: BoxFit.contain,
+                            ),
+                      Positioned.fill(
+                        child: Align(
+                          child: Text(
+                            "MATTE",
+                            style: TextStyle(
+                              color: showMatte
+                                  ? Colors.white
+                                  : const Color.fromRGBO(47, 90, 92, 1),
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
-            ),
+            ],
           ),
-        ],
-      ),
-    );
+        ));
   }
 }
