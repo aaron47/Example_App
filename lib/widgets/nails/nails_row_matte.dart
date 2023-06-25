@@ -183,16 +183,16 @@ class NailRowPhone extends StatelessWidget {
                   if (nail.imgPath == null)
                     Column(
                       children: [
-                        SizedBox(
-                          width: 47.884,
-                          height: 105.926,
-                          child: Container(
-                            width: 20,
-                            height: 20,
-                            decoration: const BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.grey,
-                            ),
+                        Container(
+                          margin: EdgeInsets.only(
+                            top: 102.h - 30,
+                            bottom: 102.h - 30,
+                          ),
+                          width: 20,
+                          height: 20,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.grey,
                           ),
                         ),
                         Text(
