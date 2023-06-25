@@ -120,19 +120,28 @@ class NailsDetailsPhone extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(),
-      body: CarouselSlider(
-        options: CarouselOptions(
-          initialPage: int.parse(nail.id) - 1,
-          height: MediaQuery.of(context).size.height,
-          viewportFraction: 1,
-        ),
-        items: nails.map((n) {
-          return Builder(
-            builder: (BuildContext context) {
-              return BaseNailPhone(nail: n);
-            },
-          );
-        }).toList(),
+      body: Stack(
+        children: [
+          CarouselSlider(
+            options: CarouselOptions(
+              initialPage: int.parse(nail.id) - 1,
+              height: MediaQuery.of(context).size.height,
+              viewportFraction: 1,
+            ),
+            items: nails.map((n) {
+              return Builder(
+                builder: (BuildContext context) {
+                  return BaseNailPhone(nail: n);
+                },
+              );
+            }).toList(),
+          ),
+          const CustomBottomBar(
+            imagePath: "assets/categories/NailsPolishLarge.png",
+            heroTag: "NailsPolish",
+            categoryName: "NAILS POLISH",
+          ),
+        ],
       ),
     );
   }

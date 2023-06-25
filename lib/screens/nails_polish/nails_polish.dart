@@ -186,28 +186,51 @@ class NailsPolishMobile extends StatelessWidget {
                   margin: const EdgeInsets.only(
                     left: 20,
                   ),
-                  child: ElevatedButton(
-                    onPressed: () {
+
+                  child: InkWell(
+                    onTap: () {
                       Get.off(const NailsPolishMatteScreen());
                     },
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.resolveWith<Color>(
-                        (Set<MaterialState> states) {
-                          return const Color.fromRGBO(20, 77, 81,
-                              0.8); // Set the color when isMatte is true
-                        },
-                      ),
-                    ),
-                    child: const Text(
-                      "MATTE",
-                      style: TextStyle(
-                        fontFamily: "Gotham",
-                        fontSize: 14,
-                        fontWeight: FontWeight.w700,
-                        color: Color.fromRGBO(150, 150, 150, 1),
-                      ),
+                    child: Stack(
+                      children: [
+                        Image.asset("assets/nails/matte/RectangleMatteVert.png",
+                            width: 75, height: 45, fit: BoxFit.contain),
+                        const Positioned.fill(
+                            child: Align(
+                          child: Text(
+                            "MATTE",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        )),
+                      ],
                     ),
                   ),
+
+                  // child: ElevatedButton(
+                  //   onPressed: () {
+                  //     Get.off(const NailsPolishMatteScreen());
+                  //   },
+                  //   style: ButtonStyle(
+                  //     backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                  //       (Set<MaterialState> states) {
+                  //         return const Color.fromRGBO(20, 77, 81,
+                  //             0.8); // Set the color when isMatte is true
+                  //       },
+                  //     ),
+                  //   ),
+                  //   child: const Text(
+                  //     "MATTE",
+                  //     style: TextStyle(
+                  //       fontFamily: "Gotham",
+                  //       fontSize: 14,
+                  //       fontWeight: FontWeight.w700,
+                  //       color: Color.fromRGBO(150, 150, 150, 1),
+                  //     ),
+                  //   ),
+                  // ),
                 ),
                 const NailsRow(),
               ],
