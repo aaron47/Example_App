@@ -22,8 +22,10 @@ class NailCard extends StatefulWidget {
 }
 
 class _NailCardState extends State<NailCard> {
-  final isTablet = TabletDetector.isTablet(MediaQueryData.fromWindow(WidgetsBinding.instance.window));
-  final CalqueMatteController calqueController = Get.put(CalqueMatteController());
+  final isTablet = TabletDetector.isTablet(
+      MediaQueryData.fromWindow(WidgetsBinding.instance.window));
+  final CalqueMatteController calqueController =
+      Get.put(CalqueMatteController());
   bool showMatte = true;
   List<String> nonMatteNails = [
     "055",
@@ -78,18 +80,19 @@ class _NailCardState extends State<NailCard> {
               child: AnimatedCrossFade(
                 firstChild: Hero(
                   tag: "NailsPolishMatt${widget.nail.id}",
-                  child: widget.nail.imgPath != null && !nonMatteNails.contains(widget.nail.id)
+                  child: widget.nail.imgPath != null &&
+                          !nonMatteNails.contains(widget.nail.id)
                       ? Image.asset(
                           // widget.nail.imgPath!,
                           "assets/nails/matte/${widget.nail.id}.png",
                           fit: BoxFit.contain,
-                          height: 478.h,
-                          width: 216.w,
+                          height: 231,
+                          width: 104,
                           // height: 200,
                         )
-                      : SizedBox(
-                          height: 478.h,
-                          width: 216.w,
+                      : const SizedBox(
+                          height: 231,
+                          width: 104,
                         ),
                 ),
                 secondChild: widget.nail.imgPath != null
@@ -115,37 +118,44 @@ class _NailCardState extends State<NailCard> {
                         height: 478.h,
                         width: 216.w,
                       ),
-                crossFadeState: showMatte ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+                crossFadeState: showMatte
+                    ? CrossFadeState.showSecond
+                    : CrossFadeState.showFirst,
                 duration: const Duration(milliseconds: 300),
               ),
             ),
           ),
           Positioned(
-            bottom: 70,
-            right: 16,
-            child: ElevatedButton(
-              onPressed: toggleShowMatte,
-              // child: Text(showMatte ? 'Show Other' : 'Show Matte'),
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.resolveWith<Color>(
-                  (Set<MaterialState> states) {
-                    return showMatte
-                        ? const Color.fromRGBO(20, 77, 81, 0.8)
-                        : const Color.fromARGB(204, 253, 254, 254); // Set the color when isMatte is true
-                  },
-                ),
-              ),
-              child: Container(
-                padding: const EdgeInsets.all(10),
-                child: Text(
-                  "MATTE",
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontFamily: "Gotham",
-                    fontWeight: FontWeight.w700,
-                    color: showMatte ? Colors.white : const Color.fromRGBO(20, 77, 81, 0.8),
-                  ),
-                ),
+            bottom: 0,
+            left: 105,
+            child: InkWell(
+              onTap: () {
+                toggleShowMatte();
+              },
+              child: Stack(
+                children: [
+                  showMatte
+                      ? Image.asset("assets/nails/matte/RectangleMatteVert.png",
+                          width: 75, height: 45, fit: BoxFit.contain)
+                      : Image.asset(
+                          "assets/nails/matte/RectangleMatteBlanc.png",
+                          width: 75,
+                          height: 45,
+                          fit: BoxFit.contain,
+                        ),
+                  Positioned.fill(
+                      child: Align(
+                    child: Text(
+                      "MATTE",
+                      style: TextStyle(
+                        color: showMatte
+                            ? Colors.white
+                            : const Color.fromRGBO(47, 90, 92, 1),
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  )),
+                ],
               ),
             ),
           ),

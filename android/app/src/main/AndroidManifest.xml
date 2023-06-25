@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.example.name">
     <application
-        android:label="essential_beauty"
+        android:label="Essential Beauty"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

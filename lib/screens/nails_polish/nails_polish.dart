@@ -15,7 +15,10 @@ class NailsPolishScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TabletDetector.isTablet(MediaQueryData.fromWindow(WidgetsBinding.instance.window)) ? const NailsPolishTablet() : const NailsPolishMobile();
+    return TabletDetector.isTablet(
+            MediaQueryData.fromWindow(WidgetsBinding.instance.window))
+        ? const NailsPolishTablet()
+        : const NailsPolishMobile();
   }
 }
 
@@ -69,7 +72,8 @@ class NailsPolishTablet extends StatelessWidget {
               Expanded(
                 child: SingleChildScrollView(
                   child: Container(
-                    decoration: const BoxDecoration(color: Color.fromRGBO(240, 240, 240, 1)),
+                    decoration: const BoxDecoration(
+                        color: Color.fromRGBO(240, 240, 240, 1)),
                     // padding: const EdgeInsets.all(50),
                     child: Column(
                       children: [
@@ -97,14 +101,18 @@ class NailsPolishTablet extends StatelessWidget {
                               // Get.off(const NailsPolishMatteScreen());
                               Get.off(
                                 () => const NailsPolishMatteScreen(),
-                                transition: Transition.topLevel, // Choose your desired transition
-                                duration: const Duration(seconds: 1), // Set the animation duration
+                                transition: Transition
+                                    .topLevel, // Choose your desired transition
+                                duration: const Duration(
+                                    seconds: 1), // Set the animation duration
                               );
                             },
                             style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                              backgroundColor:
+                                  MaterialStateProperty.resolveWith<Color>(
                                 (Set<MaterialState> states) {
-                                  return const Color.fromARGB(204, 253, 254, 254); // Set the color when isMatte is true
+                                  return const Color.fromARGB(204, 253, 254,
+                                      254); // Set the color when isMatte is true
                                 },
                               ),
                             ),
@@ -185,17 +193,18 @@ class NailsPolishMobile extends StatelessWidget {
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.resolveWith<Color>(
                         (Set<MaterialState> states) {
-                          return const Color.fromRGBO(20, 77, 81, 0.8); // Set the color when isMatte is true
+                          return const Color.fromRGBO(20, 77, 81,
+                              0.8); // Set the color when isMatte is true
                         },
                       ),
                     ),
-                    child: Text(
+                    child: const Text(
                       "MATTE",
                       style: TextStyle(
                         fontFamily: "Gotham",
-                        fontSize: 14.sp,
+                        fontSize: 14,
                         fontWeight: FontWeight.w700,
-                        color: const Color.fromRGBO(150, 150, 150, 1),
+                        color: Color.fromRGBO(150, 150, 150, 1),
                       ),
                     ),
                   ),
