@@ -1,4 +1,4 @@
-package com.example.essential_beauty
+package com.slothlab.essential
 
 import io.flutter.embedding.android.FlutterActivity
 

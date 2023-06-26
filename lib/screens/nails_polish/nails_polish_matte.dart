@@ -29,6 +29,7 @@ class NailsPolishTablet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final matteController = Get.put(MatteController());
     return Scaffold(
       appBar: const CustomAppBar(),
       body: Stack(
@@ -92,40 +93,34 @@ class NailsPolishTablet extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          alignment: Alignment.centerLeft,
                           margin: const EdgeInsets.only(
-                            left: 40,
+                            left: 20,
                           ),
-                          child: ElevatedButton(
-                            onPressed: () {
-                              Get.off(
-                                () => const NailsPolishScreen(),
-                                transition: Transition
-                                    .topLevel, // Choose your desired transition
-                                duration: const Duration(
-                                    seconds: 1), // Set the animation duration
-                              );
+                          child: InkWell(
+                            onTap: () {
+                              matteController.setMatteFalse();
+                              Get.off(const NailsPolishScreen());
                             },
-                            style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStateProperty.resolveWith<Color>(
-                                (Set<MaterialState> states) {
-                                  return const Color.fromRGBO(20, 77, 81,
-                                      0.8); // Set the color when isMatte is true
-                                },
-                              ),
-                            ),
-                            child: Container(
-                              padding: const EdgeInsets.all(20),
-                              child: const Text(
-                                "MATTE",
-                                style: TextStyle(
-                                  fontSize: 24,
-                                  fontFamily: "Gotham",
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.white,
+                            child: Stack(
+                              children: [
+                                Image.asset(
+                                    "assets/nails/matte/RectangleMatteVert.png",
+                                    width: 100,
+                                    height: 70,
+                                    fit: BoxFit.contain),
+                                const Positioned.fill(
+                                  child: Align(
+                                    child: Text(
+                                      "MATTE",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 24,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                              ),
+                              ],
                             ),
                           ),
                         ),

@@ -45,6 +45,7 @@ dependencies:
   device_preview: ^1.1.0
   carousel_slider: ^4.2.1
   glass: ^1.0.1+1
+  change_app_package_name: ^1.1.0
 
 dev_dependencies:
   flutter_test:

@@ -90,13 +90,13 @@ class _NailCardState extends State<NailCard> {
                                     // widget.nail.imgPath!,
                                     "assets/nails/matte/${widget.nail.id}.png",
                                     fit: BoxFit.contain,
-                                    height: 231,
-                                    width: 104,
+                                    height: isTablet ? 478.h : 231,
+                                    width: isTablet ? 216.w : 104,
                                     // height: 200,
                                   )
-                                : const SizedBox(
-                                    height: 231,
-                                    width: 104,
+                                : SizedBox(
+                                    height: isTablet ? 478.h : 231,
+                                    width: isTablet ? 216.w : 104,
                                   ),
                           ),
                           secondChild: widget.nail.imgPath != null
@@ -140,13 +140,13 @@ class _NailCardState extends State<NailCard> {
                                     // widget.nail.imgPath!,
                                     "assets/nails/matte/${widget.nail.id}.png",
                                     fit: BoxFit.contain,
-                                    height: 231,
-                                    width: 104,
+                                    height: isTablet ? 478.h : 231,
+                                    width: isTablet ? 216.w : 104,
                                     // height: 200,
                                   )
-                                : const SizedBox(
-                                    height: 231,
-                                    width: 104,
+                                : SizedBox(
+                                    height: isTablet ? 478.h : 231,
+                                    width: isTablet ? 216.w : 104,
                                   ),
                           ),
                           firstChild: widget.nail.imgPath != null
@@ -181,7 +181,7 @@ class _NailCardState extends State<NailCard> {
                     ),
               Positioned(
                 bottom: 0,
-                left: 105,
+                left: isTablet ? 250 : 105,
                 child: InkWell(
                   onTap: () {
                     toggleShowMatte();

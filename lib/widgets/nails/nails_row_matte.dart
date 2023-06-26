@@ -124,8 +124,8 @@ class NailRowTablet extends StatelessWidget {
                             width: 92.12.w,
                             height: 203.79.h,
                             child: Container(
-                              width: 20,
-                              height: 20,
+                              margin:
+                                  const EdgeInsets.symmetric(horizontal: 20),
                               decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
                                 color: Colors.grey,
