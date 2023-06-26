@@ -181,7 +181,7 @@ class _NailCardState extends State<NailCard> {
                     ),
               Positioned(
                 bottom: 0,
-                left: isTablet ? 250 : 105,
+                left: isTablet ? 180 : 105,
                 child: InkWell(
                   onTap: () {
                     toggleShowMatte();
@@ -204,14 +204,14 @@ class _NailCardState extends State<NailCard> {
                       showMatte
                           ? Image.asset(
                               "assets/nails/matte/RectangleMatteVert.png",
-                              width: 75,
-                              height: 45,
+                              width: isTablet ? 110 : 75,
+                              height: isTablet ? 60 : 45,
                               fit: BoxFit.contain,
                             )
                           : Image.asset(
                               "assets/nails/matte/RectangleMatteBlanc.png",
-                              width: 75,
-                              height: 45,
+                              width: isTablet ? 110 : 75,
+                              height: isTablet ? 60 : 45,
                               fit: BoxFit.contain,
                             ),
                       Positioned.fill(
@@ -222,6 +222,7 @@ class _NailCardState extends State<NailCard> {
                               color: showMatte
                                   ? Colors.white
                                   : const Color.fromRGBO(47, 90, 92, 1),
+                              fontSize: isTablet ? 20 : 16,
                               fontWeight: FontWeight.w700,
                             ),
                           ),
